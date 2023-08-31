@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "dashboards#dashboard_screen"
   
   # Defines the root path route ("/")
-  get 'home_screen', to: 'dashboards#dashboard_screen', as: 'dashboard_screen'
+  get 'home_screen', to: 'dashboards#dashboard_home_screen', as: 'dashboard_home_screen'
 
     # Use devise_for to set up user authentication routes
   devise_for :users, controllers: { registrations: 'users/registrations' }

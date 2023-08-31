@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards or /dashboards.json
   def dashboard_screen
     if user_signed_in?
-      render 'dashboards/dashboard_screen'
+      render 'dashboards/dashboard_home_screen'
     end
   end
 
