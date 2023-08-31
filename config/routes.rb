@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # Use devise_for to set up user authentication routes
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
+  devise_scope :user do
+    get 'users/sign_in' => "devise/sessions#new"
+    get 'users/sign_out' => "devise/sessions#destroy"
+  end
+
   resources :dashboards
   resources :tests
   resources :exams
@@ -9,8 +16,7 @@ Rails.application.routes.draw do
   resources :parents
   resources :students
   resources :staffs
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "dashboard#dashboard_screen"
+  root "dashboards#dashboard_screen"
 end

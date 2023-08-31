@@ -1,4 +1,4 @@
 class Staff < ApplicationRecord
-    belongs_to :user
     has_many :students  
+    belongs_to :department
 end
