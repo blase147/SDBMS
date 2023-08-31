@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Subjectsts</h1>
+
+<div id="subjectsts">
+  <% @subjectsts.each do |subjectst| %>
+    <%= render subjectst %>
+    <p>
+      <%= link_to "Show this subjectst", subjectst %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New subjectst", new_subjectst_path %>
