@@ -8,9 +8,25 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+  <div id="nav">
+  App Navigation
+  <ul class="menu">
+    <li class="menu-item">
+      <a href="#">Dashboard</a>
+    </li>
+    <li class="menu-item menu-parent">
+      <a href="#">Schools</a>
+      <ul class="menu-subitems">
+        <li><a href="#">Manage Schools</a></li>
+        <li><a href="#">Manage Schools</a></li>
+      </ul>
+    </li>
+  </ul>  
+</div>
     <%= yield %>
   </body>
 </html>
