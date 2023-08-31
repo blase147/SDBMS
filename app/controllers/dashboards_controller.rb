@@ -1,16 +1,15 @@
 class DashboardsController < ApplicationController
-  before_action :set_dashboard, only: %i[ show edit update destroy ]
+  before_action :set_dashboard, only: %i[show edit update destroy]
 
   # GET /dashboards or /dashboards.json
   def dashboard_screen
-    if user_signed_in?
-      render 'dashboards/dashboard_home_screen'
-    end
+    return unless user_signed_in?
+
+    render 'dashboards/dashboard_home_screen'
   end
 
   # GET /dashboards/1 or /dashboards/1.json
-  def show
-  end
+  def show; end
 
   # GET /dashboards/new
   def new
@@ -18,8 +17,7 @@ class DashboardsController < ApplicationController
   end
 
   # GET /dashboards/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /dashboards or /dashboards.json
   def create
@@ -27,7 +25,7 @@ class DashboardsController < ApplicationController
 
     respond_to do |format|
       if @dashboard.save
-        format.html { redirect_to dashboard_url(@dashboard), notice: "Dashboard was successfully created." }
+        format.html { redirect_to dashboard_url(@dashboard), notice: 'Dashboard was successfully created.' }
         format.json { render :show, status: :created, location: @dashboard }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +38,7 @@ class DashboardsController < ApplicationController
   def update
     respond_to do |format|
       if @dashboard.update(dashboard_params)
-        format.html { redirect_to dashboard_url(@dashboard), notice: "Dashboard was successfully updated." }
+        format.html { redirect_to dashboard_url(@dashboard), notice: 'Dashboard was successfully updated.' }
         format.json { render :show, status: :ok, location: @dashboard }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,19 +52,20 @@ class DashboardsController < ApplicationController
     @dashboard.destroy
 
     respond_to do |format|
-      format.html { redirect_to dashboards_url, notice: "Dashboard was successfully destroyed." }
+      format.html { redirect_to dashboards_url, notice: 'Dashboard was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dashboard
-      @dashboard = Dashboard.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def dashboard_params
-      params.fetch(:dashboard, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dashboard
+    @dashboard = Dashboard.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def dashboard_params
+    params.fetch(:dashboard, {})
+  end
 end

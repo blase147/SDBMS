@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :schools
   root "dashboards#dashboard_screen"
   
   # Defines the root path route ("/")

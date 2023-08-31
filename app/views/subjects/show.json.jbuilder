@@ -1,1 +1,1 @@
-json.partial! "subjects/subject", subjectst: @subject
+json.partial! 'subjects/subject', subjectst: @subject

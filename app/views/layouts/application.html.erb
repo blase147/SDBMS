@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -12,45 +13,129 @@
   </head>
 
   <body>
-  <div id="nav">
-  App Navigation
-  <ul class="menu">
-    <li class="menu-item">
-      <a href="#">Dashboard</a>
-    </li>
-    <li class="menu-item menu-parent">
-      <a href="#">Schools  <span class="arrow">&rarr;</span></a>
-      <ul class="menu-subitems">
-        <li><a href="#">Manage Schools</a></li>
-      </ul>
-    </li>
-    <li class="menu-item menu-parent">
-      <a href="#">Schools  <span class="arrow">&rarr;</span></a>
-      <ul class="menu-subitems">
-        <li><a href="#">Manage Schools</a></li>
-      </ul>
-    </li>
-    <li class="menu-item menu-parent">
-      <a href="#">Schools  <span class="arrow">&rarr;</span></a>
-    <ul class="menu-subitems">
-        <li><a href="#">Manage Schools</a></li>
-      </ul>
-    </li>
-    <li class="menu-item menu-parent">
-      <a href="#">Schools  <span class="arrow">&rarr;</span></a>
-      <ul class="menu-subitems">
-        <li><a href="#">Manage Schools</a></li>
-      </ul>
-    </li>
-    <li class="menu-item menu-parent">
-    <a href="#">Schools  <span class="arrow">&rarr;</span></a>
+    <div id="nav">
+    school logo
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="menu-item menu-parent">
+          <a href="#">Schools</a>
+          <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+          <a href="#">Academic Year </a>
+          <span class="menu-parent-arrow"></span>
 
-      <ul class="menu-subitems">
-        <li><a href="#">Manage Schools</a></li>
-      </ul>
-    </li>
-  </ul>  
-</div>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+          <a href="#">Schools</a>
+          <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Human Resources</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+          <a href="#">Grades</a>
+          <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Classrooms</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Admissions</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Subjects</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Students</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Assessment</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Teachers</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Parents</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Events</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Attendance</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Visitors</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">Fee Management</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+        <li class="menu-item menu-parent">
+        <a href="#">SMS</a>
+        <span class="menu-parent-arrow"></span>
+          <ul class="menu-subitems">
+            <li><a href="#">Manage Schools</a></li>
+          </ul>
+        </li>
+      </ul>  
+    </div>
     <%= yield %>
   </body>
 </html>
+
+

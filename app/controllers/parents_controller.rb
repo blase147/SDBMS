@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-  before_action :set_parent, only: %i[ show edit update destroy ]
+  before_action :set_parent, only: %i[show edit update destroy]
 
   # GET /parents or /parents.json
   def index
@@ -7,8 +7,7 @@ class ParentsController < ApplicationController
   end
 
   # GET /parents/1 or /parents/1.json
-  def show
-  end
+  def show; end
 
   # GET /parents/new
   def new
@@ -16,8 +15,7 @@ class ParentsController < ApplicationController
   end
 
   # GET /parents/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /parents or /parents.json
   def create
@@ -25,7 +23,7 @@ class ParentsController < ApplicationController
 
     respond_to do |format|
       if @parent.save
-        format.html { redirect_to parent_url(@parent), notice: "Parent was successfully created." }
+        format.html { redirect_to parent_url(@parent), notice: 'Parent was successfully created.' }
         format.json { render :show, status: :created, location: @parent }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class ParentsController < ApplicationController
   def update
     respond_to do |format|
       if @parent.update(parent_params)
-        format.html { redirect_to parent_url(@parent), notice: "Parent was successfully updated." }
+        format.html { redirect_to parent_url(@parent), notice: 'Parent was successfully updated.' }
         format.json { render :show, status: :ok, location: @parent }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,21 @@ class ParentsController < ApplicationController
     @parent.destroy
 
     respond_to do |format|
-      format.html { redirect_to parents_url, notice: "Parent was successfully destroyed." }
+      format.html { redirect_to parents_url, notice: 'Parent was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_parent
-      @parent = Parent.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def parent_params
-      params.require(:parent).permit(:photo, :title, :firstname, :lastname, :email, :phone, :dateofbirth, :country, :state, :lga, :street, :occupation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_parent
+    @parent = Parent.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def parent_params
+    params.require(:parent).permit(:photo, :title, :firstname, :lastname, :email, :phone, :dateofbirth, :country,
+                                   :state, :lga, :street, :occupation)
+  end
 end

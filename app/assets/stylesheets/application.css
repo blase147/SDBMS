@@ -14,62 +14,82 @@
  *= require_self
  */
  body{
-    box-sizing: border-box;
-    display: flex;
-    margin-left: 300px;
+    margin-left: 220px;
     padding: 0;
     width: 70%;
-    background-color: #0728e0;
     font-family: sans-serif;
+    scroll-behavior:auto;
+    overflow: auto;
  }
 
 #nav{
-    /* display: block; */
-    width: 20%;
-    margin-right: 30px;
     padding-top: 30px;
-    padding-left: 30px;
     background-color: #333;
     color: white;
     height: 100%; /* Make the sidebar fill the entire height */
     position: fixed;
     left: 0;
-    top: 0;
+    top: 0;    
+    overflow-y: auto;
 }
-
+ /* Style the scrollbar */
+ #nav::-webkit-scrollbar {
+    width: 10px; /* Adjust width as needed */
+  }
+  
+  #nav::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  #nav::-webkit-scrollbar-thumb:hover {
+    background-color: #d31010; /* Color of the thumb on hover */
+  }
+  
 .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
     padding: 0;
     list-style: none;
   }
   
   .menu-item {
-    padding: 10px;
+    margin: 10px;
+    padding: 15px;
     border-bottom: 1px solid #555;
   }
   
   .menu-item a {
     text-decoration: none;
     color: white;
-    display: block;
   }
   
   .menu-subitems {
     display: none;
     padding-left: 20px;
     list-style: none;
+    padding-top: 20px;
   }
   
   .menu-parent.active .menu-subitems {
     display: block;
   }
-  .arrow {
-    display: inline-block;
-    margin-left: 5px; /* Adjust as needed */
-    transition: transform 0.3s ease; /* Add smooth transition */
-  }
-  
-  .menu-parent.open .arrow {
-    transform: rotate(90deg); /* Rotate arrow when submenu is open */
-  }
+
+.menu-parent-arrow::after {
+  content: "\f054"; /* Unicode for the down arrow icon */
+  font-family: "Font Awesome 5 Free"; /* Replace with your Font Awesome font-family */
+  font-weight: 900; /* Font weight for solid style icons */
+  margin-left: 5px; /* Adjust spacing as needed */
+  transition: transform 0.3s ease; /* Add smooth transition */
+  display: inline-block;
+  width: 10px; /* Adjust width as needed */
+  vertical-align: middle; /* Align the icon vertically with the text */
+}
+
+.menu-parent.active .menu-parent-arrow::after {
+  transform: rotate(90deg); /* Rotate arrow when submenu is open */
+}
   
   
