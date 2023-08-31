@@ -1,70 +1,70 @@
-class SubjectstsController < ApplicationController
-  before_action :set_subjectst, only: %i[ show edit update destroy ]
+class SubjectsController < ApplicationController
+  before_action :set_subject, only: %i[ show edit update destroy ]
 
-  # GET /subjectsts or /subjectsts.json
+  # GET /subjects or /subjects.json
   def index
-    @subjectsts = Subjectst.all
+    @subjects = Subject.all
   end
 
-  # GET /subjectsts/1 or /subjectsts/1.json
+  # GET /subjects/1 or /subjects/1.json
   def show
   end
 
-  # GET /subjectsts/new
+  # GET /subjects/new
   def new
-    @subjectst = Subjectst.new
+    @subject = Subject.new
   end
 
-  # GET /subjectsts/1/edit
+  # GET /subjects/1/edit
   def edit
   end
 
-  # POST /subjectsts or /subjectsts.json
+  # POST /subjects or /subjects.json
   def create
-    @subjectst = Subjectst.new(subjectst_params)
+    @subject = Subject.new(subject_params)
 
     respond_to do |format|
-      if @subjectst.save
-        format.html { redirect_to subjectst_url(@subjectst), notice: "Subjectst was successfully created." }
-        format.json { render :show, status: :created, location: @subjectst }
+      if @subject.save
+        format.html { redirect_to subjects_url, notice: "Subject was successfully created." }
+        format.json { render :show, status: :created, location: @subject }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @subjectst.errors, status: :unprocessable_entity }
+        format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /subjectsts/1 or /subjectsts/1.json
+  # PATCH/PUT /subjects/1 or /subjects/1.json
   def update
     respond_to do |format|
-      if @subjectst.update(subjectst_params)
-        format.html { redirect_to subjectst_url(@subjectst), notice: "Subjectst was successfully updated." }
-        format.json { render :show, status: :ok, location: @subjectst }
+      if @subject.update(subject_params)
+        format.html { redirect_to subjects_url, notice: "Subject was successfully updated." }
+        format.json { render :show, status: :ok, location: @subject }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @subjectst.errors, status: :unprocessable_entity }
+        format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /subjectsts/1 or /subjectsts/1.json
+  # DELETE /subjects/1 or /subjects/1.json
   def destroy
-    @subjectst.destroy
+    @subject.destroy
 
     respond_to do |format|
-      format.html { redirect_to subjectsts_url, notice: "Subjectst was successfully destroyed." }
+      format.html { redirect_to subjects_url, notice: "Subject was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_subjectst
-      @subjectst = Subjectst.find(params[:id])
+    def set_subject
+      @subject = Subject.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def subjectst_params
-      params.require(:subjectst).permit(:name)
+    def subject_params
+      params.require(:subject).permit(:name)
     end
 end
