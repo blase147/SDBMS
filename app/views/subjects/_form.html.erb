@@ -1,10 +1,10 @@
-<%= form_with(model: subjectst) do |form| %>
-  <% if subjectst.errors.any? %>
+<%= form_with(model: subject) do |form| %>
+  <% if subject.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(subjectst.errors.count, "error") %> prohibited this subjectst from being saved:</h2>
+      <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
 
       <ul>
-        <% subjectst.errors.each do |error| %>
+        <% subject.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
