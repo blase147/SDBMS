@@ -22,83 +22,81 @@
       <ul class="menu">
         <li class="menu-item">
         <i class="fas fa-chart-bar"></i>
-        <a href="#">Dashboard</a>
-        </li>
+        <%= link_to 'Dashboard', dashboard_home_screen_path %></li></li>
         <li class="menu-item menu-parent">
         <i class="fas fa-users"></i>
         <a href="#">Human Resource </a>
           <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-          <li><a href="#">Staff </a></li>
-          <li><a href="#">Student </a></li>
-          <li><a href="#">Parent </a></li>
-          <li><a href="#">Recruitment </a></li>
-          <li><a href="#">Admissions </a></li>
-          <li><a href="#">Attendance </a></li>
-          </ul>
-        </li>
+            <li><%= link_to 'Staff', staffs_path %></li>
+            <li><%= link_to 'Student', students_path %></li>
+            <li><%= link_to 'Parent', parents_path %></li>
+            <li><%= link_to 'Recruitment', recruitments_path %></li>
+            <li><%= link_to 'Admissions', admissions_path %></li>
+            <li><%= link_to 'Attendance', attendances_path %></li>
+         </ul>
+                </li>
         <li class="menu-item menu-parent">
         <i class="fas fa-building"></i>
         <a href="#">Class Management </a>
           <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-          <li><a href="#">Classrooms</a></li>
-          <li><a href="#">Subjects</a></li>
-          <li><a href="#">Textbooks</a></li>
-          <li><a href="#">Attendance</a></li>
-          <li><a href="#">Corresspondence</a></li>
-          <li><a href="#">Homefun</a></li>
-          </ul>
-        </li>
+            <li><%= link_to 'Classrooms', classrooms_path %></li>
+            <li><%= link_to 'Subjects', subjects_path %></li>
+            <li><%= link_to 'Textbooks', textbooks_path %></li>
+            <li><%= link_to 'Attendance', attendances_path %></li>
+            <li><%= link_to 'Correspondence', correspondences_path %></li>
+            <li><%= link_to 'Homework', homeworks_path %></li>
+         </ul>
+                </li>
         <li class="menu-item menu-parent">
         <i class="fas fa-flask"></i>
         <a href="#">Exams</a>
           <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-          <li><a href="#">Grades</a></li>
-          <li><a href="#">Assessments</a></li>
-          <li><a href="#">Results</a></li>
-          <li><a href="#">Reports</a></li>
-          </ul>
-        </li>
+            <li><%= link_to 'Grades', grades_path %></li>
+            <li><%= link_to 'Assessments', assessments_path %></li>
+            <li><%= link_to 'Results', results_path %></li>
+            <li><%= link_to 'Reports', reports_path %></li>
+         </ul>
+                </li>
         <li class="menu-item menu-parent">
         <i class="fas fa-calculator"></i>
         <a href="#">Accounting</a>
         <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-          <li><a href="#">Inventory</a></li>
-          <li><a href="#">Fees</a></li>
-          <li><a href="#">Miscelenous Expenditures</a></li>
-          <li><a href="#">Miscelenous Revenues</a></li>
-          <li><a href="#">Salary</a></li>
-          </ul>
-        </li>
+        <ul class="menu-subitems">
+          <li><%= link_to 'Inventory', inventories_path %></li>
+          <li><%= link_to 'Fees', fees_path %></li>
+          <li><%= link_to 'Miscellaneous Expenditures', expenditures_path %></li>
+          <li><%= link_to 'Revenues', revenues_path %></li>
+          <li><%= link_to 'Salary', salaries_path %></li>
+        </ul>
+              </li>
         <li class="menu-item menu-parent">
         <i class="fas fa-desktop"></i>
         <a href="#">Frontdesk</a>
         <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-          <li><a href="#">Visitors</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">SMS</a></li>
-          </ul>
-        </li>
+        <ul class="menu-subitems">
+          <li><%= link_to 'Visitors', visitors_path %></li>
+          <li><%= link_to 'Events', events_path %></li>
+          <li>SMS</li>
+       </ul>
+              </li>
         <li class="menu-item menu-parent">
         <i class="fas fa-cogs"></i>
         <a href="#">Settings</a>
         <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-          <li><a href="#">Manage School</a></li>
-          <li><a href="#">Fees Management</a></li>
-          </ul>
-        </li>
+        <ul class="menu-subitems">
+          <li><%= link_to 'Manage School', manage_schools_path %></li>
+        </ul>
+              </li>
         <li class="menu-item menu-parent">
           <i class="fas fa-graduation-cap"></i>
-          <a href="#">Students Portal</a>
+          <%= link_to 'Students Portal', students_portal_path %>
         </li>
         <li class="menu-item menu-parent">
           <i class="fas fa-door-open"></i>
-          <a href="#">Parents Portal</a>
+          <%= link_to "Parent's Portal", parents_portal_path %>
         </li>
       </ul>  
     </div>
@@ -109,5 +107,3 @@
     <%= yield %>
   </body>
 </html>
-
-

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @homework %>
+
+<div>
+  <%= link_to "Edit this homework", edit_homework_path(@homework) %> |
+  <%= link_to "Back to homeworks", homeworks_path %>
+
+  <%= button_to "Destroy this homework", @homework, method: :delete %>
+</div>

@@ -10,12 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_31_114349) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_01_101120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "admissions", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "other_names"
+    t.date "date_of_birth"
+    t.string "country"
+    t.string "state"
+    t.string "lga"
+    t.string "phone"
+    t.string "email"
+    t.string "transcript"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.string "type"
+    t.string "subject"
+    t.string "class"
+    t.string "term"
+    t.string "academic_session"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "attendances", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "other_names"
+    t.string "phone"
+    t.string "email"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "correspondences", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "other_names"
+    t.string "photo"
+    t.string "teachers_remark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,12 +78,68 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_114349) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "d_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exams", force: :cascade do |t|
     t.string "term"
     t.string "session"
     t.string "class"
     t.string "question"
     t.string "option"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expenditures", force: :cascade do |t|
+    t.string "subject"
+    t.string "description"
+    t.string "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fees", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "homeworks", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.date "due_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "cash_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "manage_schools", force: :cascade do |t|
+    t.string "namet"
+    t.string "moto"
+    t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,6 +157,66 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_114349) do
     t.string "lga"
     t.string "street"
     t.string "occupation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recruitments", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "other_names"
+    t.date "date_of_birth"
+    t.string "country"
+    t.string "state"
+    t.string "lga"
+    t.string "qualification"
+    t.string "prof_certs"
+    t.string "cover_letter"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "other_names"
+    t.string "photo"
+    t.string "type"
+    t.string "class"
+    t.string "term"
+    t.string "academic_session"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "other_names"
+    t.string "photo"
+    t.string "type"
+    t.string "class"
+    t.string "subject"
+    t.string "ca"
+    t.string "project"
+    t.string "homework"
+    t.string "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "revenues", force: :cascade do |t|
+    t.string "subject"
+    t.string "description"
+    t.string "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "salaries", force: :cascade do |t|
+    t.string "level"
+    t.string "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -126,6 +289,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_114349) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "textbooks", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "level"
+    t.string "publisher"
+    t.string "year_of_publication"
+    t.string "authur"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -136,6 +310,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_114349) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "visitors", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "other_names"
+    t.string "phone"
+    t.string "email"
+    t.string "enquiry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

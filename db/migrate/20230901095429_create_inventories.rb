@@ -1,0 +1,11 @@
+class CreateInventories < ActiveRecord::Migration[7.0]
+  def change
+    create_table :inventories do |t|
+      t.string :name
+      t.string :description
+      t.string :cash_value
+
+      t.timestamps
+    end
+  end
+end

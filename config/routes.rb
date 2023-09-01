@@ -1,9 +1,30 @@
 Rails.application.routes.draw do
+  resources :manage_schools
+  resources :events
+  resources :visitors
+  resources :salaries
+  resources :revenues
+  resources :expenditures
+  resources :fees
+  resources :inventories
+  resources :reports
+  resources :results
+  resources :grades
+  resources :assessments
+  resources :homeworks
+  resources :correspondences
+  resources :textbooks
+  resources :attendances
+  resources :admissions
+  resources :recruitments
   resources :schools
   root "dashboards#dashboard_screen"
   
   # Defines the root path route ("/")
   get 'home_screen', to: 'dashboards#dashboard_home_screen', as: 'dashboard_home_screen'
+
+  get '/students_portal', to: 'students#students_portal'
+  get '/parents_portal', to: 'parents#parents_portal'
 
     # Use devise_for to set up user authentication routes
   devise_for :users, controllers: { registrations: 'users/registrations' }

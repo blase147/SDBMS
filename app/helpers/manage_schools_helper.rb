@@ -1,0 +1,2 @@
+module ManageSchoolsHelper
+end

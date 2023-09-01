@@ -1,6 +1,11 @@
 class ParentsController < ApplicationController
   before_action :set_parent, only: %i[show edit update destroy]
 
+  def students_portal
+    # Your logic here to prepare data for the view
+    render 'parents_portal' # This should match your view file name
+  end
+
   # GET /parents or /parents.json
   def index
     @parents = Parent.all

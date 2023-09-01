@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Homeworks</h1>
+
+<div id="homeworks">
+  <% @homeworks.each do |homework| %>
+    <%= render homework %>
+    <p>
+      <%= link_to "Show this homework", homework %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New homework", new_homework_path %>

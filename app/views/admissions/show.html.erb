@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admission %>
+
+<div>
+  <%= link_to "Edit this admission", edit_admission_path(@admission) %> |
+  <%= link_to "Back to admissions", admissions_path %>
+
+  <%= button_to "Destroy this admission", @admission, method: :delete %>
+</div>

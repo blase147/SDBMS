@@ -1,0 +1,72 @@
+<%= form_with(model: result) do |form| %>
+  <% if result.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(result.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+        <% result.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :firstname, style: "display: block" %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div>
+    <%= form.label :lastname, style: "display: block" %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div>
+    <%= form.label :other_names, style: "display: block" %>
+    <%= form.text_field :other_names %>
+  </div>
+
+  <div>
+    <%= form.label :photo, style: "display: block" %>
+    <%= form.text_field :photo %>
+  </div>
+
+  <div>
+    <%= form.label :type, style: "display: block" %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div>
+    <%= form.label :class, style: "display: block" %>
+    <%= form.text_field :class %>
+  </div>
+
+  <div>
+    <%= form.label :subject, style: "display: block" %>
+    <%= form.text_field :subject %>
+  </div>
+
+  <div>
+    <%= form.label :ca, style: "display: block" %>
+    <%= form.text_field :ca %>
+  </div>
+
+  <div>
+    <%= form.label :project, style: "display: block" %>
+    <%= form.text_field :project %>
+  </div>
+
+  <div>
+    <%= form.label :homework, style: "display: block" %>
+    <%= form.text_field :homework %>
+  </div>
+
+  <div>
+    <%= form.label :total, style: "display: block" %>
+    <%= form.text_field :total %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_with(model: revenue) do |form| %>
+  <% if revenue.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(revenue.errors.count, "error") %> prohibited this revenue from being saved:</h2>
+
+      <ul>
+        <% revenue.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :subject, style: "display: block" %>
+    <%= form.text_field :subject %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

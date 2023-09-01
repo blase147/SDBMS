@@ -1,0 +1,72 @@
+<%= form_with(model: recruitment) do |form| %>
+  <% if recruitment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recruitment.errors.count, "error") %> prohibited this recruitment from being saved:</h2>
+
+      <ul>
+        <% recruitment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :firstname, style: "display: block" %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div>
+    <%= form.label :lastname, style: "display: block" %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div>
+    <%= form.label :other_names, style: "display: block" %>
+    <%= form.text_field :other_names %>
+  </div>
+
+  <div>
+    <%= form.label :date_of_birth, style: "display: block" %>
+    <%= form.date_field :date_of_birth %>
+  </div>
+
+  <div>
+    <%= form.label :country, style: "display: block" %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :lga, style: "display: block" %>
+    <%= form.text_field :lga %>
+  </div>
+
+  <div>
+    <%= form.label :qualification, style: "display: block" %>
+    <%= form.text_field :qualification %>
+  </div>
+
+  <div>
+    <%= form.label :prof_certs, style: "display: block" %>
+    <%= form.text_field :prof_certs %>
+  </div>
+
+  <div>
+    <%= form.label :cover_letter, style: "display: block" %>
+    <%= form.text_field :cover_letter %>
+  </div>
+
+  <div>
+    <%= form.label :photo, style: "display: block" %>
+    <%= form.text_field :photo %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

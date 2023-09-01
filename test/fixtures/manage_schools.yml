@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  namet: MyString
+  moto: MyString
+  logo: MyString
+
+two:
+  namet: MyString
+  moto: MyString
+  logo: MyString

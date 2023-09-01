@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @revenue %>
+
+<div>
+  <%= link_to "Edit this revenue", edit_revenue_path(@revenue) %> |
+  <%= link_to "Back to revenues", revenues_path %>
+
+  <%= button_to "Destroy this revenue", @revenue, method: :delete %>
+</div>

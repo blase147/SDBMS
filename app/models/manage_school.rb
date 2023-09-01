@@ -1,0 +1,2 @@
+class ManageSchool < ApplicationRecord
+end

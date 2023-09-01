@@ -1,0 +1,32 @@
+<%= form_with(model: manage_school) do |form| %>
+  <% if manage_school.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(manage_school.errors.count, "error") %> prohibited this manage_school from being saved:</h2>
+
+      <ul>
+        <% manage_school.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :namet, style: "display: block" %>
+    <%= form.text_field :namet %>
+  </div>
+
+  <div>
+    <%= form.label :moto, style: "display: block" %>
+    <%= form.text_field :moto %>
+  </div>
+
+  <div>
+    <%= form.label :logo, style: "display: block" %>
+    <%= form.text_field :logo %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
