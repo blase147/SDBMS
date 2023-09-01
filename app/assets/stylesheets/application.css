@@ -35,6 +35,15 @@
     overflow-y: auto;
     width: 30%;
 }
+
+#nav > i {
+    padding: 10px;
+    background-color: red;
+    margin-left: 100px;
+    font-size: 2.5em;
+    border-radius: 20px;
+}
+
  /* Style the scrollbar */
  dashboard::-webkit-scrollbar {
     width: 10px; /* Adjust width as needed */
