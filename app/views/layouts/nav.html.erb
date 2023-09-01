@@ -1,0 +1,83 @@
+<div id="nav">
+<ul class="menu">
+  <li class="menu-item">
+  <i class="fas fa-chart-bar"></i>
+  <%= link_to 'Dashboard', dashboard_home_screen_path %></li></li>
+  <li class="menu-item menu-parent">
+  <i class="fas fa-users"></i>
+  <a href="#">Human Resource </a>
+    <span class="menu-parent-arrow"></span>
+    <ul class="menu-subitems">
+      <li><%= link_to 'Staff', staffs_path %></li>
+      <li><%= link_to 'Student', students_path %></li>
+      <li><%= link_to 'Parent', parents_path %></li>
+      <li><%= link_to 'Recruitment', recruitments_path %></li>
+      <li><%= link_to 'Admissions', admissions_path %></li>
+      <li><%= link_to 'Attendance', attendances_path %></li>
+  </ul>
+          </li>
+  <li class="menu-item menu-parent">
+  <i class="fas fa-building"></i>
+  <a href="#">Class Management </a>
+    <span class="menu-parent-arrow"></span>
+    <ul class="menu-subitems">
+      <li><%= link_to 'Classrooms', classrooms_path %></li>
+      <li><%= link_to 'Subjects', subjects_path %></li>
+      <li><%= link_to 'Textbooks', textbooks_path %></li>
+      <li><%= link_to 'Attendance', attendances_path %></li>
+      <li><%= link_to 'Correspondence', correspondences_path %></li>
+      <li><%= link_to 'Homework', homeworks_path %></li>
+  </ul>
+          </li>
+  <li class="menu-item menu-parent">
+  <i class="fas fa-flask"></i>
+  <a href="#">Exams</a>
+    <span class="menu-parent-arrow"></span>
+    <ul class="menu-subitems">
+      <li><%= link_to 'Grades', grades_path %></li>
+      <li><%= link_to 'Assessments', assessments_path %></li>
+      <li><%= link_to 'Results', results_path %></li>
+      <li><%= link_to 'Reports', reports_path %></li>
+  </ul>
+          </li>
+  <li class="menu-item menu-parent">
+  <i class="fas fa-calculator"></i>
+  <a href="#">Accounting</a>
+  <span class="menu-parent-arrow"></span>
+  <ul class="menu-subitems">
+    <li><%= link_to 'Inventory', inventories_path %></li>
+    <li><%= link_to 'Fees', fees_path %></li>
+    <li><%= link_to 'Miscellaneous Expenditures', expenditures_path %></li>
+    <li><%= link_to 'Revenues', revenues_path %></li>
+    <li><%= link_to 'Salary', salaries_path %></li>
+  </ul>
+        </li>
+  <li class="menu-item menu-parent">
+  <i class="fas fa-desktop"></i>
+  <a href="#">Frontdesk</a>
+  <span class="menu-parent-arrow"></span>
+  <ul class="menu-subitems">
+    <li><%= link_to 'Visitors', visitors_path %></li>
+    <li><%= link_to 'Events', events_path %></li>
+    <li>SMS</li>
+</ul>
+        </li>
+  <li class="menu-item menu-parent">
+  <i class="fas fa-cogs"></i>
+  <a href="#">Settings</a>
+  <span class="menu-parent-arrow"></span>
+  <ul class="menu-subitems">
+    <li><%= link_to 'Manage School', manage_schools_path %></li>
+  </ul>
+        </li>
+  <li class="menu-item menu-parent">
+    <i class="fas fa-graduation-cap"></i>
+    <%= link_to 'Students Portal', students_portal_path %>
+  </li>
+  <li class="menu-item menu-parent">
+    <i class="fas fa-door-open"></i>
+    <%= link_to "Parent's Portal", parents_portal_path %>
+  </li>
+</ul>  
+</div>
+</div>

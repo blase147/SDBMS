@@ -1,8 +1,47 @@
-<div class="dashboard main">
-<p style="color: green"><%= notice %></p>
+<div class="main dashboard">
+    <p style="color: green"><%= notice %></p>
 
-<h1>Dashboards</h1>
-<h2>Your dashboard view</h2>
+    <h1>Dashboards</h1>
+    <div class="dashboard">
+    
+    <div class="report" style="background-color: green">
+        <div class="report_count_cont">
+            <h2><%= staff_count %></h2>
+            <p>Total Number of Staff</p>
+        </div>
+        <i class="fas fa-user"></i>
+    </div>
 
+    <div class="report" style="background-color: blue">
+        <div class="report_count_cont">
+            <h2><%= student_count %></h2>
+            <p>Total Number of Students<p/>
+            </div>
+        <i class="fas fa-user"></i>
+    </div>
 
+    <div class="report" style="background-color: red">
+        <div class="report_count_cont">
+            <h2><%= revenue_count %></h2>
+            <p>Total Revenue<p/>
+            </div>
+        <i class="fas fa-user"></i>
+    </div>
+
+    <div class="report" style="background-color: orange">
+        <div class="report_count_cont">
+            <h2><%= classroom_count %></h2>
+            <p>Classes<p/>
+            </div>
+        <i class="fas fa-user"></i>
+    </div>
+
+    <div class="report" style="background-color: purple">
+        <div class="report_count_cont">
+            <h2><%= visitor_count %></h2>
+            <p>Visitors Count<p/>
+            </div>
+        <i class="fas fa-user"></i>
+    </div>
+    </div>
 </div>

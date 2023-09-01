@@ -19,49 +19,27 @@
  }
  body {
     display: flex;
+    flex-direction: column;
     /* margin-left: 220px; */
     padding: 0;
     /* width: 70%; */
     font-family: sans-serif;
     overflow: auto;
-    /* background-color: blue; */
-    margin-top: 120px;
+    background-color: rgb(232, 232, 238);
+    /* margin-top: 120px; */
  }
 
-/* Style for grid items */
-.grid-item {
-    background-color: #ccc;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Define grid areas for each item */
-.header {
-    grid-area: header;
-}
-
-.sidebar {
-    grid-area: sidebar;
-}
-
-.main {
-    grid-area: main;
-}
-
-
-
 #nav{
-    padding-top: 10px;
     background-color: #333;
     color: white;
     height: 100%; 
-    position: relative;
+    /* position: relative;
     left: 0;
-    top: 0; 
+    top: 0;  */
     padding-left: 0;
-    margin-left: 0;   
+    margin-top: 2px;   
     overflow-y: auto;
-    width: 25%;
+    width: 30%;
 }
 
 .logo {
@@ -73,13 +51,13 @@
     /* position: relative;
     top: 0;
     left: -700px; */
-    width: 25%;
+    width: 23%;
     background-color: #333;
     color: #f8f4f4;
     border-style: solid 1px;
     /* margin: 20px; */
     text-align: center;
-    margin-right: 750px;
+    /* margin-right: 600px; */
 
     & i {
         /* background-color: red; */
@@ -95,15 +73,17 @@
 
 .user_nav {
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-between;
+    /* gap: 230px; */
     align-items: center;
     background-color: rgb(221, 214, 214);
     /* height: 100%; */
-    font-size: 1.7em;
-    width: 100%;
-    position: absolute;
+    /* font-size: 1.7em; */
+    /* width: 100%; */
+    position: sticky;
     top: 0;
     right: -9px; 
+    padding-right: 20px;
 
     & i {
         font-size: 1.58em;
@@ -111,25 +91,23 @@
 }
 
 .user_nav::after {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    content: "\f078"; /* Unicode for the down arrow icon */
-    font-family: "Font Awesome 5 Free"; /* Replace with your Font Awesome font-family */
-    font-weight: 900; /* Font weight for solid style icons */
-    margin-left: 5px; /* Adjust spacing as needed */
-    transition: transform 0.3s ease; /* Add smooth transition */
+    content: "\f078"; 
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    transition: transform 0.3s ease; 
     display: inline-block;
-    width: 10px; /* Adjust width as needed */
-    vertical-align: middle; /* Align the icon vertically with the text */
-    margin-right: 20px;
+    width: 10px; 
+    vertical-align: middle; 
+    margin-right: 20px; */
 
   }
 
-.user {
+.nav_main {
     display: flex;
-    justify-content: right;
-    align-items: center;
+    background-color: red;
 }
 
  /* Style the scrollbar */
@@ -203,11 +181,85 @@
   transform: rotate(90deg); /* Rotate arrow when submenu is open */
 }
   
-.dashboard{
-    margin-left: 20px;
+.main {
+    /* display: flex; */
+    flex-direction: column;
+    padding-left: 20px;
+    margin: 0;
+    /* float: right;
+    position: relative;
+    top: -30px; */
+    width: 70%;
 }
 
-.main {
+/* .test {
+    display: flex;
+    width: 100%;
+} */
+
+.report {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-style: solid;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: blue;
+    color: #ffffff;
+    width: 19em;
+    font-size: 0.80em;
+}
+.report i {
+/* position: relative;
+top: -27px;
+right: -267px; */
+font-size: 4.0em;
+}
+.report_count_cont {
     display: flex;
     flex-direction: column;
+
+    & h2 {
+        font-size: 3.4em;
+        padding: 0;
+        margin: 0;
+    }
+
+    & p {
+        padding: 0;
+        margin: 0;
+    }
 }
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* padding-left: 20px; */
+    margin: 0;
+    width: 100%;
+}
+
+#logout {
+    /* display: flex;
+    flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    display: none;
+    /* height: 30px; */
+    background-color: #fff;
+    position: relative;
+    top: 51px;
+    right: 0;
+    width: 10%;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .yield {
+    background-color: rgb(75, 20, 204);
+    width: 100%;
+    /* margin-top: 20px; */
+    padding-left: 20px;
+  }
