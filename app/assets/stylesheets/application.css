@@ -258,7 +258,7 @@ font-size: 4.0em;
   }
 
   .yield {
-    background-color: rgb(75, 20, 204);
+    /* background-color: rgb(75, 20, 204); */
     width: 100%;
     /* margin-top: 20px; */
     padding-left: 20px;
