@@ -12,125 +12,89 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body id="body">
     <div id="nav">
     school logo
       <ul class="menu">
         <li class="menu-item">
-          <a href="#">Dashboard</a>
+        <i class="fas fa-chart-bar"></i>
+        <a href="#">Dashboard</a>
         </li>
         <li class="menu-item menu-parent">
-          <a href="#">Schools</a>
+        <i class="fas fa-users"></i>
+        <a href="#">Human Resource </a>
           <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
+          <li><a href="#">Staff </a></li>
+          <li><a href="#">Student </a></li>
+          <li><a href="#">Parent </a></li>
+          <li><a href="#">Recruitment </a></li>
+          <li><a href="#">Admissions </a></li>
+          <li><a href="#">Attendance </a></li>
           </ul>
         </li>
         <li class="menu-item menu-parent">
-          <a href="#">Academic Year </a>
-          <span class="menu-parent-arrow"></span>
-
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-          <a href="#">Schools</a>
+        <i class="fas fa-building"></i>
+        <a href="#">Class Management </a>
           <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-            <li><a href="#">Human Resources</a></li>
+          <li><a href="#">Classrooms</a></li>
+          <li><a href="#">Subjects</a></li>
+          <li><a href="#">Textbooks</a></li>
+          <li><a href="#">Attendance</a></li>
+          <li><a href="#">Corresspondence</a></li>
+          <li><a href="#">Homefun</a></li>
           </ul>
         </li>
         <li class="menu-item menu-parent">
-          <a href="#">Grades</a>
+        <i class="fas fa-flask"></i>
+        <a href="#">Exams</a>
           <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
+          <li><a href="#">Grades</a></li>
+          <li><a href="#">Assessments</a></li>
+          <li><a href="#">Results</a></li>
+          <li><a href="#">Reports</a></li>
           </ul>
         </li>
         <li class="menu-item menu-parent">
-        <a href="#">Classrooms</a>
+        <i class="fas fa-calculator"></i>
+        <a href="#">Accounting</a>
         <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
+          <li><a href="#">Inventory</a></li>
+          <li><a href="#">Fees</a></li>
+          <li><a href="#">Miscelenous Expenditures</a></li>
+          <li><a href="#">Miscelenous Revenues</a></li>
+          <li><a href="#">Salary</a></li>
           </ul>
         </li>
         <li class="menu-item menu-parent">
-        <a href="#">Admissions</a>
+        <i class="fas fa-desktop"></i>
+        <a href="#">Frontdesk</a>
         <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
+          <li><a href="#">Visitors</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">SMS</a></li>
           </ul>
         </li>
         <li class="menu-item menu-parent">
-        <a href="#">Subjects</a>
+        <i class="fas fa-cogs"></i>
+        <a href="#">Settings</a>
         <span class="menu-parent-arrow"></span>
           <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
+          <li><a href="#">Manage School</a></li>
+          <li><a href="#">Fees Management</a></li>
           </ul>
         </li>
         <li class="menu-item menu-parent">
-        <a href="#">Students</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
+          <i class="fas fa-graduation-cap"></i>
+          <a href="#">Students Portal</a>
         </li>
         <li class="menu-item menu-parent">
-        <a href="#">Assessment</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-        <a href="#">Teachers</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-        <a href="#">Parents</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-        <a href="#">Events</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-        <a href="#">Attendance</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-        <a href="#">Visitors</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-        <a href="#">Fee Management</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
-        </li>
-        <li class="menu-item menu-parent">
-        <a href="#">SMS</a>
-        <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><a href="#">Manage Schools</a></li>
-          </ul>
+          <i class="fas fa-door-open"></i>
+          <a href="#">Parents Portal</a>
         </li>
       </ul>  
     </div>
