@@ -13,48 +13,121 @@
  *= require_tree .
  *= require_self
  */
- body{
-    display: flex;
 
+ * {
+    box-sizing: border-box;
+ }
+ body {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    grid-template-columns: 1fr 4fr; /* Two columns with a 1:2 ratio */
+    grid-template-rows: auto 1fr; /* Auto-sized first row, second row takes remaining space */
+    gap: 10px; /* Gap between grid items */
     /* margin-left: 220px; */
     padding: 0;
-    width: 70%;
+    /* width: 70%; */
     font-family: sans-serif;
-    scroll-behavior:auto;
     overflow: auto;
+    /* background-color: blue; */
  }
+
+/* Style for grid items */
+.grid-item {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Define grid areas for each item */
+.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+
+
 
 #nav{
     padding-top: 30px;
     background-color: #333;
     color: white;
-    height: 100%; /* Make the sidebar fill the entire height */
+    height: 100%; 
     position: relative;
     left: 0;
     top: 0;    
     overflow-y: auto;
-    width: 30%;
+    width: 100%;
 }
 
-#nav > i {
-    padding: 10px;
-    background-color: red;
-    margin-left: 100px;
-    font-size: 2.5em;
-    border-radius: 20px;
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 20px;
+    width: 100%;
+
+
+    & i {
+        background-color: red;
+        font-size: 2.5em;
+        border-radius: 20px;
+        padding: 10px;
+    }
 }
 
+
+
+
+.user_nav {
+    display: flex;
+    justify-content: end;
+    padding: 15px;
+    background-color: rgb(221, 214, 214);
+    height: 100%;
+    font-size: 1.7em;
+    /* width: 78%; */
+    position: sticky;
+    top: 0;
+    right: 1px; 
+
+    & i {
+        font-size: 1.58em;
+    }
+}
+
+.user_nav::after {
+    content: "\f078"; /* Unicode for the down arrow icon */
+    font-family: "Font Awesome 5 Free"; /* Replace with your Font Awesome font-family */
+    font-weight: 900; /* Font weight for solid style icons */
+    margin-left: 5px; /* Adjust spacing as needed */
+    transition: transform 0.3s ease; /* Add smooth transition */
+    display: inline-block;
+    width: 10px; /* Adjust width as needed */
+    vertical-align: middle; /* Align the icon vertically with the text */
+    margin-right: 20px;
+
+  }
  /* Style the scrollbar */
- dashboard::-webkit-scrollbar {
+ body::-webkit-scrollbar {
     width: 10px; /* Adjust width as needed */
   }
   
-  .dashboard::-webkit-scrollbar-thumb {
+  body::-webkit-scrollbar-thumb {
     background-color: #888; /* Color of the scrollbar thumb */
     border-radius: 5px; /* Rounded corners */
   }
   
-  .dashboard::-webkit-scrollbar-thumb:hover {
+  body::-webkit-scrollbar-thumb:hover {
     background-color: #d31010; /* Color of the thumb on hover */
   }
   

@@ -13,8 +13,11 @@
   </head>
 
   <body id="body">
-    <div id="nav">
-    <i class="fas fa-users"></i>
+    <div id="nav" class="sidebar">
+
+    <div class="logo">
+      <i class="fas fa-users"></i>
+    </div>
 
       <ul class="menu">
         <li class="menu-item">
@@ -99,6 +102,10 @@
         </li>
       </ul>  
     </div>
+
+    <div class="user_nav header">
+      <i class="fas fa-user"></i>
+      </div><br>
     <%= yield %>
   </body>
 </html>
