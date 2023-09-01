@@ -18,19 +18,14 @@
     box-sizing: border-box;
  }
  body {
-    display: grid;
-    grid-template-areas:
-        "header header"
-        "sidebar main";
-    grid-template-columns: 1fr 4fr; /* Two columns with a 1:2 ratio */
-    grid-template-rows: auto 1fr; /* Auto-sized first row, second row takes remaining space */
-    gap: 10px; /* Gap between grid items */
+    display: flex;
     /* margin-left: 220px; */
     padding: 0;
     /* width: 70%; */
     font-family: sans-serif;
     overflow: auto;
     /* background-color: blue; */
+    margin-top: 120px;
  }
 
 /* Style for grid items */
@@ -56,32 +51,42 @@
 
 
 #nav{
-    padding-top: 30px;
+    padding-top: 10px;
     background-color: #333;
     color: white;
     height: 100%; 
     position: relative;
     left: 0;
-    top: 0;    
+    top: 0; 
+    padding-left: 0;
+    margin-left: 0;   
     overflow-y: auto;
-    width: 100%;
+    width: 25%;
 }
 
 .logo {
     display: flex;
+    justify-content: space-between;
     justify-content: center;
-    align-items: center;
-    position: sticky;
+    align-items: center; 
+    text-align: center;
+    /* position: relative;
     top: 0;
-    left: 20px;
-    width: 100%;
-
+    left: -700px; */
+    width: 25%;
+    background-color: #333;
+    color: #f8f4f4;
+    border-style: solid 1px;
+    /* margin: 20px; */
+    text-align: center;
+    margin-right: 750px;
 
     & i {
-        background-color: red;
+        /* background-color: red; */
         font-size: 2.5em;
         border-radius: 20px;
         padding: 10px;
+        margin: 10px;
     }
 }
 
@@ -90,15 +95,15 @@
 
 .user_nav {
     display: flex;
-    justify-content: end;
-    padding: 15px;
+    /* justify-content: center; */
+    align-items: center;
     background-color: rgb(221, 214, 214);
-    height: 100%;
+    /* height: 100%; */
     font-size: 1.7em;
-    /* width: 78%; */
-    position: sticky;
+    width: 100%;
+    position: absolute;
     top: 0;
-    right: 1px; 
+    right: -9px; 
 
     & i {
         font-size: 1.58em;
@@ -106,6 +111,9 @@
 }
 
 .user_nav::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     content: "\f078"; /* Unicode for the down arrow icon */
     font-family: "Font Awesome 5 Free"; /* Replace with your Font Awesome font-family */
     font-weight: 900; /* Font weight for solid style icons */
@@ -117,6 +125,13 @@
     margin-right: 20px;
 
   }
+
+.user {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
  /* Style the scrollbar */
  body::-webkit-scrollbar {
     width: 10px; /* Adjust width as needed */
@@ -190,4 +205,9 @@
   
 .dashboard{
     margin-left: 20px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
 }
