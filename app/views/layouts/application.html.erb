@@ -25,9 +25,11 @@
         </div>
     <% end %>
   </div>
-  <i class="fas fa-sign-out-alt " style="color: red;">
-  <%= link_to 'Logout', destroy_user_session_path, id:'logout', method: :delete %></i>
-  
+
+  <div id="logout">
+    <i class="fas fa-sign-out-alt " style="color: red;">
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %></i>
+  </div>
 
 
   <div class="nav_main">
