@@ -39,9 +39,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[
+                                        firstname lastname photo phone country state city lga 
+                                      ])
+  end
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -58,3 +61,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 end
+
+
+
+
+<div class="field">
+<%= f.label :photo %><br />
+<%= f.file_field :photo %>
+</div>
+
+<div class="field">
+<%= f.label :phone %><br />
+<%= f.text_field :phone, autocomplete: "phone" %>
+</div>
+
+<div>
+<%= f.label :country %><br>
+<%= f.text_field :country %>
+</div>
+
+<div>
+<%= f.label :state %><br>
+<%= f.text_field :state %>
+</div>
+
+<div>
+<%= f.label :city %><br>
+<%= f.text_field :city %>
+</div>
+
+<div>
+<%= f.label :lga %><br>
+<%= f.text_field :lga %>
+</div>

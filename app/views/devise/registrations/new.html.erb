@@ -21,6 +21,39 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+
+  <div class="field">
+  <%= f.label :photo %><br />
+  <%= f.file_field :photo %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :phone %><br />
+  <%= f.text_field :phone, autocomplete: "phone" %>
+  </div>
+  
+  <div>
+  <%= f.label :country %><br>
+  <%= f.text_field :country %>
+  </div>
+
+  <div>
+  <%= f.label :state %><br>
+  <%= f.text_field :state %>
+  </div>
+
+  <div>
+  <%= f.label :city %><br>
+  <%= f.text_field :city %>
+  </div>
+
+  <div>
+  <%= f.label :lga %><br>
+  <%= f.text_field :lga %>
+  </div>
+
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

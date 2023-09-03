@@ -1,10 +1,11 @@
 class DashboardsController < ApplicationController
-
   # GET /dashboards or /dashboards.json
   def dashboard_screen
     return unless user_signed_in?
 
     render 'dashboards/dashboard_home_screen'
+    # @user = User.find(params[:id])
+    @student = Student.find_by(id: params[:id]) # Replace with the correct way to find the student
   end
 
   # GET /dashboards/1 or /dashboards/1.json

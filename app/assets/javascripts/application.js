@@ -7,7 +7,7 @@
 
 // app/assets/javascripts/application.js
 $(document).ready(function() {
-  $('.menu-parent ').click(function() {
+  $('.menu-parent a ').click(function() {
     $(this).parent().toggleClass('active');
   });
 });
