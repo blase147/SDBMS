@@ -7,7 +7,9 @@
         <h2><%= staff_count %></h2>
         <p>Total Number of Staff</p>
       </div>
-      <i class="fas fa-user"></i>
+      <div class="report_icon">
+        <i class="fas fa-users"></i>
+      </div>
     </div>
 
     <div class="report" style="background-color: blue">
@@ -15,15 +17,9 @@
         <h2><%= student_count %></h2>
         <p>Total Number of Students</p>
       </div>
-      <i class="fas fa-user"></i>
-    </div>
-
-    <div class="report" style="background-color: red">
-      <div class="report_count_cont">
-        <h2><%= revenue_count %></h2>
-        <p>Total Revenue</p>
+      <div class="report_icon">
+      <i class="fas fa-graduation-cap"></i>
       </div>
-      <i class="fas fa-user"></i>
     </div>
 
     <div class="report" style="background-color: orange">
@@ -31,7 +27,9 @@
         <h2><%= classroom_count %></h2>
         <p>Classes</p>
       </div>
-      <i class="fas fa-user"></i>
+      <div class="report_icon">
+      <i class="fas fa-chalkboard"></i>
+      </div>
     </div>
 
     <div class="report" style="background-color: purple">
@@ -39,20 +37,24 @@
         <h2><%= visitor_count %></h2>
         <p>Visitors Count</p>
       </div>
-      <i class="fas fa-user"></i>
+      <div class="report_icon">
+      <i class="fas fa-user-friends"></i>
+      </div>
     </div>
 
     <!-- Revenue Dashboard -->
     <div class="revenue_dashboard">
       <div class="revenue_report">
-        <i class="fas fa-user"></i>
+        <div class="revenue_icon">
+        <i class="fas fa-money-bill-wave"></i>
+        </div>
         <p>Total Revenue</p>
         <div class="revenue_report_count_cont">
-          <div>
+          <div  class="select_tag">
             <%= label_tag :search_type, "By Month" %>
             <%= select_tag :search_type, options_for_select(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], params[:search_type]), include_blank: false, onchange: "this.form.submit();" %>
           </div>
-          <div>
+          <div class="select_tag">
             <%= label_tag :search_type, "By Year" %>
             <%= select_tag :search_type, options_for_select(["2021", "2022", "2023"], params[:search_type]), include_blank: false, onchange: "this.form.submit();" %>
           </div>
@@ -63,50 +65,84 @@
       <!-- Add other revenue reports here -->
 
       <div class="revenue_report">
-        <i class="fas fa-user"></i>
-        <p>% Revenue Perfomance</p>
+        <div class="revenue_icon">
+        <i class="fas fa-chart-line"></i>
+        </div>
+         <p>% Revenue Perfomance</p>
         <div class="revenue_report_count_cont">
-          <div>
+          <div class="select_tag">
             <%= label_tag :search_type, "By Month" %>
             <%= select_tag :search_type, options_for_select(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], params[:search_type]), include_blank: false, onchange: "this.form.submit();" %>
           </div>
-          <div>
+          <div class="select_tag">
             <%= label_tag :search_type, "By Year" %>
             <%= select_tag :search_type, options_for_select(["2021", "2022", "2023"], params[:search_type]), include_blank: false, onchange: "this.form.submit();" %>
           </div>
         </div>
-        <h2><%= visitor_count %></h2>
+        <div style="display:flex;">
+          <h2><%= visitor_count %>%</h2>
+          <% if visitor_count < 0 %> 
+            <i class="fas fa-arrow-up" style="color:red;"></i>
+          <% elsif visitor_count == 0 %> 
+            <i class="fas fa-arrow-down"></i>
+          <% else %>
+            <i class="fas fa-arrow-down" style="color:green;"></i>
+          <% end %>
       </div>
+      
+    </div>
 
       <div class="revenue_report">
-        <i class="fas fa-user"></i>
+        <div class="revenue_icon">
+        <i class="fas fa-calculator"></i>
+        </div>
+
         <p>Total Expenditure</p>
         <div class="revenue_report_count_cont">
-          <div>
+          <div  class="select_tag">
             <%= label_tag :search_type, "By Month" %>
             <%= select_tag :search_type, options_for_select(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], params[:search_type]), include_blank: false, onchange: "this.form.submit();" %>
           </div>
-          <div>
+          <div  class="select_tag">
             <%= label_tag :search_type, "By Year" %>
             <%= select_tag :search_type, options_for_select(["2021", "2022", "2023"], params[:search_type]), include_blank: false, onchange: "this.form.submit();" %>
           </div>
         </div>
-        <h2><%= expenditure_count %></h2>
+
+
+
+        <div style="display:flex;">
+          <h2><%= expenditure_count %></h2>
+          <% if expenditure_count > revenue_count %> 
+            <i class="fas fa-arrow-up" style="color:red;"></i>
+          <% elsif expenditure_count == revenue_count %> 
+            <i class="fas fa-arrow-down"></i>
+          <% else %>
+            <i class="fas fa-arrow-down" style="color:green;"></i>
+          <% end %>
       </div>
 
-      <div class="revenue_report">
-        <i class="fas fa-user"></i>
-        <p>Outstanding Revenue</p>
-        <div class="revenue_report_count_cont">
-          <h2>N3,004,800.00</h2>
+      </div>
+      <div class="revenue_report2">
+        <div class="revenue_icon">
+        <i class="fas fa-exclamation-circle"></i>
         </div>
+
+          <div class="revenue_report_count_cont2">
+          <p>Outstanding Revenue</p>
+          <b style="font-size:1.5em;">N3,004,800.00</b>
+          </div>
       </div>
 
-      <div class="revenue_report">
-        <i class="fas fa-user"></i>
-        <p>Salary Bill</p>
-        <div class="revenue_report_count_cont">
-          <h2><%= salary_count %></h2>
+      <div class="revenue_report2">
+        <div class="revenue_icon">
+        <i class="fas fa-money-check"></i>
+        </div>
+
+    
+        <div class="revenue_report_count_cont2">
+          <p>Salary Bill</p>
+          <b style="font-size:1.5em;"><%= salary_count %></b>
         </div>
       </div>
     </div>
@@ -120,16 +156,19 @@
             <% if @student %>
             <%= @student.result.total%>
             <% else %>
-            99.9%
+            No Data Yet
             <% end %>
         </div>
 
         <% if @student && @student.photo.attached? %>
-        <%= image_tag @student.photo, class: 'student_profile_photo' %>
-        <% else %>
-        <!-- Optionally display a placeholder or default image here -->
-        <i class="fas fa-user student_photo"></i>
+          <%= image_tag @student.photo, class: 'student_profile_photo' %>
+          <% else %>
+          <!-- Optionally display a placeholder or default image here -->
+          <i class="fas fa-camera student_photo"></i>
         <% end %>
+        
+        
+        <div class="name_space">
         <p>
         <strong>Fullname:</strong>
         <% if @student %>
@@ -154,5 +193,6 @@
             <!-- Handle the case where @student is nil or created_at is missing -->
         <% end %>
         </p>
+        </div>
+       </div>
     </div>
-</div>

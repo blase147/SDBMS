@@ -104,7 +104,20 @@
     margin-right: 20px; */
 
   }
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
 
+.user_email_drop::after {
+  content: "\f078"; /* Unicode for the down arrow icon */
+  font-family: "Font Awesome 5 Free"; /* Replace with your Font Awesome font-family */
+  font-weight: 900; /* Font weight for solid style icons */
+  margin-left: 5px; /* Adjust spacing as needed */
+  color: #000;
+}
 .nav_main {
     display: flex;
     /* background-color: red; */
@@ -206,7 +219,9 @@
     border-radius: 5px;
     background-color: blue;
     color: #ffffff;
-    width: 10.6em;
+    width: 13.6em;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
     /* font-size: 0.80em; */
 }
 .report i {
@@ -215,12 +230,20 @@ top: -27px;
 right: -267px; */
 font-size: 1.64.0em;
 }
+.report_icon {
+  position: relative;
+  top: -19px;
+  right: 1px;
+  font-size: 2em;
+  /* background-color: red; */
+}
+
 .report_count_cont {
     display: flex;
     flex-direction: column;
 
     & h2 {
-        font-size: 3.4em;
+        font-size: 1.8em;
         padding: 0;
         margin: 0;
     }
@@ -228,7 +251,10 @@ font-size: 1.64.0em;
     & p {
         padding: 0;
         margin: 0;
-    }
+        /* background-color: red; */
+        font-size: 0.79em;
+
+      }
 }
 
 .dashboard {
@@ -254,16 +280,17 @@ font-size: 1.64.0em;
 .revenue_report {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 10px;
   align-items: center;
   border: none;
   border-style: solid 2px;
-  padding: 20px;
+  padding: 9px;
   border-radius: 5px;
   color: grey;
   width: 11.5em;
   background-color: rgb(252, 252, 252);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 
   & p {
     margin-top: 0;
@@ -275,6 +302,23 @@ font-size: 1.64.0em;
     margin: 5px;
     padding: 0;
   }
+}
+
+.revenue_report2 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  gap: 20px;
+  align-items: center;
+  border: none;
+  border-style: solid 2px;
+  padding: 9px;
+  border-radius: 5px;
+  color: grey;
+  width: 11.5em;
+  background-color: rgb(252, 252, 252);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  height: 150px;
 }
 
 .revenue_report_count_cont {
@@ -293,19 +337,29 @@ font-size: 1.64.0em;
       margin: 0;
   }
 }
+
+.revenue_report_count_cont2 {
+  display: flex;
+  flex-direction: column;
+}
+.revenue_icon {
+  position: relative;
+  top: 1px;
+  right: -63px;
+  font-size: 2em;
+  /* background-color: red; */
+}
 .best_grad_students_cont {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   /* justify-content: center; */
   background-color: rgb(252, 252, 252);
   align-items: center;
-  /* margin: auto; */
-  /* width: 100%; */
-  padding-top: 10px;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-bottom: 20px;
-  text-align: center;
+  height: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 0;
 
   & h2 {
     /* font-size: 3.41em; */
@@ -337,6 +391,8 @@ font-size: 1.64.0em;
     width: 23.8em;
     font-size: 0.6em;
     text-align: left;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
   }
 }
 .aggregate {
@@ -359,10 +415,10 @@ font-size: 1.64.0em;
     display: none;
     /* height: 30px; */
     background-color: #fff;
-    position: relative;
-    top: 51px;
-    right: 0;
-    width: 10%;
+    position: absolute;
+    top: 89px;
+    right: 36px;
+    width: 18%;
     padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -373,4 +429,22 @@ font-size: 1.64.0em;
     width: 100%;
     /* margin-top: 20px; */
     padding-left: 20px;
+  }
+
+  .select_tag {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* background-color: red; */
+  }
+
+  .name_space {
+    margin-top: 10px;
+    background-color: rgb(236, 229, 229);
+    width: 100%;
+    padding-left: 20px;
+  }
+
+  .hidden {
+    display: none;
   }

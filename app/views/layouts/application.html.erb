@@ -19,10 +19,15 @@
         <i class="fas fa-list" style="font-size: 1.1em;"></i>
       </div>
 
-        <i class="fas fa-user user"><%= current_user.email %></i>
-        <%= link_to 'Logout', destroy_user_session_path, id:'logout', method: :delete %></div>
+        <div class="user">
+          <i class="fas fa-user"></i>
+          <span class="user_email_drop"><%= current_user.email %></span>
+        </div>
     <% end %>
   </div>
+  <i class="fas fa-sign-out-alt " style="color: red;">
+  <%= link_to 'Logout', destroy_user_session_path, id:'logout', method: :delete %></i>
+  
 
 
   <div class="nav_main">
