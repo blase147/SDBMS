@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
 
     render 'dashboards/dashboard_home_screen'
     # @user = User.find(params[:id])
+    @user = current_user
     @student = Student.find_by(id: params[:id]) # Replace with the correct way to find the student
   end
 
