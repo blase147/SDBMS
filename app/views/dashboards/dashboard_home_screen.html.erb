@@ -50,10 +50,13 @@
   <!-- Revenue Dashboard -->
   <div class="revenue_dashboard dashboard_row">
     <div class="revenue_report">
+
       <div class="revenue_icon">
         <i class="fas fa-money-bill-wave"></i>
       </div>
+
       <p>Total Revenue</p>
+
       <div class="revenue_report_count_cont">
         <div class="select_tag">
           <%= label_tag :search_type, "By Month" %>
@@ -64,6 +67,7 @@
           <%= select_tag :search_type, options_for_select(["2021", "2022", "2023"], params[:search_type]), include_blank: false, onchange: "this.form.submit();" %>
         </div>
       </div>
+
       <h2><%= revenue_count %></h2>
     </div>
 
@@ -127,22 +131,22 @@
   <!-- Revenue Dashboard2 -->
   <div class="revenue_dashboard2 dashboard_row">
     <div class="revenue_report2">
-      <div class="revenue_icon">
+      <div class="revenue_icon2">
         <i class="fas fa-exclamation-circle"></i>
       </div>
       <div class="revenue_report_count_cont2">
         <p>Outstanding Revenue</p>
-        <b style="font-size:1.5em;">N3,004,800.00</b>
+        <h2>N3,004,800.00</h2>
       </div>
     </div>
 
     <div class="revenue_report2">
-      <div class="revenue_icon">
+      <div class="revenue_icon2">
         <i class="fas fa-money-check"></i>
       </div>
       <div class="revenue_report_count_cont2">
         <p>Salary Bill</p>
-        <b style="font-size:1.5em;"><%= salary_count %></b>
+        <h2><%= salary_count %></h2>
       </div>
     </div>
   </div>
@@ -160,33 +164,39 @@
       </div>
 
       <% if @student && @student.photo.attached? %>
-      <%= image_tag @student.photo, class: 'student_profile_photo' %>
+      <%= image_tag @student.photo, class: 'student_photo' %>
       <% else %>
       <!-- Optionally display a placeholder or default image here -->
-      <i class="fas fa-camera student_photo"></i>
+      <i class="fas fa-user student_photo"></i>
       <% end %>
       
       <div class="name_space">
-        <strong>Fullname:</strong>
-        <% if @student %>
-        <%= @student.firstname %> <%= @student.lastname %>
-        <% else %>
-        <!-- Handle the case where @student is nil -->
-        <% end %>
+        <span>
+          <strong>Fullname:</strong>
+          <% if @student %>
+          <span><%= @student.firstname %> <%= @student.lastname %></span>
+          <% else %>
+          <span>No records yet</span>
+          <% end %><br>
+        </span>
+
+        <span>
+          <strong>Class:</strong>
+          <% if @student %>
+          <%= @student.class %>
+          <% else %>
+          No records yet
+          <% end %>
+        </span>
         
-        <strong>Class:</strong>
-        <% if @student %>
-        <%= @student.class %>
-        <% else %>
-        <!-- Handle the case where @student is nil -->
-        <% end %>
-        
-        <strong>Admission Date:</strong>
-        <% if @student && @student.created_at.present? %>
-        <%= @student.created_at.strftime("%B %d, %Y") %>
-        <% else %>
-        <!-- Handle the case where @student is nil or created_at is missing -->
-        <% end %>
+        <span>
+          <strong>Admission Date:</strong>
+          <% if @student && @student.created_at.present? %>
+          <%= @student.created_at.strftime("%B %d, %Y") %>
+          <% else %>
+          No records yet
+          <% end %>
+        </span>
       </div>
     </div>
   </div>

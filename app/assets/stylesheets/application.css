@@ -84,6 +84,7 @@ body {
   top: 0;
   right: -9px;
   padding-right: 20px;
+  z-index: 1000;
 
   & i {
     font-size: 1.58em;
@@ -226,9 +227,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .report i {
-  /* position: relative;
-top: -27px;
-right: -267px; */
   font-size: 1.64em;
 }
 
@@ -256,7 +254,7 @@ right: -267px; */
     margin: 0;
 
     /* background-color: red; */
-    font-size: 0.79em;
+    font-size: 1.2em;
   }
 }
 
@@ -290,7 +288,7 @@ right: -267px; */
 
   /* justify-content: space-between; */
   gap: 10px;
-  align-items: center;
+  align-items: flex-start;
   border: none;
   border-style: solid 2px;
   padding: 9px;
@@ -303,21 +301,23 @@ right: -267px; */
   & p {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 0.751em;
+    font-size: 1.5em;
   }
 
   & h2 {
-    /* font-size: 3.41em; */
+    font-size: 2.3em;
     margin: 5px;
     padding: 0;
   }
 }
 
+.revenue_report i {
+  font-size: 1.64em;
+}
+
 .revenue_report2 {
   display: flex;
   flex-direction: column;
-
-  /* justify-content: space-between; */
   gap: 20px;
   align-items: center;
   border: none;
@@ -328,18 +328,17 @@ right: -267px; */
   width: 50%;
   background-color: rgb(252, 252, 252);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-
-  /* height: 190px; */
 }
 
+.revenue_report2 i {
+  font-size: 1.64em;
+}
 .revenue_report_count_cont {
   display: flex;
-
-  /* flex-direction: column; */
+  text-align: left;
   gap: 20px;
 
   & h2 {
-    /* font-size: 13.4em; */
     padding: 0;
     margin: 15px;
   }
@@ -353,22 +352,47 @@ right: -267px; */
 .revenue_report_count_cont2 {
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
+  & p {
+    padding: 0;
+    margin: 15px;
+    font-size: 1.6em;
+  }
+  & h2 {
+    padding: 0;
+    margin: 15px;
+    font-size: 2.1em;
+  }
 }
 
 .revenue_icon {
-  position: relative;
-  top: 1px;
-  right: -63px;
+  display: flex;
+  justify-content: flex-end;
+  /* position: relative;
+  top: -19px;
+  right: 1px; */
   font-size: 2em;
-
   /* background-color: red; */
+  width: 100%;
+  padding: 15px;
+}
+
+.revenue_icon2 {
+  display: flex;
+  justify-content: flex-end;
+  /* position: relative;
+  top: -19px;
+  right: 1px; */
+  font-size: 2em;
+  /* background-color: red; */
+  width: 100%;
+  padding: 15px;
+
 }
 
 .best_grad_students_cont {
   display: flex;
   flex-direction: column;
-
-  /* justify-content: center; */
   background-color: rgb(252, 252, 252);
   align-items: center;
   height: auto;
@@ -376,23 +400,16 @@ right: -267px; */
   padding-top: 30px;
   padding-bottom: 30px;
   margin-top: 60px;
+  height: 100%;
 
   & h2 {
-    /* font-size: 3.41em; */
     margin-bottom: 40px;
     padding: 0;
+    font-size: 2.4em;
   }
 
   .student_photo {
     border-radius: 5px;
-    font-size: 14.4em;
-  }
-
-  .student_profile_photo {
-    border-radius: 25px;
-    width: 30%;
-
-    /* background-color: red; */
     font-size: 14.4em;
   }
 
@@ -402,13 +419,11 @@ right: -267px; */
     justify-content: space-between;
     align-items: center;
     border-style: solid;
-
-    /* padding: 20px; */
     border-radius: 5px;
     background-color: #fff;
     color: #000;
     width: 23.8em;
-    font-size: 0.6em;
+    /* font-size: 0.6em; */
     text-align: left;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   }
@@ -438,7 +453,7 @@ right: -267px; */
   position: absolute;
   top: 89px;
   right: 36px;
-  width: 13%;
+  width: 9%;
   padding-left: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -469,10 +484,17 @@ right: -267px; */
 }
 
 .name_space {
+  display: flex;
+  flex-direction: column;
   margin-top: 10px;
   background-color: rgb(236, 229, 229);
   width: 100%;
   padding-left: 20px;
+  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1.4em;
+  gap: 10px;
 }
 
 .hidden {

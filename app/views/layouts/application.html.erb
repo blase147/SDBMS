@@ -6,9 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
   <body id="body">
@@ -28,10 +27,10 @@
       </div>
       <% end %>
 
-    <div id="logout">
-      <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_user_registration_path, class: 'edit_profile' %></i>
-      <i class="fas fa-sign-out-alt " style="color: red;"> <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'edit_profile' %></i>
-    </div>
+      <div id="logout">
+        <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_user_registration_path, class: 'edit_profile' %></i><br>
+        <i class="fas fa-sign-out-alt " style="color: red;"> <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'edit_profile' %></i>
+      </div>
 
     <div class="nav_main">
         <% if user_signed_in? %>
@@ -39,20 +38,22 @@
         <ul class="menu">
           <li class="menu-item">
           <i class="fas fa-chart-bar"></i>
-          <%= link_to 'Dashboard', dashboard_home_screen_path %></li></li>
+          <%= link_to 'Dashboard', dashboard_home_screen_path %></li>
+          
           <li class="menu-item menu-parent">
-          <i class="fas fa-users"></i>
-          <a href="#">Human Resource </a>
-            <span class="menu-parent-arrow"></span>
-            <ul class="menu-subitems">
-              <li><%= link_to 'Staff', staffs_path %></li>
-              <li><%= link_to 'Student', students_path %></li>
-              <li><%= link_to 'Parent', parents_path %></li>
-              <li><%= link_to 'Recruitment', recruitments_path %></li>
-              <li><%= link_to 'Admissions', admissions_path %></li>
-              <li><%= link_to 'Attendance', attendances_path %></li>
-          </ul>
-                  </li>
+            <i class="fas fa-users"></i>
+            <a href="#">Human Resource </a>
+              <span class="menu-parent-arrow"></span>
+              <ul class="menu-subitems">
+                <li><%= link_to 'Staff', staffs_path %></li>
+                <li><%= link_to 'Student', students_path %></li>
+                <li><%= link_to 'Parent', parents_path %></li>
+                <li><%= link_to 'Recruitment', recruitments_path %></li>
+                <li><%= link_to 'Admissions', admissions_path %></li>
+                <li><%= link_to 'Attendance', attendances_path %></li>
+              </ul>
+          </li>
+
           <li class="menu-item menu-parent">
           <i class="fas fa-building"></i>
           <a href="#">Class Management </a>
