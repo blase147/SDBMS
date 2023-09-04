@@ -26,16 +26,12 @@
           <span class="user_email_drop"><%= current_user.email %></span>
         </div>
       </div>
+      <% end %>
 
-
-      <div id="logout">
+    <div id="logout">
       <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_user_registration_path, class: 'edit_profile' %></i>
       <i class="fas fa-sign-out-alt " style="color: red;"> <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'edit_profile' %></i>
     </div>
-    
-      <% end %>
-
-
 
     <div class="nav_main">
         <% if user_signed_in? %>
