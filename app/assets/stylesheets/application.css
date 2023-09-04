@@ -38,8 +38,7 @@
     top: 0;  */
     padding-left: 0;
     margin-top: 2px;   
-    overflow-y: auto;
-    width: 30%;
+    width: 22.5%;
 }
 
 .logo {
@@ -197,7 +196,7 @@
 .main {
     /* display: flex; */
     /* flex-direction: column; */
-    padding-left: 20px;
+    /* padding-left: 20px; */
     margin: 0;
     /* float: right;
     position: relative;
@@ -212,16 +211,15 @@
 
 .report {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     border-style: solid;
-    padding: 20px;
+    padding: 2rem;
     border-radius: 5px;
     background-color: blue;
     color: #ffffff;
-    width: 13.6em;
+    width: 25%;
+    /* height: auto; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-
     /* font-size: 0.80em; */
 }
 .report i {
@@ -257,24 +255,27 @@ font-size: 1.64.0em;
       }
 }
 
-.dashboard {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    /* padding-left: 20px; */
-    margin: 0;
-    width: 100%;
+.dashboard_row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  margin: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: red;
+}
+
+.count_dashboard {
+  background-color: blue;
 }
 
 .revenue_dashboard {
-    display: flex;
-    flex-wrap: wrap;
-    /* gap: 30px; */
-    width: 100%;
-    height: auto;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin: 0;
+  background-color: red;
+}
+
+.revenue_dashboard2 {
+  background-color: rgb(8, 159, 247);
 }
 
 .revenue_report {
@@ -288,7 +289,7 @@ font-size: 1.64.0em;
   padding: 9px;
   border-radius: 5px;
   color: grey;
-  width: 11.5em;
+  width: 33.3%;
   background-color: rgb(252, 252, 252);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 
@@ -315,10 +316,10 @@ font-size: 1.64.0em;
   padding: 9px;
   border-radius: 5px;
   color: grey;
-  width: 11.5em;
+  width: 50%;
   background-color: rgb(252, 252, 252);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  height: 150px;
+  /* height: 190px; */
 }
 
 .revenue_report_count_cont {
@@ -352,14 +353,14 @@ font-size: 1.64.0em;
 .best_grad_students_cont {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   /* justify-content: center; */
   background-color: rgb(252, 252, 252);
   align-items: center;
   height: auto;
+  width: 100%;
   padding-top: 30px;
   padding-bottom: 30px;
-  margin: 0;
+  margin-top: 60px;
 
   & h2 {
     /* font-size: 3.41em; */
@@ -425,8 +426,10 @@ font-size: 1.64.0em;
   }
 
   .yield {
+    /* display: flex; */
+    /* flex-direction: column; */
     /* background-color: rgb(75, 20, 204); */
-    width: 100%;
+    width: 80%;
     /* margin-top: 20px; */
     padding-left: 20px;
   }
