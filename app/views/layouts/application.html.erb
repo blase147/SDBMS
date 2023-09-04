@@ -32,6 +32,8 @@
       <% end %>
 
     <div id="logout">
+      <i class="fas fa-edit edit_icon"></i>
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'edit_profile' %>
       <i class="fas fa-sign-out-alt " style="color: red;">
       <%= link_to 'Logout', destroy_user_session_path, method: :delete %></i>
     </div>
@@ -134,3 +136,4 @@
 
   </body>
 </html>
+

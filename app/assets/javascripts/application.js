@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const logoutDiv = document.querySelector("#logout");
 
   userDiv.addEventListener("click", function() {
-    logoutDiv.classList.toggle("hidden");
+    logoutDiv.classList.toggle("hidden"); // Toggle the "hidden" class
   });
 });
 

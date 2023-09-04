@@ -106,10 +106,18 @@
 .user {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 10px;
   padding: 20px;
+  cursor: pointer;
 }
-
+    .user_photo {
+      width: 3%;
+      font-size: 24px;
+      margin-right: 5px;
+      border-radius: 50%;
+    }
+    
 .user_email_drop::after {
   content: "\f078"; /* Unicode for the down arrow icon */
   font-family: "Font Awesome 5 Free"; /* Replace with your Font Awesome font-family */
@@ -211,11 +219,11 @@
 
 .report {
     display: flex;
-    /* align-items: center; */
+    justify-content: space-between;
     border-style: solid;
     padding: 2rem;
     border-radius: 5px;
-    background-color: blue;
+    /* background-color: blue; */
     color: #ffffff;
     width: 25%;
     /* height: auto; */
@@ -258,24 +266,24 @@ font-size: 1.64.0em;
 .dashboard_row {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 20px;
   margin: 0;
   width: 100%;
   padding: 20px;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .count_dashboard {
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .revenue_dashboard {
-  background-color: red;
+  /* background-color: red; */
 }
 
 .revenue_dashboard2 {
-  background-color: rgb(8, 159, 247);
+  /* background-color: rgb(8, 159, 247); */
 }
 
 .revenue_report {
@@ -413,8 +421,8 @@ font-size: 1.64.0em;
     flex-direction: column; */
     justify-content: center;
     align-items: center;
-    display: none;
-    /* height: 30px; */
+    /* display: none; */
+    height: 30px;
     background-color: #fff;
     position: absolute;
     top: 89px;
@@ -435,9 +443,9 @@ font-size: 1.64.0em;
   }
 
   .select_tag {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px; */
     /* background-color: red; */
   }
 
