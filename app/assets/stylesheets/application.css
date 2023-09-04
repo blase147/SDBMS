@@ -95,14 +95,13 @@ body {
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  padding: 20px;
+  /* padding: 20px; */
   cursor: pointer;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .user_photo {
-  width: 5%;
-  font-size: 24px;
+  width: 55px;
   border-radius: 50%;
 }
 
@@ -432,15 +431,14 @@ right: -267px; */
   display: flex;
   flex-direction: column;
   gap: 7px;
-  /* justify-content: flex-start; */
   align-items: left;
-  /* display: none; */
+  display: none;
   height: auto;
   background-color: #fff;
   position: absolute;
   top: 89px;
   right: 36px;
-  width: 12%;
+  width: 13%;
   padding-left: 20px;
   padding-top: 20px;
   padding-bottom: 20px;

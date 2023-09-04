@@ -5,13 +5,11 @@
 
 
 
-// app/assets/javascripts/application.js
 $(document).ready(function() {
   $('.menu-parent ').click(function() {
     $(this).parent().toggleClass('active');
   });
 });
-
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -22,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     logoutDiv.classList.toggle("hidden"); // Toggle the "hidden" class
   });
 });
+
 
 
 
