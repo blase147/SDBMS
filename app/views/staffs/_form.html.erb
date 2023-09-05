@@ -20,8 +20,16 @@
 
   <div class="grid_item">
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <select class="select_field" name="staff[title]">
+      <option value="Mr">Mr</option>
+      <option value="Mrs">Mrs</option>
+      <option value="M">Ms</option>
+      <option value="Dr">Dr</option>
+      <option value="Prof">Prof</option>
+      <option value="Engr">Engr</option>
+    </select>
   </div>
+
 
   <div class="grid_item">
     <%= form.label :firstname, style: "display: block" %>
@@ -70,13 +78,11 @@
 
   <div class="grid_item">
     <%= form.label :department, style: "display: block" %>
-    <%= form.text_field :department %>
+    <%= form.collection_select :department_id, @departments, :id, :name %>
   </div>
 
-  <div class="grid_item">
-    <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role %>
-  </div>
+
+
 
   <div class="grid_item">
     <%= form.label :salary, style: "display: block" %>
@@ -127,37 +133,64 @@
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'parent' %>
-  Parent
+  <%= check_box_tag 'role[]', 'accountant' %>
+  Accountant
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'student' %>
-  Student
+  <%= check_box_tag 'role[]', 'librarian' %>
+  Librarian
+</label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'principal' %>
+  Principal
+</label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'vice_principal' %>
+  Vice Principal
+</label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'bursar' %>
+  Bursar
+</label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'guidance_counselor' %>
+  Guidance_counselor
+</label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'nurse' %>
+  Nurse
+</label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'security' %>
+  Security
+</label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'cleaner' %>
+  Cleaner
 </label><br>
 
 <label>
   <%= check_box_tag 'role[]', 'driver' %>
   Driver
 </label><br>
+
+<label>
+  <%= check_box_tag 'role[]', 'other' %>
+  Other
+</label><br>
+
+
 </fieldset>
   <div>
     <%= form.submit %>
   </div>
 <% end %>
 
-<div class="staff_card_container">
-  <div class="staff_card"> 
-  <% if staff.photo.attached? %>
-  <%= image_tag staff.photo, class: 'staff_photo' %>
-  <% else %>
-  <i class="fas fa-user student_photo"></i>
-  <% end %> 
-    <div class="staff_details">
-      <p><%= staff.title %> <%= staff.firstname %> <%= staff.lastname %></p>
-      <p><%= staff.designation %></p>
-      <p><%= staff.email %></p>
-      <p><%= staff.phone %></p>
-    </div>
-  </div>
-</div>

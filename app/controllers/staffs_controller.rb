@@ -12,7 +12,10 @@ class StaffsController < ApplicationController
   # GET /staffs/new
   def new
     @staff = Staff.new
+    @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
   end
+  
+  
 
   # GET /staffs/1/edit
   def edit; end
@@ -20,7 +23,8 @@ class StaffsController < ApplicationController
   # POST /staffs or /staffs.json
   def create
     @staff = Staff.new(staff_params)
-
+    @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
+    
     respond_to do |format|
       if @staff.save
         format.html { redirect_to staff_url(@staff), notice: 'Staff was successfully created.' }
@@ -65,6 +69,6 @@ class StaffsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def staff_params
     params.require(:staff).permit(:designation, :photo, :title, :firstname, :lastname, :email, :phone, :dateofbirth, :country,
-                                  :state, :lga, :street, :department, :role, :salary, :hire_date)
+                                  :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor, :nurse, :security, :cleaner, :driver, :other)
   end
 end

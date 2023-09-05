@@ -1,16 +1,31 @@
-<div class="staffs main">
-<p style="color: green"><%= notice %></p>
+<div class="staffs  dashboard">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Staffs</h1>
+  <h1>Staffs</h1>
+  <%= link_to "New staff", new_staff_path %>
 
-<div id="staffs">
-  <% @staffs.each do |staff| %>
-    <%= render staff %>
-    <p>
-      <%= link_to "Show this staff", staff %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New staff", new_staff_path %>
+  <div class="staff_card_container">
+    <% @staffs.each do |staff| %>
+      <div class="staff_card"> 
+        <div class="photo_cont">
+          <%= image_tag staff.photo, class: 'staff_photo' %>
+        </div>
+        <div class="staff_details">
+          <div class="staff_fullname_desc">
+            <span class="staff_fullname"><%= staff.title %> <%= staff.firstname %> <%= staff.lastname %></span>
+            <%= staff.designation %>
+          </div>
+          <div class="staff_email_phone">
+            <i class="fas fa-envelope"></i> <%= staff.email %><br>
+            <i class="fas fa-phone"></i> <%= staff.phone %>
+          </div>
+        </div>
+      </div>
+      <div , class="view_staff">
+        <%= link_to "Show this staff", staff %>
+        <i class="fas fa-edit"></i><%= link_to "Terminate this Staff", staff %>
+        <i class="fas fa-delete"></i><%= link_to "Show this staff", staff %>
+      </div>
+      <% end %>
+  </div>
 </div>

@@ -522,13 +522,61 @@ body::-webkit-scrollbar-thumb:hover {
 .staff_card_container {
   background-color: red;
   margin-top: 30px;
-  padding: 20px;
-
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  border: #e4d9d9 2px;
+  border-style: solid;
+  width: 33.3%;
   .staff_card {
-    background-color: blue;
+    display: flex;
+    padding: 20px;
+
+    .photo_cont{
+      /* background-color: yellow; */
+      width: 15%;
+      margin-right: 15px;
+      .staff_photo {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+  
+    }
 
     .staff_details {
-      background-color: green;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      /* background-color: green; */
+      width: 100%;
+      height: 200px;
+      font-size: 1.7em;
+
+      .staff_fullname_desc {
+        display: flex;
+        flex-direction: column;
+
+        .staff_fullname {
+          font-size: 1.8em;
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+      }
+
+      .staff_email_phone {
+        & i {
+          padding: 10px;
+        }
+      }
     }
+  }
+  .view_staff {
+    display: flex;
+    justify-content: space-between;
+    background-color: greenyellow;
+    width: 100%;
+    height: 80px;
+    padding: 30px;
   }
 }

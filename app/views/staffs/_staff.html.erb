@@ -1,8 +1,12 @@
 <div id="<%= dom_id staff %>">
   <p>
     <strong>Photo:</strong>
-    <%= staff.photo %>
-  </p>
+    <% if staff.photo.attached? %>
+    <%= image_tag staff.photo, class: 'staff_photo' %>
+    <% else %>
+    <i class="fas fa-user student_photo"></i>
+    <% end %>
+</p>
 
   <p>
     <strong>Title:</strong>
@@ -60,11 +64,6 @@
   </p>
 
   <p>
-    <strong>Role:</strong>
-    <%= staff.role %>
-  </p>
-
-  <p>
     <strong>Salary:</strong>
     <%= staff.salary %>
   </p>
@@ -75,3 +74,5 @@
   </p>
 
 </div>
+
+

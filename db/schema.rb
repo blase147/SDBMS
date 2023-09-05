@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_05_063120) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_05_100609) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -270,12 +270,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_063120) do
     t.string "lga"
     t.string "street"
     t.string "department"
-    t.string "role"
     t.decimal "salary"
     t.date "hire_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "designation"
+    t.boolean "teacher"
+    t.boolean "administrator"
+    t.boolean "human_resource"
+    t.boolean "frontdesk"
+    t.boolean "chef"
+    t.boolean "accountant"
+    t.boolean "librarian"
+    t.boolean "principal"
+    t.boolean "vice_principal"
+    t.boolean "bursar"
+    t.boolean "guidance_counselor"
+    t.boolean "nurse"
+    t.boolean "security"
+    t.boolean "cleaner"
+    t.boolean "driver"
+    t.boolean "other"
+    t.bigint "department_id", null: false
+    t.index ["department_id"], name: "index_staffs_on_department_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -362,4 +379,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_063120) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "staffs", "departments"
 end
