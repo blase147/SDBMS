@@ -24,8 +24,8 @@
       <div , class="view_staff">
         <%= link_to "Show this staff", staff %>
         <i class="fas fa-edit"><%= link_to "Edit", edit_staff_path(staff) %></i>
-        <i class="fas fa-trash"><%= link_to "Terminate this Staff", staff, method: :delete, data: { confirm: "Are you sure you want to delete" } %></i>
-        </div>
+        <i class="fas fa-trash"><%= link_to "Terminate this Staff", staff_path(staff), method: :delete, data: { confirm: "Are you sure you want to delete this staff?" } %></i>
+      </div>
       <% end %>
   </div>
 </div>
