@@ -558,7 +558,7 @@ body::-webkit-scrollbar-thumb:hover {
         flex-direction: column;
 
         .staff_fullname {
-          font-size: 1.8em;
+          font-size: 1.0em;
           font-weight: bold;
           margin-bottom: 5px;
         }
