@@ -500,3 +500,35 @@ body::-webkit-scrollbar-thumb:hover {
 .hidden {
   display: none;
 }
+.staff_details {
+  display: flex;
+}
+
+.grid_container {
+  display: grid;
+  grid-template-columns: repeat(3,1fr); /* 3 equal-width columns */
+  gap: 5px; /* Adjust the gap between columns as needed */
+  margin-bottom: 20px;
+}
+
+.grid_item input {
+  width: 93.3%;
+  /* background-color: red; */
+  height: 61px;
+  /* Optionally, you can style each grid item here */
+  /* For example, you can add padding, margin, or other styles */
+}
+
+.staff_card_container {
+  background-color: red;
+  margin-top: 30px;
+  padding: 20px;
+
+  .staff_card {
+    background-color: blue;
+
+    .staff_details {
+      background-color: green;
+    }
+  }
+}
