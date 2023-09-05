@@ -23,8 +23,8 @@
       </div>
       <div , class="view_staff">
         <%= link_to "Show this staff", staff %>
-        <i class="fas fa-edit"><%= link_to "Edit", staff %></i>
-        <i class="fas fa-trash"><%= link_to "Terminate this Staff", staff, method: :delete, data: { confirm: "Are you sure you want to delete #{staff.firstname} #{staff.lastname}?" }, class: 'btn btn-danger' %></i>
+        <i class="fas fa-edit"><%= link_to "Edit", edit_staff_path(staff) %></i>
+        <i class="fas fa-trash"><%= link_to "Terminate this Staff", staff, method: :delete, data: { confirm: "Are you sure you want to delete" } %></i>
         </div>
       <% end %>
   </div>
