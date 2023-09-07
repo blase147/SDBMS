@@ -15,6 +15,5 @@ class User < ApplicationRecord
   validates :phone, presence: true
   validates :country, presence: true
   validates :state, presence: true
-  validates :city, presence: true
   validates :lga, presence: true
 end

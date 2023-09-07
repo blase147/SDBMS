@@ -1,4 +1,5 @@
 class StaffsController < ApplicationController
+  before_action :authenticate_staff!
   before_action :set_staff, only: %i[show edit update destroy]
 
   # GET /staffs or /staffs.json
@@ -68,7 +69,7 @@ class StaffsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def staff_params
-    params.require(:staff).permit(:designation, :photo, :title, :firstname, :lastname, :email, :phone, :dateofbirth, :country,
+    params.require(:staff).permit(:designation, :photo, :title, :firstname, :lastname, :email, :password, :phone, :dateofbirth, :country,
                                   :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor, :nurse, :security, :cleaner, :driver, :other)
   end
 end

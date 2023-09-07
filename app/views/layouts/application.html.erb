@@ -20,16 +20,31 @@
 
         <div class="user">
           <% if current_user.photo.attached? %>
-            <%= image_tag current_user.photo, class: 'user_photo' %>
+            <%= image_tag url_for(current_user.photo), class: 'user_photo' %>
+          <% elsif current_staff.photo.attached? %>
+            <%= image_tag url_for(current_staff.photo), class: 'user_photo' %>
           <% end %>
-          <span class="user_email_drop"><%= current_user.email %></span>
-        </div>
+          <% if current_user %>
+            <span class="user_email_drop"><%= current_user.email %></span> 
+          <% else %>
+            <span class="user_email_drop"><%= current_staff.email if current_staff %></span>
+          <% end %>
+        </div>         
       </div>
       <% end %>
 
       <div id="logout">
-        <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_user_registration_path, class: 'edit_profile' %></i><br>
-        <i class="fas fa-sign-out-alt " style="color: red;"> <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'edit_profile' %></i>
+        <% if current_user %>
+          <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_user_registration_path, class: 'edit_profile' %></i><br>
+        <% elsif current_staff %>
+          <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_staff_registration_path, class: 'edit_profile' %></i><br>
+        <% end %>
+        
+        <% if current_user %>
+          <i class="fas fa-sign-out-alt " style="color: red;"><%= link_to "Sign out (User)", destroy_user_session_path, method: :delete %></i>
+        <% elsif current_staff %>
+          <i class="fas fa-sign-out-alt " style="color: red;"><%= link_to "Sign out (Staff)", destroy_staff_session_path, method: :delete %></i>
+        <% end %>
       </div>
 
     <div class="nav_main">

@@ -274,6 +274,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_100609) do
     t.date "hire_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.bigint "department_id", null: false
     t.string "designation"
     t.boolean "teacher"
     t.boolean "administrator"
@@ -291,8 +296,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_100609) do
     t.boolean "cleaner"
     t.boolean "driver"
     t.boolean "other"
-    t.bigint "department_id", null: false
     t.index ["department_id"], name: "index_staffs_on_department_id"
+    t.index ["email"], name: "index_staffs_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
 
   create_table "students", force: :cascade do |t|
