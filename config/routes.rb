@@ -50,8 +50,11 @@ end
   resources :students
   resources :staffs
   
+  # Set the root path to your application view (application.html.erb)
+  root 'application#application_view'
+  
   # Defines the root path route ("/")
-  root "dashboards#dashboard_screen"
+  # root "dashboards#dashboard_screen"
   get 'home_screen', to: 'dashboards#dashboard_home_screen', as: 'dashboard_home_screen'
   get '/students_portal', to: 'students#students_portal'
   get '/parents_portal', to: 'parents#parents_portal'
