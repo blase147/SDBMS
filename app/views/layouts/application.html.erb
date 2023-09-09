@@ -31,9 +31,7 @@
 
       <div id="logout">
         <% if current_staff %>
-          <% if can? :edit, @staff %>
             <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_staff_registration_path, class: 'edit_profile' %></i><br>
-          <% end %>
         <% end %>
 
         <% if current_staff %>

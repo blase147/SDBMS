@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Staffs::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -68,7 +66,7 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:designation, :photo, :title, :firstname, :lastname, :email, :password, :phone, :dateofbirth, :country,
-    :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor, :nurse, :security, :cleaner, :driver, :other])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[designation photo title firstname lastname email password phone dateofbirth country
+                                                         state lga street department_id salary hire_date teacher administrator human_resource frontdesk chef accountant librarian principal vice_principal bursar guidance_counselor nurse security cleaner driver other])
   end
 end

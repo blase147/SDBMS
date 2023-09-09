@@ -7,7 +7,7 @@ class DashboardsController < ApplicationController
     # @user = User.find(params[:id])
     # @user = current_user
     # @staff = current_staff
-    # @student = Student.find_by(id: params[:id]) 
+    # @student = Student.find_by(id: params[:id])
   end
 
   # GET /dashboards/1 or /dashboards/1.json

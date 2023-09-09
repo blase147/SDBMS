@@ -1,8 +1,7 @@
 class StaffsController < ApplicationController
-  # before_action :authenticate_staff!
-  before_action :set_staff, only: %i[show edit update destroy]
   load_and_authorize_resource
-  
+  before_action :set_staff, only: %i[show edit update destroy]
+
   # GET /staffs or /staffs.json
   def index
     @staffs = Staff.all
@@ -10,11 +9,9 @@ class StaffsController < ApplicationController
 
   # GET /staffs/1 or /staffs/1.json
   def show
-    puts "params[:id]: #{params[:id]}"
     @staff = Staff.find(params[:id])
     # Other code related to the show action
   end
-
 
   # GET /staffs/new
   def new

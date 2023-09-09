@@ -3,7 +3,18 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+ def initialize(staff)
+    # Initialize abilities based on staff roles
+
+    # Example: Admins can manage all resources
+    if staff&.admin?
+      can :manage, :all
+    else
+      # Define abilities for regular users here
+      can :read, :all
+      # ... other abilities ...
+    end
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
@@ -28,24 +39,5 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
-
-  class Ability
-  include CanCan::Ability
-
-  def initialize(user)
-    staff ||= Staff.new # Guest staff
-
-    if staff.admin?
-      can :manage, :all
-    else
-      can :read, :all
-      # Add more rules as needed
-    end
   end
-end
-
-
-
-  end
-
 end

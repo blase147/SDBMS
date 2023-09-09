@@ -8,6 +8,13 @@ class Staff < ApplicationRecord
   has_one_attached :photo
 
 
+  enum role: [:admin, :staff] # Add more roles if needed
+  # ... other attributes ...
+
+  # Example: Check if a staff member is an admin
+  def admin?
+    role == 'admin'
+  end
   validates :designation, presence: true
   validates :title, presence: true
   validates :firstname, presence: true
