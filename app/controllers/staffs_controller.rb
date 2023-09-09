@@ -21,10 +21,10 @@ class StaffsController < ApplicationController
     @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
   end
 
-
-
   # GET /staffs/1/edit
-  def edit; end
+  def edit
+    authorize! :edit, @staff
+  end
 
   # POST /staffs or /staffs.json
   def create
