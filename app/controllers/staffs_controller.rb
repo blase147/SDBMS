@@ -8,15 +8,20 @@ class StaffsController < ApplicationController
   end
 
   # GET /staffs/1 or /staffs/1.json
-  def show; end
+  def show
+    puts "params[:id]: #{params[:id]}"
+    @staff = Staff.find(params[:id])
+    # Other code related to the show action
+  end
+
 
   # GET /staffs/new
   def new
     @staff = Staff.new
     @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
   end
-  
-  
+
+
 
   # GET /staffs/1/edit
   def edit; end
@@ -25,7 +30,7 @@ class StaffsController < ApplicationController
   def create
     @staff = Staff.new(staff_params)
     @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
-    
+
     respond_to do |format|
       if @staff.save
         format.html { redirect_to staff_url(@staff), notice: 'Staff was successfully created.' }
