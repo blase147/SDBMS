@@ -1,7 +1,8 @@
 class StaffsController < ApplicationController
   # before_action :authenticate_staff!
   before_action :set_staff, only: %i[show edit update destroy]
-
+  load_and_authorize_resource
+  
   # GET /staffs or /staffs.json
   def index
     @staffs = Staff.all
