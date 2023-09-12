@@ -1,14 +1,17 @@
 class Staff < ApplicationRecord
+  ROLES = %w[teacher front_desk admin].freeze
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+ 
   has_many :students
   belongs_to :department
   has_one_attached :photo
 
 
   enum role: [:admin, :staff] # Add more roles if needed
+  attr_accessor :roles
   # ... other attributes ...
 
   # Example: Check if a staff member is an admin

@@ -1,15 +1,14 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-  <%= render "staffs/shared/error_messages", resource: resource %>
-  <fieldset class="grid_container">
+<%= render "staffs/shared/error_messages", resource: @staff %>
+<%= form_for(@staff, as: :staff, url: edit_staff_registration_path(@staff), html: { method: :put }) do |form| %>
+  <%= form.hidden_field :id, value: @staff.id %>
+<fieldset class="grid_container">
   <legend>Staff Details</legend>
   <% if @staff.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
 
       <ul>
-        <% staff.errors.each do |error| %>
+        <% @staff.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -128,97 +127,99 @@
 <fieldset>
 <legend>Roles</legend>
   <label>
-  <%= check_box_tag 'role[]', 'teacher' %>
+  <%= check_box_tag 'staff[roles][]', 'teacher' %>
   Teacher
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'administrator' %>
+  <%= check_box_tag 'staff[roles][]', 'administrator' %>
   Administrator
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'human_resource' %>
+  <%= check_box_tag 'staff[roles][]', 'human_resource' %>
   Human Resource
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'chef' %>
+  <%= check_box_tag 'staff[roles][]', 'chef' %>
   Chef
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'frontdesk' %>
+  <%= check_box_tag 'staff[roles][]', 'front_desk' %>
   Front Desk
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'head_of_school' %>
+  <%= check_box_tag 'staff[roles][]', 'head_of_school' %>
   Head of School
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'accountant' %>
+  <%= check_box_tag 'staff[roles][]', 'accountant' %>
   Accountant
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'librarian' %>
+  <%= check_box_tag 'staff[roles][]', 'librarian' %>
   Librarian
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'principal' %>
+  <%= check_box_tag 'staff[roles][]', 'principal' %>
   Principal
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'vice_principal' %>
+  <%= check_box_tag 'staff[roles][]', 'vice_principal' %>
   Vice Principal
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'bursar' %>
+  <%= check_box_tag 'staff[roles][]', 'bursar' %>
   Bursar
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'guidance_counselor' %>
+  <%= check_box_tag 'staff[roles][]', 'guidance_counselor' %>
   Guidance_counselor
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'nurse' %>
+  <%= check_box_tag 'staff[roles][]', 'nurse' %>
   Nurse
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'security' %>
+  <%= check_box_tag 'staff[roles][]', 'security' %>
   Security
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'cleaner' %>
+  <%= check_box_tag 'staff[roles][]', 'cleaner' %>
   Cleaner
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'driver' %>
+  <%= check_box_tag 'staff[roles][]', 'driver' %>
   Driver
 </label><br>
 
 <label>
-  <%= check_box_tag 'role[]', 'other' %>
+  <%= check_box_tag 'staff[roles][]', 'other' %>
   Other
 </label><br>
 
 
 </fieldset>
-
-
   <div class="actions">
-    <%= form.submit "Sign up" %>
+    <%= form.submit "Update" %>
   </div>
 <% end %>
 
-<%= render "staffs/shared/links" %>
+<h3>Cancel my account</h3>
+
+<div>Unhappy? <%= button_to "Cancel my account", registration_path(@staff), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+
+<%= link_to "Back", :back %>

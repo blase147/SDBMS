@@ -1,7 +1,8 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edits <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "staffs/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :id, value: @staff.id %>
 
   <div class="field">
     <%= f.label :email %><br />

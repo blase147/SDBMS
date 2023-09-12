@@ -1,0 +1,223 @@
+<h2>Sign up from staff</h2>
+<%= render "staffs/shared/error_messages", resource: @staff %>
+<%= form_for(@staff, as: :staff, url: new_staff_registration_path) do |form| %>
+  <fieldset class="grid_container">
+  <legend>Staff Details</legend>
+  <% if @staff.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+        <% @staff.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid_item">
+    <%= form.label :designation, style: "display: block" %>
+    <%= form.text_field :designation %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :title, style: "display: block" %>
+    <select class="select_field" name="staff[title]">
+      <option value="Mr">Mr</option>
+      <option value="Mrs">Mrs</option>
+      <option value="M">Ms</option>
+      <option value="Dr">Dr</option>
+      <option value="Prof">Prof</option>
+      <option value="Engr">Engr</option>
+    </select>
+  </div>
+
+
+  <div class="grid_item">
+    <%= form.label :firstname, style: "display: block" %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :lastname, style: "display: block" %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :dateofbirth, style: "display: block" %>
+    <%= form.date_field :dateofbirth %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :country, style: "display: block" %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :lga, style: "display: block" %>
+    <%= form.text_field :lga %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :street, style: "display: block" %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :department, style: "display: block" %>
+    <%= form.collection_select :department_id, @departments, :id, :name %>
+  </div>
+
+
+
+
+  <div class="grid_item">
+    <%= form.label :salary, style: "display: block" %>
+    <%= form.text_field :salary %>
+  </div>
+
+  <div class="grid_item">
+    <%= form.label :hire_date, style: "display: block" %>
+    <%= form.date_field :hire_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo %><br />
+    <%= form.file_field :photo %>
+  </div>
+
+  </fieldset>
+
+  <fieldset class="staff_login_form">
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  </fieldset>
+
+
+<fieldset>
+<legend>Roles</legend>
+  <label>
+  <%= check_box_tag 'staff[roles][]', 'teacher' %>
+  Teacher
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'administrator' %>
+  Administrator
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'human_resource' %>
+  Human Resource
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'chef' %>
+  Chef
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'front_desk' %>
+  Front Desk
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'head_of_school' %>
+  Head of School
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'accountant' %>
+  Accountant
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'librarian' %>
+  Librarian
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'principal' %>
+  Principal
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'vice_principal' %>
+  Vice Principal
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'bursar' %>
+  Bursar
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'guidance_counselor' %>
+  Guidance_counselor
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'nurse' %>
+  Nurse
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'security' %>
+  Security
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'cleaner' %>
+  Cleaner
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'driver' %>
+  Driver
+</label><br>
+
+<label>
+  <%= check_box_tag 'staff[roles][]', 'other' %>
+  Other
+</label><br>
+
+
+</fieldset>
+
+
+  <div class="actions">
+    <%= form.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "staffs/shared/links" %>

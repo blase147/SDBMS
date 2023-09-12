@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-devise_for :staffs, path: 'staffs', controllers: {
-    sessions: 'staffs/sessions',
-    registrations: 'staffs/registrations',
-  }
+devise_for :staffs, controllers: {
+  registrations: 'staffs/registrations',
+}
 
   # After logout, redirect to the staff sign-in page
   devise_scope :staff do

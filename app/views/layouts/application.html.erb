@@ -31,10 +31,6 @@
 
       <div id="logout">
         <% if current_staff %>
-            <i class="fas fa-edit edit_icon"><%= link_to 'Edit Profile', edit_staff_registration_path, class: 'edit_profile' %></i><br>
-        <% end %>
-
-        <% if current_staff %>
           <i class="fas fa-sign-out-alt " style="color: red;"><%= link_to "Sign out (Staff)", destroy_staff_session_path, method: :delete %></i>
         <% end %>
       </div>
@@ -97,16 +93,19 @@
             <li><%= link_to 'Salary', salaries_path %></li>
           </ul>
                 </li>
-          <li class="menu-item menu-parent">
-          <i class="fas fa-desktop"></i>
-          <a href="#">Frontdesk</a>
-          <span class="menu-parent-arrow"></span>
-          <ul class="menu-subitems">
-            <li><%= link_to 'Visitors', visitors_path %></li>
-            <li><%= link_to 'Events', events_path %></li>
-            <li>SMS</li>
-        </ul>
-                </li>
+          <% if defined?(@staff) && @staff.present? %>          
+            <li class="menu-item menu-parent">
+              <i class="fas fa-desktop"></i>
+              <a href="#">Frontdesk</a>
+              <span class="menu-parent-arrow"></span>
+              <ul class="menu-subitems">
+                <li><%= link_to 'Visitors', visitors_path %></li>
+                <li><%= link_to 'Events', events_path %></li>
+                <li>SMS</li>
+              </ul>
+            </li>
+          <% end %>
+          
           <li class="menu-item menu-parent">
           <i class="fas fa-cogs"></i>
           <a href="#">Settings</a>

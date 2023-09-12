@@ -1,26 +1,39 @@
 class Staffs::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :authenticate_staff!
-  before_action :configure_permitted_parameters
-
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
   # GET /resource/sign_up
-  def new
-    @staff = Staff.new
-    @departments = Department.all # Fetch departments from your database
+ def new
+  @staff = Staff.new
+  @departments = Department.all
+  super
+  # render 'staffs/registrations/new'
+end
 
-    super # Call the parent method to continue processing
+  # POST /staffs
+  def create
+    @staff = Staff.new(staff_params)
+    @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
+    @staff.roles = params[:staff][:roles]
+    super
+    respond_to do |format|
+      if @staff.save
+        format.html { redirect_to staff_url(@staff), notice: 'Staff was successfully created.' }
+        format.json { render :show, status: :created, location: @staff }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @staff.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @departments = Department.all
+    super
+  end
 
   # PUT /resource
   # def update
@@ -65,8 +78,9 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
 
   private
 
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[designation photo title firstname lastname email password phone dateofbirth country
-                                                         state lga street department_id salary hire_date teacher administrator human_resource frontdesk chef accountant librarian principal vice_principal bursar guidance_counselor nurse security cleaner driver other])
+                                                         state lga street department_id salary hire_date teacher administrator human_resource frontdesk chef accountant librarian principal vice_principal bursar guidance_counselor nurse security cleaner driver other roles: []])
   end
 end

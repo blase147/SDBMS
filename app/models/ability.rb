@@ -3,8 +3,11 @@
 class Ability
   include CanCan::Ability
 
- def initialize(staff)
+  def initialize(staff)
     # Initialize abilities based on staff roles
+
+    # Use current_staff instead of current_user
+    @staff = staff
 
     # Example: Admins can manage all resources
     if staff&.admin?
