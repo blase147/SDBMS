@@ -87,7 +87,15 @@ end
 
   def staff_params
     params.require(:staff).permit(:designation, :photo, :title, :firstname, :lastname, :email, :password, :phone, :dateofbirth, :country,
-                                  :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor, :nurse, :security, :cleaner, :driver, :other, roles: [])
+                                  :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, 
+                                  :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor,
+                                   :nurse, :security, :cleaner, :driver, :other, roles: []
+                                   ).tap do |whitelisted|
+                                      # Convert role names to Role instances and assign them to the staff
+                                      whitelisted[:roles] = params[:staff][:roles].map do |role_name|
+                                        Role.find_or_create_by(name: role_name)
+                                      end
+                                   end
   end
 
 end

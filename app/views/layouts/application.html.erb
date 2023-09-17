@@ -57,6 +57,7 @@
               </ul>
           </li>
 
+          <% if current_staff.has_role?(:teacher) %>
           <li class="menu-item menu-parent">
           <i class="fas fa-building"></i>
           <a href="#">Class Management </a>
@@ -70,6 +71,8 @@
               <li><%= link_to 'Homework', homeworks_path %></li>
           </ul>
                   </li>
+          <% end %>
+
           <li class="menu-item menu-parent">
           <i class="fas fa-flask"></i>
           <a href="#">Exams</a>
