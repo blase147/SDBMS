@@ -1,8 +1,6 @@
 class StaffsController < ApplicationController
-  # load_and_authorize_resource
- # Skip set_staff for the "edit" action
- before_action :set_staff, only: [:show, :edit, :update, :destroy]
- before_action :set_departments, only: [:new, :edit]
+  before_action :set_staff, only: [:show, :edit, :update, :destroy]
+  before_action :set_departments, only: [:new, :edit]
  
   # GET /staffs or /staffs.json
   def index
@@ -29,14 +27,14 @@ class StaffsController < ApplicationController
   # POST /staffs or /staffs.json
 def create
   @staff = Staff.new(staff_params)
-  @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
-
+  @staff.roles = params[:staff][:roles] # Assign roles before saving
+  
   respond_to do |format|
     if @staff.save
       # Assign roles after saving the staff member
       @staff.update(roles: params[:staff][:roles])
       
-      format.html { redirect_to staff_url(@staff), notice: 'Staff was successfully created.' }
+      format.html { redirect_to staffs_path(@staff), notice: 'Staff was successfully created.' }
       format.json { render :show, status: :created, location: @staff }
     else
       format.html { render :new, status: :unprocessable_entity }

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-devise_for :staffs, controllers: {
+devise_for :staffs, path: 'staffs', controllers: {
   registrations: 'staffs/registrations',
 }
 
@@ -22,7 +22,7 @@ devise_for :staffs, controllers: {
   end
 
 
-  resources :staffs
+  resources :staffs 
   resources :manage_schools
   resources :events
   resources :visitors

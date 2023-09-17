@@ -4,7 +4,7 @@
 
 <% resource_class = Staff %>
 <%- if resource_class.devise_modules.include?(:registerable) && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_class.new) %><br />
+  <%= link_to "Sign up", new_staff_path(resource_class.new) %><br />
 <% end %>
 
 
