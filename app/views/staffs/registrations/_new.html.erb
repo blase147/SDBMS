@@ -1,6 +1,6 @@
 <h2>Sign up from staff</h2>
 <%= render "staffs/shared/error_messages", resource: @staff %>
-<%= form_for(@staff, as: :staff, url: new_staff_registration_path) do |form| %>
+<%= form_for(@staff, as: :staff, url: staff_registration_path) do |form| %>
   <fieldset class="grid_container">
   <legend>Staff Details</legend>
   <% if @staff.errors.any? %>
