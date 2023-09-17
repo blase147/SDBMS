@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# Create staff members with specific email addresses and assign roles
+staff_members = [
+  { email: 'solarmails2@gmail.com', roles: [:administrator] },
+  { email: 'solarmails3@gmail.com', roles: [:teacher] },
+  { email: 'solarmails4@gmail.com', roles: [:accountant] }
+]
+
+staff_members.each do |staff_info|
+  staff = Staff.find_or_create_by(email: staff_info[:email])
+  
+  staff_info[:roles].each do |role_name|
+    role = Role.find_or_create_by(name: role_name)
+    staff.add_role(role)
+  end
+end
