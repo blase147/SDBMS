@@ -16,7 +16,7 @@ end
   def create
     @staff = Staff.new(staff_params)
     @departments = Department.all # Assuming you have a Department model and want to populate the dropdown with department names
-    @staff.roles = params[:staff][:roles]
+    # @staff.roles = params[:staff][:roles]
 
     respond_to do |format|
       if @staff.save

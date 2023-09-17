@@ -27,6 +27,7 @@ class StaffsController < ApplicationController
 
   # POST /staffs or /staffs.json
 def create
+  # authorize! :manage, @staff
   @staff = Staff.new(staff_params)
   @staff.roles = params[:staff][:roles] # Assign roles before saving
   
@@ -53,7 +54,7 @@ end
 
     respond_to do |format|
       if @staff.update(staff_params)
-        format.html { redirect_to staff_url(@staff), notice: 'Staff was successfully updated.' }
+        format.html { redirect_to staffs_path(@staff), notice: 'Staff was successfully updated.' }
         format.json { render :show, status: :ok, location: @staff }
       else
         format.html { render :edit, status: :unprocessable_entity }
