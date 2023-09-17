@@ -1,5 +1,4 @@
 class Staff < ApplicationRecord
-  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,7 +9,7 @@ class Staff < ApplicationRecord
   has_one_attached :photo
 
   rolify
-  
+
   validates :designation, presence: true
   validates :title, presence: true
   validates :firstname, presence: true

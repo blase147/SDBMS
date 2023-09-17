@@ -1,5 +1,5 @@
 <%= render "staffs/shared/error_messages", resource: @staff %>
-<%= form_for(@staff, as: :staff, url: edit_staff_registration_path(@staff), html: { method: :put }) do |form| %>
+<%= form_for(@staff, as: :staff, url: staff_path(@staff), html: { method: :put }) do |form| %>
   <%= form.hidden_field :id, value: @staff.id %>
 <fieldset class="grid_container">
   <legend>Staff Details</legend>
@@ -117,10 +117,6 @@
     <%= form.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
   </fieldset>
 
 

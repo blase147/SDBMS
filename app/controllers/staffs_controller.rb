@@ -21,6 +21,7 @@ class StaffsController < ApplicationController
 
   # GET /staffs/1/edit
   def edit
+    @staff = Staff.find(params[:id])
   end
   
 
@@ -46,7 +47,8 @@ end
 
   # PATCH/PUT /staffs/1 or /staffs/1.json
   def update
-    @departments = Department.all
+    # @staff = Staff.find(params[:id])
+
     @staff.roles = params[:staff][:roles] if params[:staff][:roles]
 
     respond_to do |format|
