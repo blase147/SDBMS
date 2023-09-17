@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_12_151550) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_17_203047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -242,6 +242,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_151550) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
   create_table "salaries", force: :cascade do |t|
     t.string "level"
     t.string "amount"
@@ -300,6 +310,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_12_151550) do
     t.index ["department_id"], name: "index_staffs_on_department_id"
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
+  end
+
+  create_table "staffs_roles", id: false, force: :cascade do |t|
+    t.bigint "staff_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_staffs_roles_on_role_id"
+    t.index ["staff_id", "role_id"], name: "index_staffs_roles_on_staff_id_and_role_id"
+    t.index ["staff_id"], name: "index_staffs_roles_on_staff_id"
   end
 
   create_table "students", force: :cascade do |t|

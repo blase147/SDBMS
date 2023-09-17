@@ -2,8 +2,10 @@
   <p style="color: green"><%= notice %></p>
 
   <h1>Staffs</h1>
-  <%= link_to "New staff", new_staff_path %>
-
+  <% if can?(:create, Staff) %>
+    <%= link_to "New staff", new_staff_path %>
+  <% end %>
+  
   <div class="staff_card_container">
     <% @staffs.each do |staff| %>
       <div class="staff_card"> 
