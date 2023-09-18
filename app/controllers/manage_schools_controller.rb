@@ -64,6 +64,6 @@ class ManageSchoolsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def manage_school_params
-    params.require(:manage_school).permit(:namet, :moto, :logo)
+    params.require(:manage_school).permit(:school_name, school_logo, school_photo, school_motto, school_address, school_name, school_vision, school_mission, hos_signature)
   end
 end
