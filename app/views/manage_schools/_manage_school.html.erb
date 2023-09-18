@@ -1,17 +1,17 @@
-<div id="<%= dom_id manage_school %>">
-  <p>
-    <strong>School Name:</strong>
-    <%= manage_school.school_name %>
-  </p>
+<div class = "manage_school" id="<%= dom_id manage_school %>">
+  <div>
+    <h1><%= manage_school.school_name %></h1>
+  </div>
 
-  <p>
+  <div>
     <strong>Moto:</strong>
     <%= manage_school.school_motto %>
-  </p>
+  </div>
 
-  <p>
-    <strong>Logo:</strong>
-    <%= image_tag manage_school.school_logo %>
-  </p>
+  <div>
+    <%= image_tag manage_school.school_logo, class:'manage_school_logo' %>
+  </div>
 
+
+  
 </div>

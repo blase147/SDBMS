@@ -594,3 +594,39 @@ body::-webkit-scrollbar-thumb:hover {
     }
   }
 }
+
+.manage_school {
+  /* background-color: #eb0a0a; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .manage_school_logo {
+    width: 84px;
+    position: relative;
+    top: -84px;
+    right: 280px;
+    font-size: 4em;
+    color: #fff;
+    border-radius: 29%;
+    background-color: #04529b;
+    padding: 2px;
+    
+  }
+}
+
+#manage_schools {
+  background-color: #adb2b6;
+  color: #fff;
+  border-radius: 20px;
+  /* Specify your background image URL here */
+  background-image: url('path_to_your_background_image.jpg');
+  /* Set background size and repeat properties as needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#manage_schools a {
+  color: #fff;
+}
