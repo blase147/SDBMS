@@ -7,7 +7,11 @@ class ManageSchoolsController < ApplicationController
   end
 
   # GET /manage_schools/1 or /manage_schools/1.json
-  def show; end
+  def show
+    @manage_school = ManageSchool.find(params[:id])
+    @school_logo = @manage_school.school_logo
+  end
+  
 
   # GET /manage_schools/new
   def new
@@ -64,6 +68,10 @@ class ManageSchoolsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def manage_school_params
-    params.require(:manage_school).permit(:school_name, school_logo, school_photo, school_motto, school_address, school_name, school_vision, school_mission, hos_signature)
+    params.require(:manage_school).permit(:school_name, :school_logo, :school_photo, :school_motto, :school_address, :school_name, :school_vision, :school_mission, :hos_signature)
+  end
+
+  def set_school_logo
+    @school_logo = current_manage_school.school_logo if current_manage_school.present?
   end
 end

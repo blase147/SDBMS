@@ -1,7 +1,14 @@
 class ManageSchool < ApplicationRecord
+    
+    has_one_attached :school_logo
+    has_one_attached :school_photo
+    has_one_attached :hos_signature
+    
+    
+    
     # Validations
     validates :school_name, presence: true, length: { maximum: 255 }
-    validates :school_phone_number, presence: true, format: { with: /\A\d{10}\z/, message: "must be a 11-digit number" }
+    # validates :school_phone_number, presence: true, length: { maximum: 255 }
     validates :school_address, presence: true, length: { maximum: 255 }
     validates :school_motto, presence: true, length: { maximum: 255 }
     validates :school_vision, presence: true, length: { maximum: 255 }

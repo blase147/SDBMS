@@ -14,20 +14,25 @@
       <% if staff_signed_in? %>
       <div class="user_nav">
         <div class="logo">
-          <i class="fas fa-users" style="font-size: 2.51em; color:blue;"></i>
-          <i class="fas fa-list" style="font-size: 1.1em;"></i>
+          <% if @school_logo.present? && @school_logo.attached? %>
+            <%= image_tag @school_logo, class: 'logo' %>
+          <% else %>
+            <i class="fas fa-users" style="font-size: 2.51em; color: blue;"></i>
+          <% end %>
+           <i class="fas fa-list" style="font-size: 1.1em;"></i>
         </div>
+    
 
-<div class="user">
-  <% if current_staff && current_staff.photo.attached? %>
-    <%= image_tag url_for(current_staff.photo), class: 'user_photo' %>
-  <% end %>
-  <% if current_staff %>
-    <span class="user_email_drop"><%= current_staff.email if current_staff %></span>
-  <% end %>
-</div>
+        <div class="user">
+          <% if current_staff && current_staff.photo.attached? %>
+            <%= image_tag url_for(current_staff.photo), class: 'user_photo' %>
+          <% end %>
+          <% if current_staff %>
+            <span class="user_email_drop"><%= current_staff.email if current_staff %></span>
+          <% end %>
+        </div>
       </div>
-      <% end %>
+    <% end %>
 
       <div id="logout">
         <% if current_staff %>
