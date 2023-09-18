@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_17_203047) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_18_134820) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -165,11 +165,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_203047) do
   end
 
   create_table "manage_schools", force: :cascade do |t|
-    t.string "namet"
-    t.string "moto"
-    t.string "logo"
+    t.string "school_name"
+    t.string "school_logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "school_motto"
+    t.string "school_address"
+    t.string "school_phone_number"
+    t.text "school_vision"
+    t.text "school_mission"
+    t.binary "school_photo"
+    t.binary "hos_signature"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -260,7 +266,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_203047) do
   end
 
   create_table "schools", force: :cascade do |t|
-    t.string "name"
+    t.string "school_name"
     t.string "logo"
     t.string "moto"
     t.datetime "created_at", null: false

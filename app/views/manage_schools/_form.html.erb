@@ -12,21 +12,61 @@
   <% end %>
 
   <div>
-    <%= form.label :namet, style: "display: block" %>
-    <%= form.text_field :namet %>
-  </div>
+    <%= form.label :school_name, "School Name:" %>
+    <%= form.text_field :school_name, required: true %>
+  </div><br>
 
   <div>
-    <%= form.label :moto, style: "display: block" %>
-    <%= form.text_field :moto %>
-  </div>
+    <%= form.label :logo, "School Logo:" %>
+    <%= form.file_field :logo, accept: "image/*", required: true %>
+  </div><br>
 
   <div>
-    <%= form.label :logo, style: "display: block" %>
-    <%= form.text_field :logo %>
-  </div>
+  <%= form.label :school_photo, "School Photo:" %>
+  <%= form.file_field :school_photo, accept: "image/*", required: true %>
+</div><br>
+
+
+  <!-- Motto -->
+  <div>
+    <%= form.label :school_motto, "School Motto:" %>
+    <%= form.text_field :school_motto, required: true %>
+  </div><br>
+
+  <!-- Address -->
+  <div>
+    <%= form.label :school_address, "School Address:" %>
+    <%= form.text_field :school_address, required: true %>
+  </div><br>
+
+  <!-- Phone Number -->
+  <div>
+    <%= form.label :school_phone_number, "School Phone Number:" %>
+    <%= form.text_field :school_phone_number, required: true %>
+  </div><br>
+
+  <!-- Vision -->
+  <div>
+    <%= form.label :school_vision, "School Vision:" %>
+    <%= form.text_area :school_vision, rows: 4, required: true %>
+  </div><br>
+
+  <!-- Mission -->
+  <div>
+    <%= form.label :school_mission, "School Mission:" %>
+    <%= form.text_area :school_mission, rows: 4, required: true %>
+  </div><br>
+
+
 
   <div>
-    <%= form.submit %>
+  <%= form.label :hos_signature, "HOS Signature:" %>
+  <%= form.file_field :hos_signature, accept: "image/*", required: true %>
+</div><br>
+
+
+  <!-- Submit Button -->
+  <div>
+    <%= form.submit "Submit" %>
   </div>
 <% end %>
