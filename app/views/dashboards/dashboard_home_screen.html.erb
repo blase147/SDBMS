@@ -1,4 +1,13 @@
 <div class="dashboard">
+
+  <!-- Welcome Dashboard -->
+  <div class="welcome_dashboard dashboard_row">
+    <div class="welcome_message">
+      <h2>Welcome <%= current_staff.firstname %> <%= current_staff.lastname %></h2>
+      <p>Here is your dedicated dashboard. Happy working!</p>
+    </div>
+  </div>
+
   <!-- Count Dashboard -->
   <div class="count_dashboard dashboard_row">    
     <!-- Reports Section -->
@@ -47,6 +56,8 @@
     </div>
   </div>
 
+
+  <% if current_staff.has_role?(:administrator) %>
   <!-- Revenue Dashboard -->
   <div class="revenue_dashboard dashboard_row">
     <div class="revenue_report">
@@ -150,6 +161,7 @@
       </div>
     </div>
   </div>
+<% end %>
 
   <!-- Best Graduating Student Dashboard -->
   <div class="best_grad_students_cont dashboard_row">
