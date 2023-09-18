@@ -48,12 +48,20 @@ end
 
 # PATCH/PUT /staffs/1 or /staffs/1.json
 def update
-  # @staff = Staff.find(params[:id])
-
-  @staff.roles = params[:staff][:roles] if params[:staff][:roles]
-
   respond_to do |format|
     if @staff.update(staff_params)
+      # Ensure that roles are selected
+      if params[:staff][:roles].present?
+        # Map role names (strings) to actual Role objects or create new ones
+        selected_roles = params[:staff][:roles].map do |role_name|
+          Role.find_or_create_by(name: role_name)
+        end
+        @staff.roles = selected_roles
+      else
+        # If no roles are selected, remove all existing roles
+        @staff.roles = []
+      end
+
       format.html { redirect_to staffs_path(@staff), notice: 'Staff was successfully updated.' }
       format.json { render :show, status: :ok, location: @staff }
     else
@@ -62,6 +70,8 @@ def update
     end
   end
 end
+
+
 
   
 
@@ -88,7 +98,15 @@ end
   # Only allow a list of trusted parameters through.
   def staff_params
     params.require(:staff).permit(:designation, :photo, :title, :firstname, :lastname, :email, :password, :phone, :dateofbirth, :country,
-                                  :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor, :nurse, :security, :cleaner, :driver, :other, roles: [])
+                                  :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, 
+                                  :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor, 
+                                  :nurse, :security, :cleaner, :driver, :other, roles: []
+                                  ).tap do |whitelisted|
+                                    # Convert role names to Role instances and assign them to the staff
+                                    whitelisted[:roles] = params[:staff][:roles].map do |role_name|
+                                      Role.find_or_create_by(name: role_name)
+                                    end
+                                 end
   end
 
   # Use @staff instead of current_user in the current_ability method
