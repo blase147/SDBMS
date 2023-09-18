@@ -618,15 +618,16 @@ body::-webkit-scrollbar-thumb:hover {
 
 #manage_schools {
   background-color: #adb2b6;
-  color: #fff;
+  color: #2008fa;
   border-radius: 20px;
   /* Specify your background image URL here */
   background-image: url('path_to_your_background_image.jpg');
   /* Set background size and repeat properties as needed */
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100%;
 }
 
 #manage_schools a {
-  color: #fff;
+  color: #500505;
 }
