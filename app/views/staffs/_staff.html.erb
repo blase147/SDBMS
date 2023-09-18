@@ -64,6 +64,15 @@
   </p>
 
   <p>
+    <strong>Roles:</strong>
+    <ul>
+      <% @staff.roles.each do |role| %>
+        <li><%= role.name %></li>
+      <% end %>
+    </ul>
+  </p>
+
+  <p>
     <strong>Salary:</strong>
     <%= staff.salary %>
   </p>

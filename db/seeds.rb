@@ -10,7 +10,8 @@
 staff_members = [
   { email: 'solarmails2@gmail.com', roles: [:administrator] },
   { email: 'solarmails3@gmail.com', roles: [:teacher] },
-  { email: 'solarmails4@gmail.com', roles: [:accountant] }
+  { email: 'solarmails4@gmail.com', roles: [:accountant] },
+  { email: 'solarmails5@gmail.com', roles: [:human_resource] }
 ]
 
 staff_members.each do |staff_info|

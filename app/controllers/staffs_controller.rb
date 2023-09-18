@@ -46,22 +46,24 @@ def create
 end
 
 
-  # PATCH/PUT /staffs/1 or /staffs/1.json
-  def update
-    # @staff = Staff.find(params[:id])
+# PATCH/PUT /staffs/1 or /staffs/1.json
+def update
+  # @staff = Staff.find(params[:id])
 
-    @staff.roles = params[:staff][:roles] if params[:staff][:roles]
+  @staff.roles = params[:staff][:roles] if params[:staff][:roles]
 
-    respond_to do |format|
-      if @staff.update(staff_params)
-        format.html { redirect_to staffs_path(@staff), notice: 'Staff was successfully updated.' }
-        format.json { render :show, status: :ok, location: @staff }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @staff.errors, status: :unprocessable_entity }
-      end
+  respond_to do |format|
+    if @staff.update(staff_params)
+      format.html { redirect_to staffs_path(@staff), notice: 'Staff was successfully updated.' }
+      format.json { render :show, status: :ok, location: @staff }
+    else
+      format.html { render :edit, status: :unprocessable_entity }
+      format.json { render json: @staff.errors, status: :unprocessable_entity }
     end
   end
+end
+
+  
 
   # DELETE /staffs/1 or /staffs/1.json
   def destroy
