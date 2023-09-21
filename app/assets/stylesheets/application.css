@@ -116,6 +116,8 @@ body {
 
 .nav_main {
   display: flex;
+  margin: auto;
+  width: 100%;
 
   /* background-color: red; */
 }
@@ -469,7 +471,7 @@ body::-webkit-scrollbar-thumb:hover {
   /* flex-direction: column; */
 
   /* background-color: rgb(75, 20, 204); */
-  width: 80%;
+  width: 100%;
 
   /* margin-top: 20px; */
   padding-left: 20px;
@@ -596,11 +598,19 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .manage_school {
-  /* background-color: #eb0a0a; */
+  background-color: #dddada;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 5px 5px 10px rgba(9, 1, 9, 0.9);
+  border-radius: 10px 10px 0 0;
+  z-index: 1000;
+  margin-bottom: 40px;
+  color: #260581;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the values as needed */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Add bold font weight */
 
   .manage_school_logo {
     width: 84px;
@@ -612,22 +622,60 @@ body::-webkit-scrollbar-thumb:hover {
     border-radius: 29%;
     background-color: #04529b;
     padding: 2px;
-    
+    box-shadow: 5px 5px 10px rgba(0, 0, 9, 0.9);
   }
 }
 
 #manage_schools {
-  background-color: #adb2b6;
-  color: #2008fa;
+  /* Specify your background color with transparency */
+  /* background-color: rgba(36, 134, 214, 0.8); Here, 0.8 is the opacity level (0 to 1) */
+
+  /* color: #2008fa; */
   border-radius: 20px;
   /* Specify your background image URL here */
-  background-image: url('path_to_your_background_image.jpg');
+  /* background-image: url('path_to_your_background_image.jpg'); */
   /* Set background size and repeat properties as needed */
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
+  z-index: 1000;
 }
+
 
 #manage_schools a {
   color: #500505;
+}
+
+.new_manage_school_cont {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  /* position: relative;
+  top: 100px;
+  width: 100%; */
+  /* background-color: #086308; */
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.login_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(129, 129, 211);
+  width: 60%;
+  margin: auto;
+  padding: 50px;
+  border-color: red;
+  border-style: solid 1px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  position: relative;
+  top: 250px;
+
 }

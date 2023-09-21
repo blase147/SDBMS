@@ -1,0 +1,73 @@
+<%= form_with(model: admission) do |form| %>
+    <% if admission.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(admission.errors.count, "error") %> prohibited this admission from being saved:</h2>
+  
+        <ul>
+          <% admission.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :firstname, style: "display: block" %>
+      <%= form.text_field :firstname %>
+    </div>
+  
+    <div>
+      <%= form.label :lastname, style: "display: block" %>
+      <%= form.text_field :lastname %>
+    </div>
+  
+    <div>
+      <%= form.label :other_names, style: "display: block" %>
+      <%= form.text_field :other_names %>
+    </div>
+  
+    <div>
+      <%= form.label :date_of_birth, style: "display: block" %>
+      <%= form.date_field :date_of_birth %>
+    </div>
+  
+    <div>
+      <%= form.label :country, style: "display: block" %>
+      <%= form.text_field :country %>
+    </div>
+  
+    <div>
+      <%= form.label :state, style: "display: block" %>
+      <%= form.text_field :state %>
+    </div>
+  
+    <div>
+      <%= form.label :lga, style: "display: block" %>
+      <%= form.text_field :lga %>
+    </div>
+  
+    <div>
+      <%= form.label :phone, style: "display: block" %>
+      <%= form.text_field :phone %>
+    </div>
+  
+    <div>
+      <%= form.label :email, style: "display: block" %>
+      <%= form.text_field :email %>
+    </div>
+  
+    <div>
+      <%= form.label :transcript, style: "display: block" %>
+      <%= form.text_field :transcript %>
+    </div>
+  
+    <div>
+      <%= form.label :photo, style: "display: block" %>
+      <%= form.text_field :photo %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

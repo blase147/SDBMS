@@ -1,12 +1,18 @@
 <div class="main">
-<h1>New admission</h1>
+<h1>Admission Application</h1>
 
 <%= render "form", admission: @admission %>
 
 <br>
 
 <div>
-  <%= link_to "Back to admissions", admissions_path %>
+  
+  <% if staff_signed_in? %>
+    <%= link_to "Back to admissions", admissions_path %>
+  <% else %>
+    <!-- Include other links for unauthenticated users if needed -->
+  <% end %>
 </div>
 </div>
+
 

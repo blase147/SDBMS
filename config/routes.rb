@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 devise_for :staffs, path: 'staffs', controllers: {
   registrations: 'staffs/registrations',
+  sessions: 'staffs/sessions'
 }
 
   # After logout, redirect to the staff sign-in page
@@ -18,7 +19,7 @@ devise_for :staffs, path: 'staffs', controllers: {
     end
 
     # If user is authenticated, root to a different page (e.g., dashboard)
-    root to: 'staffs/sessions#new', as: 'unauthenticated_root'
+    root to: 'homepage#homepage', as: 'unauthenticated_root'
   end
 
 
@@ -55,6 +56,11 @@ devise_for :staffs, path: 'staffs', controllers: {
 
   # Defines the root path route ("/")
   # root "dashboards#dashboard_screen"
+
+   # Set the root path to your homepage view
+   root 'homepage#homepage'
+
+  get '/homepage', to: 'homepage#homepage' 
   get 'home_screen', to: 'dashboards#dashboard_home_screen', as: 'dashboard_home_screen'
   get '/students_portal', to: 'students#students_portal'
   get '/parents_portal', to: 'parents#parents_portal'

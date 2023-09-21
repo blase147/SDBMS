@@ -58,15 +58,19 @@
 
   <div>
     <%= form.label :transcript, style: "display: block" %>
-    <%= form.text_field :transcript %>
+    <%= form.file_field :transcript %>
   </div>
 
   <div>
     <%= form.label :photo, style: "display: block" %>
-    <%= form.text_field :photo %>
-  </div>
+    <%= form.file_field :photo %>
+  </div><br>
 
   <div>
-    <%= form.submit %>
+    Add Parents
+  </div><br>
+
+  <div>
+    <%= form.submit 'Submit application' %>
   </div>
 <% end %>

@@ -5,10 +5,10 @@
 <div id="departments">
   <% @departments.each do |department| %>
     <%= render department %>
-    <p>
-      <%= link_to "Show this department", department %>
-    </p>
-  <% end %>
+    <%= link_to "View department", department %>
+    <%= link_to "Edit this department", edit_department_path(department) %> |
+    <%= button_to "Destroy this department", @department, method: :delete %>
+<% end %>
 </div>
 
 <%= link_to "New department", new_department_path %>
