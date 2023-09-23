@@ -10,67 +10,187 @@
       </ul>
     </div>
   <% end %>
+  <h2>New Student</h2>
+  <div class="grid_container">  
+    <div class="grid_item">
+      <%= form.label :reg_number, "Reg Number" %>
+      <%= form.text_field :reg_number, required: true, style: "display: block" %>
+    </div>
 
-  <div>
-    <%= form.label :firstname, style: "display: block" %>
-    <%= form.text_field :firstname %>
+    <div class="grid_item">
+      <%= form.label :applying_for, "Applying For ?" %>
+      <%= form.select :applying_for, ["Creche","Prenursery","Nursery 1","Nursery 2","Nursery 3","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6"], prompt: "Select an option", required: true, style: "display: block" %>
+    </div>
+
+
+    <div class="grid_item">
+      <%= form.label :firstname, style: "display: block" %>
+      <%= form.text_field :firstname %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :lastname, style: "display: block" %>
+      <%= form.text_field :lastname %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :other_names, style: "display: block" %>
+      <%= form.text_field :other_names %>
+    </div>
+
+    <div class="grid_item">
+        <%= form.label :gender, "Gender", style: "display: block" %>
+      <div class="grid_item row_maker">
+      <%= form.label :gender, "Male" %>
+      <%= form.radio_button :gender, "Male" %>
+      <%= form.label :gender, "Female" %>
+      <%= form.radio_button :gender, "Female" %>
   </div>
+    </div>
 
-  <div>
-    <%= form.label :lastname, style: "display: block" %>
-    <%= form.text_field :lastname %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :country, style: "display: block" %>
+      <%= form.text_field :country %>
+    </div>
 
-  <div>
-    <%= form.label :other_names, style: "display: block" %>
-    <%= form.text_field :other_names %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :state, style: "display: block" %>
+      <%= form.text_field :state %>
+    </div>
 
-  <div>
-    <%= form.label :date_of_birth, style: "display: block" %>
-    <%= form.date_field :date_of_birth %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :lga, style: "display: block" %>
+      <%= form.text_field :lga %>
+    </div>
 
-  <div>
-    <%= form.label :country, style: "display: block" %>
-    <%= form.text_field :country %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :phone, style: "display: block" %>
+      <%= form.text_field :phone %>
+    </div>
 
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :email, style: "display: block" %>
+      <%= form.text_field :email %>
+    </div>
 
-  <div>
-    <%= form.label :lga, style: "display: block" %>
-    <%= form.text_field :lga %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :photo, style: "display: block" %>
+      <%= form.file_field :photo %>
+    </div><br>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :primary_language, "Primary Language", style: "display: block" %>
+      <%= form.text_field :primary_language, required: true %>
+    </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :other_languages, "Other Languages", style: "display: block" %>
+      <%= form.text_field :other_languages %>
+    </div>
 
-  <div>
+    <div class="grid_item">
+      <%= form.label :religion, "Religion", style: "display: block" %>
+      <%= form.text_field :religion, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :current_school_name, "Current School Name", style: "display: block" %>
+      <%= form.text_field :current_school_name %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :current_class_year, "Current Class", style: "display: block" %>
+      <%= form.text_field :current_class %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :type_of_school, "Type Of School", style: "display: block" %>
+      <%= form.select :type_of_school, ["Private"], prompt: "Select an option" %>
+    </div>
+
+    <div class="grid_item">
     <%= form.label :transcript, style: "display: block" %>
     <%= form.file_field :transcript %>
-  </div>
+    </div>
 
-  <div>
-    <%= form.label :photo, style: "display: block" %>
-    <%= form.file_field :photo %>
-  </div><br>
+    <div class="grid_item">
+    <%= form.label :current_school_address, "Current School Address", style: "display: block" %>
+    <%= form.text_area :current_school_address %>
+    </div>
+</div>
 
-  <div>
-    Add Parents
-  </div><br>
+<h2>Parent/Guardian Information</h2><br>
+<div  id="add_parent_form">
+    <div class="grid_container">
+        <div class="grid_item">
+          <%= form.label :relationship_to_applicant, "Relationship with applicant *", style: "display: block" %>
+          <%= form.text_field :relationship_with_applicant, required: true %>
+        </div>
 
-  <div>
-    <%= form.submit 'Submit application' %>
-  </div>
+        <div class="grid_item">
+          <%= form.label :title, "Title (Mr/Mrs/Ms/Dr/etc) *", style: "display: block" %>
+          <%= form.text_field :title, required: true %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :full_name, "Full Name *", style: "display: block" %>
+          <%= form.text_field :full_name, required: true %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :country_of_birth, "Country/City of Birth *", style: "display: block" %>
+          <%= form.text_field :country_of_birth, required: true %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :date_of_birth, "Date of Birth *", style: "display: block" %>
+          <%= form.date_field :date_of_birth %>
+        </div>
+  
+        <div class="grid_item">
+          <%= form.label :nationality, "Nationality *", style: "display: block" %>
+          <%= form.text_field :nationality, required: true %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :home_address, "Home Address *", style: "display: block" %>
+          <%= form.text_area :home_address, required: true %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :mailing_addres, "Mailing Address *", style: "display: block" %>
+          <%= form.text_area :mailing_address_parent1, required: true %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :occupation, "Occupation *", style: "display: block" %>
+          <%= form.text_field :occupation %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :mobile_phone_number, "Mobile Phone Number *", style: "display: block" %>
+          <%= form.text_field :mobile_phone_number %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :employer_name, "Employer’s Name *", style: "display: block" %>
+          <%= form.text_field :employer_name %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :employer_address, "Employer’s Address *", style: "display: block" %>
+          <%= form.text_area :employer_address %>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :work_telephone_number, "Work Telephone Number *", style: "display: block" %>
+          <%= form.text_field :work_telephone_number%>
+        </div>
+
+        <div class="grid_item">
+          <%= form.label :email, "Email Address *", style: "display: block" %>
+          <%= form.email_field :parent_email, required: true %>
+        </div>      
+      </div>
+    </div>
 <% end %>
