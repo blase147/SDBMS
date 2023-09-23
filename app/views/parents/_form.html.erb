@@ -1,18 +1,19 @@
-<%= form_with(model: parent) do |form| %>
-  <% if parent.errors.any? %>
+<%= form_with(model: @parent) do |form| %>
+  <% if @parent.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
+      <h2><%= pluralize(@parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
 
       <ul>
-        <% parent.errors.each do |error| %>
+        <% @parent.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div  id="add_parent_form">
-      <div class="grid_container">
+  <div  class="add_parent_form">
+  <h2>Parent/Guardian Information</h2><br>
+  <div class="grid_container">
           <div>
             <%= form.label :photo, style: "display: block" %>
             <%= form.file_field :photo %>
@@ -88,9 +89,8 @@
             <%= form.email_field :parent_email, required: true %>
           </div>      
         </div>
+        <!-- Close button for the form -->
+        <button type="button" class="close-parent-form">Close</button>
       </div>
   
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

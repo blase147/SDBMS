@@ -12,6 +12,7 @@ class AdmissionsController < ApplicationController
   # GET /admissions/new
   def new
     @admission = Admission.new
+    @parent = Parent.new  # Initialize a new Parent object
   end
 
   # GET /admissions/1/edit
