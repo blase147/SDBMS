@@ -11,66 +11,85 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :photo, style: "display: block" %>
-    <%= form.text_field :photo %>
-  </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :firstname, style: "display: block" %>
-    <%= form.text_field :firstname %>
-  </div>
-
-  <div>
-    <%= form.label :lastname, style: "display: block" %>
-    <%= form.text_field :lastname %>
-  </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div>
-    <%= form.label :dateofbirth, style: "display: block" %>
-    <%= form.date_field :dateofbirth %>
-  </div>
-
-  <div>
-    <%= form.label :country, style: "display: block" %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div>
-    <%= form.label :lga, style: "display: block" %>
-    <%= form.text_field :lga %>
-  </div>
-
-  <div>
-    <%= form.label :street, style: "display: block" %>
-    <%= form.text_field :street %>
-  </div>
-
-  <div>
-    <%= form.label :occupation, style: "display: block" %>
-    <%= form.text_field :occupation %>
-  </div>
-
+  <div  id="add_parent_form">
+      <div class="grid_container">
+          <div>
+            <%= form.label :photo, style: "display: block" %>
+            <%= form.file_field :photo %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :relationship_to_applicant, "Relationship with applicant *", style: "display: block" %>
+            <%= form.text_field :relationship_with_applicant, required: true %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :title, "Title (Mr/Mrs/Ms/Dr/etc) *", style: "display: block" %>
+            <%= form.text_field :title, required: true %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :full_name, "Full Name *", style: "display: block" %>
+            <%= form.text_field :full_name, required: true %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :country_of_birth, "Country/City of Birth *", style: "display: block" %>
+            <%= form.text_field :country_of_birth, required: true %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :date_of_birth, "Date of Birth *", style: "display: block" %>
+            <%= form.date_field :date_of_birth %>
+          </div>
+    
+          <div class="grid_item">
+            <%= form.label :nationality, "Nationality *", style: "display: block" %>
+            <%= form.text_field :nationality, required: true %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :home_address, "Home Address *", style: "display: block" %>
+            <%= form.text_area :home_address, required: true %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :mailing_addres, "Mailing Address *", style: "display: block" %>
+            <%= form.text_area :mailing_address_parent1, required: true %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :occupation, "Occupation *", style: "display: block" %>
+            <%= form.text_field :occupation %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :mobile_phone_number, "Mobile Phone Number *", style: "display: block" %>
+            <%= form.text_field :mobile_phone_number %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :employer_name, "Employer’s Name *", style: "display: block" %>
+            <%= form.text_field :employer_name %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :employer_address, "Employer’s Address *", style: "display: block" %>
+            <%= form.text_area :employer_address %>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :work_telephone_number, "Work Telephone Number *", style: "display: block" %>
+            <%= form.text_field :work_telephone_number%>
+          </div>
+  
+          <div class="grid_item">
+            <%= form.label :email, "Email Address *", style: "display: block" %>
+            <%= form.email_field :parent_email, required: true %>
+          </div>      
+        </div>
+      </div>
+  
   <div>
     <%= form.submit %>
   </div>

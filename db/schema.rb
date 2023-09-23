@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_18_134820) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_23_145516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_134820) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "primary_language"
+    t.string "other_languages"
+    t.string "religion"
+    t.string "current_school_name"
+    t.string "current_class_year"
+    t.string "type_of_school"
+    t.text "current_school_address"
   end
 
   create_table "assessments", force: :cascade do |t|
@@ -181,18 +188,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_134820) do
   create_table "parents", force: :cascade do |t|
     t.string "photo"
     t.string "title"
-    t.string "firstname"
-    t.string "lastname"
     t.string "email"
-    t.string "phone"
-    t.date "dateofbirth"
-    t.string "country"
-    t.string "state"
-    t.string "lga"
-    t.string "street"
     t.string "occupation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "relationship_with_applicant"
+    t.string "full_name"
+    t.string "country_of_birth"
+    t.date "date_of_birth"
+    t.string "nationality"
+    t.text "home_address"
+    t.text "mailing_address"
+    t.string "mobile_phone_number"
+    t.string "employer_name"
+    t.text "employer_address"
+    t.string "work_telephone_number"
+    t.string "parent_email"
   end
 
   create_table "recruitments", force: :cascade do |t|
