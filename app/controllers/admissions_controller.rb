@@ -66,6 +66,9 @@ class AdmissionsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def admission_params
     params.require(:admission).permit(:firstname, :lastname, :other_names, :date_of_birth, :country, :state, :lga,
-                                      :phone, :email, :transcript, :photo)
+                                      :phone, :email, :transcript, :photo, :primary_language, :religion, 
+                                      :relationship_with_applicant, :p_full_name, :p_date_of_birth, :p_country_of_birth,
+                                      :p_nationality, :p_occupation, :p_home_address, :p_mailing_address, :p_mobile_phone_number, :p_email 
+                                       )
   end
 end

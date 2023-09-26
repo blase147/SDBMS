@@ -1,4 +1,5 @@
 <div id="<%= dom_id admission %>">
+<h1>Students Information</h1>
   <p>
     <strong>Firstname:</strong>
     <%= admission.firstname %>
@@ -43,15 +44,64 @@
     <strong>Email:</strong>
     <%= admission.email %>
   </p>
-
+  
   <p>
-    <strong>Transcript:</strong>
-    <%= admission.transcript %>
+  <strong>Transcript:</strong>
+  <% if @admission.present? %>
+      <% if @admission.transcript.present? %>
+        <%= link_to 'Download Transcript', rails_blob_path(@admission.transcript) %>
+      <% else %>
+        No transcript uploaded.
+      <% end %>
+      <% else %>
+      Transcript not available.
+  <% end %>
   </p>
+
 
   <p>
     <strong>Photo:</strong>
-    <%= admission.photo %>
+    <% if @admission && @admission.photo.attached? %>
+      <%= image_tag @admission.photo, class: 'staff_photo' %>
+    <% else %>
+      <i class="fas fa-user student_photo"></i>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Primary Language:</strong>
+    <%= admission.primary_language %>
+  </p>
+
+  <p>
+    <strong>Other Languages:</strong>
+    <%= admission.other_languages %>
+  </p>
+
+  <p>
+    <strong>Religion :</strong>
+    <%= admission.religion %>
+  </p>
+
+  <p>
+    <strong>Current School Name :</strong>
+    <%= admission.current_school_name %>
+  </p>
+
+  <p>
+    <strong>Type of School :</strong>
+    <%= admission.type_of_school %>
+  </p>
+
+  <p>
+    <strong>Current School Address :</strong>
+    <%= admission.current_school_address %>
   </p>
 
 </div>
+
+<div>
+  <button type="button" class="show_parents">Show Parents</button>   
+</div>
+
+

@@ -1,13 +1,143 @@
 <div class="main">
 <p style="color: green"><%= notice %></p>
 
-<%= render @admission %>
+<h1>Students Information</h1>
+  <p>
+    <strong>Firstname:</strong>
+    <%=@admission.firstname %>
+  </p>
+
+  <p>
+    <strong>Lastname:</strong>
+    <%= @admission.lastname %>
+  </p>
+
+  <p>
+    <strong>Other names:</strong>
+    <%= @admission.other_names %>
+  </p>
+
+  <p>
+    <strong>Date of birth:</strong>
+    <%= @admission.date_of_birth %>
+  </p>
+
+  <p>
+    <strong>Country:</strong>
+    <%= @admission.country %>
+  </p>
+
+  <p>
+    <strong>State:</strong>
+    <%= @admission.state %>
+  </p>
+
+  <p>
+    <strong>Lga:</strong>
+    <%= @admission.lga %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @admission.phone %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @admission.email %>
+  </p>
+
+  <p>
+    <strong>Transcript:</strong>
+    <%= @admission.transcript %>
+  </p>
+
+  <p>
+    <strong>Photo:</strong>
+    <% if @admission.photo.present? %>
+      <%= image_tag @admission.photo, class: 'staff_photo' %>
+    <% else %>
+      <i class="fas fa-user student_photo"></i>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Primary Language:</strong>
+    <%= @admission.primary_language %>
+  </p>
+
+  <p>
+    <strong>Other Languages:</strong>
+    <%= @admission.other_languages %>
+  </p>
+
+  <p>
+    <strong>Religion :</strong>
+    <%= @admission.religion %>
+  </p>
+
+  <p>
+    <strong>Current School Name :</strong>
+    <%= @admission.current_school_name %>
+  </p>
+
+  <p>
+    <strong>Type of School :</strong>
+    <%= @admission.type_of_school %>
+  </p>
+
+  <p>
+    <strong>Current School Address :</strong>
+    <%= @admission.current_school_address %>
+  </p>
+
+</div>
+
+
+<div id='parent_info'>
+<h1>Parents Information</h1>
+
+  <p>
+    <strong>Firstname:</strong>
+    <%= @admission.p_full_name %>
+  </p>
+
+  <p>
+    <strong>Date of birth:</strong>
+    <%= @admission.p_date_of_birth %>
+  </p>
+
+  <p>
+    <strong>Country:</strong>
+    <%= @admission.p_country_of_birth %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @admission.p_mobile_phone_number %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @admission.p_email %>
+  </p>
+
+  <p>
+    <strong>Photo:</strong>
+    <% if @admission.p_photo.present? %>
+      <%= image_tag @admission.p_photo, class: 'staff_photo' %>
+    <% else %>
+      <i class="fas fa-user student_photo"></i>
+    <% end %>
+  </p>
+
+</div>
 
 <div>
-  <%= link_to "Edit this admission", edit_admission_path(@admission) %> |
+  <%= link_to "Edit", edit_admission_path(@admission) %> |
   <%= link_to "Back to admissions", admissions_path %>
 
-  <%= button_to "Destroy this admission", @admission, method: :delete %>
+  <%= button_to "Destroy this @admission", @admission, method: :delete %>
 </div>
 </div>
 

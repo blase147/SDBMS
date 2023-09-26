@@ -48,6 +48,11 @@
           <%= form.radio_button :gender, "Female" %>
         </div>
       </div>
+     
+      <div class="grid_item">
+        <%= form.label :date_of_birth, "Date of Birth *", style: "display: block" %>
+        <%= form.date_field :date_of_birth %>
+      </div>
 
       <div class="grid_item">
         <%= form.label :country, style: "display: block" %>
@@ -122,13 +127,39 @@
     </div>
 
     <div id="parent_forms_container">
+     
+    </div>
+
+  <div>
+    <%= button_tag 'Add Parent/Guardian', id: 'add_parent_button', type: 'button' %> <br>
+  </div><br>
+
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var parentFormsContainer = document.getElementById('parent_forms_container');
+    var addParentButton = document.getElementById('add_parent_button');
+
+    addParentButton.addEventListener('click', function() {
+      // Clone the parent/guardian form structure and increment the index
+      var parentFormIndex = parentFormsContainer.querySelectorAll('.add_parent_form').length;
+
+      // Create a new "add_parent_form" div
+      var newParentForm = document.createElement('div');
+      newParentForm.classList.add('add_parent_form'); // Add the "add_parent_form" class
+      
+      // Add the parent/guardian form fields to the new div
+      newParentForm.innerHTML = `
       <div  class="add_parent_form">
             
         <h2>Parent/Guardian Information</h2><br>
         <div class="grid_container">
           <div>
-            <%= form.label :photo, style: "display: block" %>
-            <%= form.file_field :photo %>
+            <%= form.label :p_photo, style: "display: block" %>
+            <%= form.file_field :p_photo %>
           </div>
             
           <div class="grid_item">
@@ -137,68 +168,68 @@
           </div>
             
           <div class="grid_item">
-            <%= form.label :title, "Title (Mr/Mrs/Ms/Dr/etc) *", style: "display: block" %>
-            <%= form.text_field :title, required: true %>
+            <%= form.label :p_title, "Title (Mr/Mrs/Ms/Dr/etc) *", style: "display: block" %>
+            <%= form.text_field :p_title, required: true %>
           </div>
               
           <div class="grid_item">
-            <%= form.label :full_name, "Full Name *", style: "display: block" %>
-            <%= form.text_field :full_name, required: true %>
+            <%= form.label :p_full_name, "Full Name *", style: "display: block" %>
+            <%= form.text_field :p_full_name, required: true %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :country_of_birth, "Country/City of Birth *", style: "display: block" %>
-            <%= form.text_field :country_of_birth, required: true %>
+            <%= form.label :p_country_of_birth, "Country/City of Birth *", style: "display: block" %>
+            <%= form.text_field :p_country_of_birth, required: true %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :date_of_birth, "Date of Birth *", style: "display: block" %>
-            <%= form.date_field :date_of_birth %>
+            <%= form.label :p_date_of_birth, "Date of Birth *", style: "display: block" %>
+            <%= form.date_field :p_date_of_birth %>
           </div>
               
           <div class="grid_item">
-            <%= form.label :nationality, "Nationality *", style: "display: block" %>
-            <%= form.text_field :nationality, required: true %>
+            <%= form.label :p_nationality, "Nationality *", style: "display: block" %>
+            <%= form.text_field :p_nationality, required: true %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :home_address, "Home Address *", style: "display: block" %>
-            <%= form.text_area :home_address, required: true %>
+            <%= form.label :p_home_address, "Home Address *", style: "display: block" %>
+            <%= form.text_area :p_home_address, required: true %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :mailing_addres, "Mailing Address *", style: "display: block" %>
-            <%= form.text_area :mailing_address_parent1, required: true %>
+            <%= form.label :p_mailing_addres, "Mailing Address *", style: "display: block" %>
+            <%= form.text_area :p_mailing_address, required: true %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :occupation, "Occupation *", style: "display: block" %>
-            <%= form.text_field :occupation %>
+            <%= form.label :p_occupation, "Occupation *", style: "display: block" %>
+            <%= form.text_field :p_occupation %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :mobile_phone_number, "Mobile Phone Number *", style: "display: block" %>
-            <%= form.text_field :mobile_phone_number %>
+            <%= form.label :p_mobile_phone_number, "Mobile Phone Number *", style: "display: block" %>
+            <%= form.text_field :p_mobile_phone_number %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :employer_name, "Employer’s Name *", style: "display: block" %>
-            <%= form.text_field :employer_name %>
+            <%= form.label :p_employer_name, "Employer’s Name *", style: "display: block" %>
+            <%= form.text_field :p_employer_name %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :employer_address, "Employer’s Address *", style: "display: block" %>
-            <%= form.text_area :employer_address %>
+            <%= form.label :p_employer_address, "Employer’s Address *", style: "display: block" %>
+            <%= form.text_area :p_employer_address %>
           </div>
             
           <div class="grid_item">
-            <%= form.label :work_telephone_number, "Work Telephone Number *", style: "display: block" %>
-            <%= form.text_field :work_telephone_number%>
+            <%= form.label :p_work_telephone_number, "Work Telephone Number *", style: "display: block" %>
+            <%= form.text_field :p_work_telephone_number%>
           </div>
             
           <div class="grid_item">
-            <%= form.label :email, "Email Address *", style: "display: block" %>
-            <%= form.email_field :parent_email, required: true %>
+            <%= form.label :p_email, "Email Address *", style: "display: block" %>
+            <%= form.email_field :p_email, required: true %>
           </div>    
 
         </div>
@@ -208,44 +239,20 @@
             <button type="button" class="close-parent-form">Close</button>   
           </div>
       </div>
+      `;
 
-      
-    </div>
-  <div>
-    <%= button_tag 'Add Parent/Guardian', id: 'add_parent_button', type: 'button' %> <br>
-  </div><br>
+      parentFormsContainer.appendChild(newParentForm);
 
-  <div>
-    <%= form.submit "Submit" %>
-  </div>
-
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            var parentFormsContainer = document.getElementById('parent_forms_container');
-            var addParentButton = document.getElementById('add_parent_button');
-    
-            addParentButton.addEventListener('click', function() {
-              // Clone the parent/guardian form partial and increment the index
-              var parentFormIndex = parentFormsContainer.querySelectorAll('.parent-form').length;
-              var parentFormPartial = '<%= j render "parents/form", form: form %>';
-              var parentFormHTML = parentFormPartial.replace(/parent_index/g, parentFormIndex);
-    
-              // Append the new form to the container
-              var newParentForm = document.createElement('div');
-              newParentForm.innerHTML = parentFormHTML;
-              newParentForm.classList.add('parent-form'); // Add the "parent-form" class
-              parentFormsContainer.appendChild(newParentForm);
-    
-              // Add an event listener to the close button
-              var closeButtons = newParentForm.querySelectorAll('.close-parent-form');
-              closeButtons.forEach(function(closeButton) {
-                closeButton.addEventListener('click', function() {
-                  // Remove the parent/guardian form when the close button is clicked
-                  parentFormsContainer.removeChild(newParentForm);
-                });
-              });
-            });
-          });
-        </script>
+      // Add an event listener to the close button
+      var closeButtons = newParentForm.querySelectorAll('.close-parent-form');
+      closeButtons.forEach(function(closeButton) {
+        closeButton.addEventListener('click', function() {
+          // Remove the parent/guardian form when the close button is clicked
+          parentFormsContainer.removeChild(newParentForm);
+        });
+      });
+    });
+  });
+</script>
   <% end %>
 </div>

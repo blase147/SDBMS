@@ -1,6 +1,6 @@
 <div class="main">
 <p style="color: green"><%= notice %></p>
-
+<%= link_to "New admission", new_admission_path %>
 <h1>Admissions</h1>
 
 <div id="admissions">
@@ -9,8 +9,8 @@
     <p>
       <%= link_to "Show this admission", admission %>
     </p>
+    <hr>
   <% end %>
 </div>
 
-<%= link_to "New admission", new_admission_path %>
 </div>
