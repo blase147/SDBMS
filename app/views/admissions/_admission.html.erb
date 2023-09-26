@@ -1,6 +1,15 @@
 <div id="<%= dom_id admission %>">
 <h1>Students Information</h1>
   <p>
+    <strong>Photo:</strong>
+    <% if @admission && @admission.photo.attached? %>
+      <%= image_tag @admission.photo, class: 'staff_photo' %>
+    <% else %>
+      <i class="fas fa-user student_photo"></i>
+    <% end %>
+  </p>
+
+  <p>
     <strong>Firstname:</strong>
     <%= admission.firstname %>
   </p>
@@ -56,16 +65,6 @@
       <% else %>
       Transcript not available.
   <% end %>
-  </p>
-
-
-  <p>
-    <strong>Photo:</strong>
-    <% if @admission && @admission.photo.attached? %>
-      <%= image_tag @admission.photo, class: 'staff_photo' %>
-    <% else %>
-      <i class="fas fa-user student_photo"></i>
-    <% end %>
   </p>
 
   <p>
