@@ -69,9 +69,13 @@
           </td>
 
           <td>
-            <div>
-              <%= link_to "See Details", admission %> |
-              <%= link_to "Remove", admission, method: :delete, data: { confirm: "Are you sure?" } %>
+            <div class="record-container">
+              <i class="fas fa-ellipsis-h ellips"></i>
+              <div class="ellips_popup" style="display: none;" >
+                <p>Confirm Admission</p> 
+                <%= link_to "See Details", admission %> <br> <br>
+                <%= button_to "Remove", admission, method: :delete %>
+              </div>
             </div>
           </td>
         </tr>

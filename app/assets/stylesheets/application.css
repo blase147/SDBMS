@@ -730,6 +730,7 @@ body::-webkit-scrollbar-thumb:hover {
   text-align: left;
   padding: 8px; /* Adjust padding as needed */
   border: 1px solid #ccc; /* Add borders for better visual separation */
+  text-align: center;
 }
 
 .new_btn_cont {
@@ -749,4 +750,12 @@ body::-webkit-scrollbar-thumb:hover {
     text-align: right;
     text-decoration: none;
   }
+}
+
+.ellips_popup {
+  position: absolute;
+  /* top: -20px; */
+  background-color: #fff;
+  width: 180px;
+  text-align: left;
 }
