@@ -4,8 +4,8 @@
 <h1>Students Information</h1>
   <p>
     <strong>Photo:</strong>
-    <% if @admission.photo.present? %>
-      <%= image_tag @admission.photo, class: 'staff_photo' %>
+    <% if @admission && @admission.photo.attached? %>
+      <%= image_tag @admission.photo, class: 'student_photo' %>
     <% else %>
       <i class="fas fa-user student_photo"></i>
     <% end %>
@@ -58,8 +58,13 @@
 
   <p>
     <strong>Transcript:</strong>
-    <%= @admission.transcript %>
+    <% if @admission.transcript.present? %>
+      <%= link_to 'Download Transcript', rails_blob_path(@admission.transcript) %>
+    <% else %>
+      No transcript uploaded.
+    <% end %>
   </p>
+
 
   <p>
     <strong>Primary Language:</strong>
@@ -91,17 +96,22 @@
     <%= @admission.current_school_address %>
   </p>
 
+  <p>
+    <strong>Admission Status :</strong>
+    <%= @admission.admission_status %>
+  </p>
+
 </div>
 
 
 <div id='parent_info'>
 <h1>Parents Information</h1>
   <p>
-    <strong>Photo:</strong>
-    <% if @admission.p_photo.present? %>
-      <%= image_tag @admission.p_photo, class: 'staff_photo' %>
+    <strong>Parent's/Guardian's Photo:</strong>
+    <% if @admission.p_photo.attached? %>
+      <%= image_tag @admission.p_photo, class: 'parent_photo' %>
     <% else %>
-      <i class="fas fa-user student_photo"></i>
+      <i class="fas fa-user parent_photo"></i>
     <% end %>
   </p>
 

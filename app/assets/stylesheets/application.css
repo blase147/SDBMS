@@ -204,7 +204,7 @@ body::-webkit-scrollbar-thumb:hover {
   /* float: right;
     position: relative;
     top: -30px; */
-  width: 70%;
+  width: 100%;
 }
 
 /* .test {
@@ -711,4 +711,15 @@ body::-webkit-scrollbar-thumb:hover {
 .row_maker {
   display: flex;
   align-items: center;
+}
+
+.image_thumbnail {
+  width: 45px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.admission_table {
+  width: 100%;
 }

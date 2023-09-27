@@ -7,12 +7,16 @@ class AdmissionsController < ApplicationController
   end
 
   # GET /admissions/1 or /admissions/1.json
-  def show; end
+  def show
+    @admission = Admission.find(params[:id])
+  end
+  
 
   # GET /admissions/new
   def new
     @admission = Admission.new
-    @parent = Parent.new  # Initialize a new Parent object
+    # @admission.transcript.attach(params[:admission][:transcript])
+    # @admission.photo.attached(params[:admission][:photo])
   end
 
   # GET /admissions/1/edit
@@ -21,6 +25,7 @@ class AdmissionsController < ApplicationController
   # POST /admissions or /admissions.json
   def create
     @admission = Admission.new(admission_params)
+    @admission.photo.attached(params[:admission][:photo])
 
     respond_to do |format|
       if @admission.save
@@ -35,6 +40,8 @@ class AdmissionsController < ApplicationController
 
   # PATCH/PUT /admissions/1 or /admissions/1.json
   def update
+    @admission.photo.attached(params[:admission][:photo])
+
     respond_to do |format|
       if @admission.update(admission_params)
         format.html { redirect_to admission_url(@admission), notice: 'Admission was successfully updated.' }
@@ -48,6 +55,7 @@ class AdmissionsController < ApplicationController
 
   # DELETE /admissions/1 or /admissions/1.json
   def destroy
+    @admission = Admission.find(params[:id])
     @admission.destroy
 
     respond_to do |format|
@@ -65,10 +73,14 @@ class AdmissionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def admission_params
-    params.require(:admission).permit(:firstname, :lastname, :other_names, :date_of_birth, :country, :state, :lga,
-                                      :phone, :email, :transcript, :photo, :primary_language, :religion, 
-                                      :relationship_with_applicant, :p_full_name, :p_date_of_birth, :p_country_of_birth,
-                                      :p_nationality, :p_occupation, :p_home_address, :p_mailing_address, :p_mobile_phone_number, :p_email 
+    params.require(:admission).permit(:reg_number, :firstname, :lastname, :other_names, :date_of_birth, :admission_date, :gender, :country, :state, :lga,
+                                      :phone, :email, :level, :transcript, :photo, :primary_language, :other_languages, :religion, 
+                                      :current_school_name, :type_of_school, :current_class_year, :current_school_address,
+                                      :relationship_with_applicant, :p_full_name, :p_date_of_birth, :p_country_of_birth,:p_photo, 
+                                      :p_title, :p_nationality, :p_occupation, :p_home_address, :p_mailing_address,
+                                      :p_mobile_phone_number, :p_email, :p_employer_name, :p_employer_address, :p_work_telephone_number,
+                                      :p_email
                                        )
   end
 end
+

@@ -1,16 +1,9 @@
 <div class="main">
-<p style="color: green"><%= notice %></p>
-<%= link_to "New admission", new_admission_path %>
-<h1>Admissions</h1>
+  <p style="color: green"><%= notice %></p>
+  <%= link_to "New admission", new_admission_path %>
+  <h1>Admissions</h1>
 
-<div id="admissions">
-  <% @admissions.each do |admission| %>
-    <%= render admission %>
-    <p>
-      <%= link_to "Show this admission", admission %>
-    </p>
-    <hr>
-  <% end %>
-</div>
-
+  <div id="admissions">
+      <%= render partial: "admission", locals: { admission: @admission } %>
+  </div>
 </div>

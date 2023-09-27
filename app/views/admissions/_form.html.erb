@@ -1,5 +1,5 @@
 <div>
-  <%= form_with(model: admission) do |form| %>
+<%= form_with(model: admission, url: admissions_path, html: { multipart: true }) do |form| %>
     <% if admission.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(admission.errors.count, "error") %> prohibited this admission from being saved:</h2>
@@ -20,8 +20,14 @@
       </div>
 
       <div class="grid_item">
-        <%= form.label :applying_for, "Applying For ?" %>
-        <%= form.select :applying_for, ["Creche","Prenursery","Nursery 1","Nursery 2","Nursery 3","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6"], prompt: "Select an option", required: true, style: "display: block" %>
+        <%= form.label :admission_date, "Admission Date *", style: "display: block" %>
+        <%= form.date_field :admission_date %>
+      </div>
+
+
+      <div class="grid_item">
+        <%= form.label :level, "Applying For ?" %>
+        <%= form.select :level, ["Creche","Prenursery","Nursery 1","Nursery 2","Nursery 3","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6"], prompt: "Select an option", required: true, style: "display: block" %>
       </div>
 
       <div class="grid_item">
@@ -106,7 +112,7 @@
 
       <div class="grid_item">
         <%= form.label :current_class_year, "Current Class", style: "display: block" %>
-        <%= form.text_field :current_class %>
+        <%= form.text_field :current_class_year %>
       </div>
 
       <div class="grid_item">

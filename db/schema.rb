@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_26_114038) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_27_065803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_114038) do
     t.text "p_employer_address"
     t.string "p_work_telephone_number"
     t.string "p_email"
+    t.boolean "admission_status"
+    t.string "reg_number"
+    t.string "level"
+    t.string "gender"
+    t.date "admission_date"
   end
 
   create_table "assessments", force: :cascade do |t|

@@ -1,106 +1,77 @@
-<div id="<%= dom_id admission %>">
-<h1>Students Information</h1>
-  <p>
-    <strong>Photo:</strong>
-    <% if @admission && @admission.photo.attached? %>
-      <%= image_tag @admission.photo, class: 'staff_photo' %>
-    <% else %>
-      <i class="fas fa-user student_photo"></i>
-    <% end %>
-  </p>
+<div class="main">
+  <p style="color: green"><%= notice %></p>
 
-  <p>
-    <strong>Firstname:</strong>
-    <%= admission.firstname %>
-  </p>
+  <table class="admission_table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Full Name</th>
+        <th>Date of Birth</th>
+        <th>Reg No</th>
+        <th>Class</th>
+        <th>Admission Date</th>
+        <th>Admission Status</th>
+        <th>Actions</th> <!-- Add a column for actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @admissions.each do |admission| %>
+        <tr>
+          <td>  
+            <p>
+              <% if admission.photo.attached? %>
+                <%= image_tag admission.photo, class: 'image_thumbnail' %>
+              <% else %>
+                <i class="fas fa-user image_thumbnail"></i>
+              <% end %>
+            </p>
+          </td>
 
-  <p>
-    <strong>Lastname:</strong>
-    <%= admission.lastname %>
-  </p>
+          <td>  
+            <p>
+              <%= "#{admission.firstname} #{admission.lastname}" %>
+            </p>
+          </td>
 
-  <p>
-    <strong>Other names:</strong>
-    <%= admission.other_names %>
-  </p>
+          <td>  
+            <p>
+              <%= admission.date_of_birth %>
+            </p>
+          </td>
 
-  <p>
-    <strong>Date of birth:</strong>
-    <%= admission.date_of_birth %>
-  </p>
+          <td>
+            <p>
+              <%= admission.reg_number %>
+            </p>
+          </td>
 
-  <p>
-    <strong>Country:</strong>
-    <%= admission.country %>
-  </p>
+          <td>
+            <p>
+              <%= admission.class %>
+            </p>
+          </td>
 
-  <p>
-    <strong>State:</strong>
-    <%= admission.state %>
-  </p>
+          <td>
+            <p>
+              <%= admission.admission_date %>
+            </p>
+          </td>
 
-  <p>
-    <strong>Lga:</strong>
-    <%= admission.lga %>
-  </p>
+          <td>
+            <p>
+              <%= admission.admission_status %>
+            </p>
+          </td>
 
-  <p>
-    <strong>Phone:</strong>
-    <%= admission.phone %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= admission.email %>
-  </p>
-  
-  <p>
-  <strong>Transcript:</strong>
-  <% if @admission.present? %>
-      <% if @admission.transcript.present? %>
-        <%= link_to 'Download Transcript', rails_blob_path(@admission.transcript) %>
-      <% else %>
-        No transcript uploaded.
+          <td>
+            <div>
+              <%= link_to "See Details", admission %> |
+              <%= link_to "Remove", admission, method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          </td>
+        </tr>
       <% end %>
-      <% else %>
-      Transcript not available.
-  <% end %>
-  </p>
-
-  <p>
-    <strong>Primary Language:</strong>
-    <%= admission.primary_language %>
-  </p>
-
-  <p>
-    <strong>Other Languages:</strong>
-    <%= admission.other_languages %>
-  </p>
-
-  <p>
-    <strong>Religion :</strong>
-    <%= admission.religion %>
-  </p>
-
-  <p>
-    <strong>Current School Name :</strong>
-    <%= admission.current_school_name %>
-  </p>
-
-  <p>
-    <strong>Type of School :</strong>
-    <%= admission.type_of_school %>
-  </p>
-
-  <p>
-    <strong>Current School Address :</strong>
-    <%= admission.current_school_address %>
-  </p>
-
+    </tbody>
+  </table>
 </div>
-
-<div>
-  <button type="button" class="show_parents">Show Parents</button>   
-</div>
-
 
