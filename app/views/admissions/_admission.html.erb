@@ -59,8 +59,13 @@
 
           <td>
             <p>
-              <%= admission.admission_status %>
+              <% if admission.admission_status.present? %>
+                <%= @admission.admission_status %>
+              <% else %>
+                Unconfirmed Admission
+              <% end %>
             </p>
+          
           </td>
 
           <td>
