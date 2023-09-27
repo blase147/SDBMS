@@ -64,6 +64,18 @@ class AdmissionsController < ApplicationController
     end
   end
 
+  # POST /admissions/1/toggle_status
+  def toggle_status
+    @admission = Admission.find(params[:id])
+    Rails.logger.debug("Before update: #{@admission}")
+    @admission.update(admission_status: !@admission.admission_status)
+    Rails.logger.debug("After update: #{@admission}")
+    redirect_to admissions_path, notice: 'Admission status was successfully changed.'
+  end
+  
+  
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -79,7 +91,7 @@ class AdmissionsController < ApplicationController
                                       :relationship_with_applicant, :p_full_name, :p_date_of_birth, :p_country_of_birth,:p_photo, 
                                       :p_title, :p_nationality, :p_occupation, :p_home_address, :p_mailing_address,
                                       :p_mobile_phone_number, :p_email, :p_employer_name, :p_employer_address, :p_work_telephone_number,
-                                      :p_email
+                                      :p_email, :admission_status
                                        )
   end
 end

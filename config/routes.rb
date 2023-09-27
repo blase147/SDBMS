@@ -24,6 +24,11 @@ devise_for :staffs, path: 'staffs', controllers: {
 
 
   resources :staffs 
+  resources :admissions do
+    member do
+      post 'toggle_status'
+    end
+  end  
   resources :manage_schools
   resources :events
   resources :visitors
@@ -39,8 +44,7 @@ devise_for :staffs, path: 'staffs', controllers: {
   resources :homeworks
   resources :correspondences
   resources :textbooks
-  resources :attendances
-  resources :admissions
+  resources :attendances 
   resources :recruitments
   resources :schools
   resources :tests
@@ -60,7 +64,8 @@ devise_for :staffs, path: 'staffs', controllers: {
    # Set the root path to your homepage view
    root 'homepage#homepage'
 
-  get '/homepage', to: 'homepage#homepage' 
+   post 'admissions/:id/toggle_status', to: 'admissions#toggle_status', as: 'toggle_status_admission_path'
+   get '/homepage', to: 'homepage#homepage' 
   get 'home_screen', to: 'dashboards#dashboard_home_screen', as: 'dashboard_home_screen'
   get '/students_portal', to: 'students#students_portal'
   get '/parents_portal', to: 'parents#parents_portal'

@@ -1,6 +1,4 @@
 <div class="main">
-  <p style="color: green"><%= notice %></p>
-
   <table class="admission_table">
     <thead>
       <tr>
@@ -47,7 +45,7 @@
 
           <td>
             <p>
-              <%= admission.class %>
+              <%= admission.level %>
             </p>
           </td>
 
@@ -58,13 +56,10 @@
           </td>
 
           <td>
-            <p>
-              <% if admission.admission_status.present? %>
-                <%= @admission.admission_status %>
-              <% else %>
-                Unconfirmed Admission
-              <% end %>
-            </p>
+          <p>
+            <%= admission.admission_status ? 'Confirmed' : 'Unconfirmed' %>
+          </p>
+        
           
           </td>
 
@@ -72,8 +67,8 @@
             <div class="record-container">
               <i class="fas fa-ellipsis-h ellips"></i>
               <div class="ellips_popup" style="display: none;" >
-                <p>Confirm Admission</p> 
-                <%= link_to "See Details", admission %> <br> <br>
+  `              <%= button_to "Toggle Status", toggle_status_admission_path(admission), method: :post %>
+`               <%= link_to "See Details", admission %> <br> <br>
                 <%= button_to "Remove", admission, method: :delete %>
               </div>
             </div>
