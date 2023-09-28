@@ -4,6 +4,8 @@ class AdmissionsController < ApplicationController
   # GET /admissions or /admissions.json
   def index
     @admissions = Admission.all
+    @admitted_students = Admission.where(admission_status: true)
+    # @admitted_students = Student.joins(:admission).where(admissions: { admission_status: true })
   end
 
   # GET /admissions/1 or /admissions/1.json

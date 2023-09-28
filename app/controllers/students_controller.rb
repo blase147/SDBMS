@@ -8,7 +8,10 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.all
+    # @students = Student.all
+    @admissions = Admission.all
+    @admitted_students = Admission.where(admission_status: true)
+    # @admitted_students = Student.joins(:admission).where(admissions: { admission_status: true })
   end
 
   # GET /students/1 or /students/1.json
@@ -24,9 +27,13 @@ class StudentsController < ApplicationController
 
   # POST /students or /students.json
   def create
-    @student = Student.new(student_params)
-
-    respond_to do |format|
+    # @student = Student.new(student_params)
+    admission = Admission.find_by(id: admission_id) # Find the admission you want to link to
+    student = Student.new(
+      # other attributes for the student
+      admission: admission # Link the student to the admission
+    )
+        respond_to do |format|
       if @student.save
         format.html { redirect_to student_url(@student), notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }

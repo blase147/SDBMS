@@ -6,6 +6,7 @@ class Staff < ApplicationRecord
  
   has_many :students
   belongs_to :department
+  belongs_to :classroom
   has_one_attached :photo
 
   rolify

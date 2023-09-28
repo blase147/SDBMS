@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_065803) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_171938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_065803) do
     t.text "p_employer_address"
     t.string "p_work_telephone_number"
     t.string "p_email"
-    t.boolean "admission_status", default: false
+    t.boolean "admission_status"
     t.string "reg_number"
     t.string "level"
     t.string "gender"
@@ -369,7 +369,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_065803) do
     t.string "state"
     t.string "lga"
     t.string "street"
-    t.string "class"
+    t.string "grade_level"
     t.string "admission_number"
     t.text "transcript"
     t.string "fathers_fullname"
@@ -379,6 +379,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_065803) do
     t.string "disability_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "admission_id", null: false
+    t.index ["admission_id"], name: "index_students_on_admission_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -422,4 +424,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_065803) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "staffs", "departments"
+  add_foreign_key "students", "admissions"
 end
