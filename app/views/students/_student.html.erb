@@ -1,99 +1,51 @@
-<div id="<%= dom_id admitted_students %>">
+<div id="<%= dom_id @student.admission %>">
   <p>
     <strong>Photo:</strong>
-    <%= admitted_students.photo %>
+    <%= image_tag @student.admission.photo %>
   </p>
 
-  <p>
-    <strong>Title:</strong>
-    <%= admitted_students.title %>
-  </p>
+
 
   <p>
     <strong>Firstname:</strong>
-    <%= admitted_students.firstname %>
+    <%= @student.admission.firstname %>
   </p>
 
   <p>
     <strong>Lastname:</strong>
-    <%= admitted_students.lastname %>
+    <%= @student.admission.lastname %>
   </p>
 
   <p>
-    <strong>Email:</strong>
-    <%= admitted_students.email %>
+    <strong>Grade Level:</strong>
+    <%= @student.admission.grade_level %>
   </p>
 
   <p>
-    <strong>Phone:</strong>
-    <%= admitted_students.phone %>
+  <strong>Classroom:</strong>
+  <%= @student.classroom.name %>
+</p>
+
+
+  <!-- Fields from the students table -->
+  <p>
+    <strong>Admission Number:</strong>
+    <%= @student.admission_number %>
   </p>
 
   <p>
-    <strong>Dateofbirth:</strong>
-    <%= admitted_students.dateofbirth %>
-  </p>
-
-  <p>
-    <strong>Country:</strong>
-    <%= admitted_students.country %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= admitted_students.state %>
-  </p>
-
-  <p>
-    <strong>Lga:</strong>
-    <%= admitted_students.lga %>
-  </p>
-
-  <p>
-    <strong>Street:</strong>
-    <%= admitted_students.street %>
-  </p>
-
-  <p>
-    <strong>Class:</strong>
-    <%= admitted_students.class %>
-  </p>
-
-  <p>
-    <strong>Admission number:</strong>
-    <%= admitted_students.admission_number %>
-  </p>
-
-  <p>
-    <strong>Transcript:</strong>
-    <%= admitted_students.transcript %>
-  </p>
-
-  <p>
-    <strong>Fathers fullname:</strong>
-    <%= admitted_students.fathers_fullname %>
-  </p>
-
-  <p>
-    <strong>Mothers fullname:</strong>
-    <%= admitted_students.mothers_fullname %>
-  </p>
-
-  <p>
-    <strong>Admission date:</strong>
-    <%= admitted_students.admission_date %>
+    <strong>Registration Date:</strong>
+    <%= @student.registration_date %>
   </p>
 
   <p>
     <strong>Disabilities:</strong>
-    <%= admitted_students.disabilities %>
+    <%= @student.disabilities %>
   </p>
 
   <p>
-    <strong>Disability type:</strong>
-    <%= admitted_students.disability_type %>
+    <strong>Disability Type:</strong>
+    <%= @student.disability_type %>
   </p>
 
 </div>
-
-

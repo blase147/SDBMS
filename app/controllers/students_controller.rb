@@ -10,39 +10,74 @@ class StudentsController < ApplicationController
   def index
     # @students = Student.all
     @admissions = Admission.all
+    @admitted_students = Student.joins(:admission).where(admissions: { admission_status: true })
     @admitted_students = Admission.where(admission_status: true)
-    # @admitted_students = Student.joins(:admission).where(admissions: { admission_status: true })
   end
 
   # GET /students/1 or /students/1.json
-  def show; end
-
-  # GET /students/new
-  def new
-    @student = Student.new
+  def show
+    @student = Student.find(params[:id])
+    @admitted_students = @student.admission if @student.admission&.admission_status
+    @admitted_student = Student.find(params[:id])
   end
+  
+
+# GET /students/new
+def new
+  @student = Student.new
+  @classrooms = Classroom.all
+
+  # Fetch admitted students
+  @admitted_students = Admission.where(admission_status: true).select(Arel.sql("CONCAT(admissions.firstname, ' ', admissions.lastname) AS fullname, admissions.id"))
+
+  # Fetch uncreated students (students without a user account)
+  @uncreated_students = Student.left_outer_joins(:admission).where(students: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
+
+  # Combine admitted and uncreated students into a single collection
+  @students_collection = @admitted_students + @uncreated_students
+end
+
+
+  
+  
 
   # GET /students/1/edit
   def edit; end
 
-  # POST /students or /students.json
-  def create
-    # @student = Student.new(student_params)
-    admission = Admission.find_by(id: admission_id) # Find the admission you want to link to
-    student = Student.new(
-      # other attributes for the student
-      admission: admission # Link the student to the admission
-    )
-        respond_to do |format|
-      if @student.save
-        format.html { redirect_to student_url(@student), notice: 'Student was successfully created.' }
-        format.json { render :show, status: :created, location: @student }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
+# POST /students or /students.json
+def create
+  @student = Student.new(student_params)
+
+  # Find the admission you want to link to
+  admission = Admission.find_by(id: params[:student][:admission_id])
+
+  # Link the student to the admission
+  @student.admission = admission
+
+  # Fetch admitted students
+  @admitted_students = Admission.where(admission_status: true).select(Arel.sql("CONCAT(admissions.firstname, ' ', admissions.lastname) AS fullname, admissions.id"))
+
+  # Fetch uncreated students (students without a user account)
+  @uncreated_students = Student.left_outer_joins(:admission).where(students: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
+
+  # Combine admitted and uncreated students into a single collection
+  @students_collection = @admitted_students + @uncreated_students
+
+   # Initialize the @classrooms variable
+   @classrooms = Classroom.all
+
+  respond_to do |format|
+    if @student.save
+      format.html { redirect_to student_url(@student), notice: 'Student was successfully created.' }
+      format.json { render :show, status: :created, location: @student }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @student.errors, status: :unprocessable_entity }
     end
   end
+end
+
+
 
   # PATCH/PUT /students/1 or /students/1.json
   def update
@@ -76,7 +111,6 @@ class StudentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def student_params
-    params.require(:student).permit(:photo, :title, :firstname, :lastname, :email, :phone, :dateofbirth, :country,
-                                    :state, :lga, :street, :class, :admission_number, :transcript, :fathers_fullname, :mothers_fullname, :admission_date, :disabilities, :disability_type)
+    params.require(:student).permit(:admission_number, :admission_date, :registration_date, :admission_id, :classroom_id, :disabilities, :disability_type)
   end
 end

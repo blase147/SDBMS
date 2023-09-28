@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_171938) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_224225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_171938) do
     t.string "p_email"
     t.boolean "admission_status"
     t.string "reg_number"
-    t.string "level"
+    t.string "grade_level"
     t.string "gender"
     t.date "admission_date"
   end
@@ -358,29 +358,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_171938) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "photo"
-    t.string "title"
-    t.string "firstname"
-    t.string "lastname"
-    t.string "email"
-    t.string "phone"
-    t.date "dateofbirth"
-    t.string "country"
-    t.string "state"
-    t.string "lga"
-    t.string "street"
-    t.string "grade_level"
     t.string "admission_number"
-    t.text "transcript"
-    t.string "fathers_fullname"
-    t.string "mothers_fullname"
-    t.date "admission_date"
+    t.date "registration_date"
     t.boolean "disabilities"
     t.string "disability_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admission_id", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.bigint "classroom_id", null: false
+    t.string "classroom"
     t.index ["admission_id"], name: "index_students_on_admission_id"
+    t.index ["classroom_id"], name: "index_students_on_classroom_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -425,4 +415,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_171938) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "staffs", "departments"
   add_foreign_key "students", "admissions"
+  add_foreign_key "students", "classrooms"
 end
