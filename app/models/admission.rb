@@ -4,6 +4,8 @@ class Admission < ApplicationRecord
   has_one_attached :photo
   has_one_attached :p_photo
   has_one_attached :transcript
+
+  attribute :admission_status, :boolean, default: false
   
   # Student validations
     validates :reg_number, presence: true

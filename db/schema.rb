@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_065803) do
     t.text "p_employer_address"
     t.string "p_work_telephone_number"
     t.string "p_email"
-    t.boolean "admission_status"
+    t.boolean "admission_status", default: false
     t.string "reg_number"
     t.string "level"
     t.string "gender"
