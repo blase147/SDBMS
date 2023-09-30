@@ -1,10 +1,60 @@
-<p style="color: green"><%= notice %></p>
+<div id="<%= dom_id @student %>">
+<p>
+<strong>Photo:</strong>
+<%= image_tag @student.admission.photo %>
+</p>
 
-<%= render @student %>
+
+
+<p>
+<strong>Firstname:</strong>
+<%= @student.admission.firstname %>
+</p>
+
+<p>
+<strong>Lastname:</strong>
+<%= @student.admission.lastname %>
+</p>
+
+<p>
+<strong>Grade Level:</strong>
+<%= @student.admission.grade_level %>
+</p>
+
+<p>
+<strong>Classroom:</strong>
+<%= @student.classroom.name %>
+</p>
+
+
+<!-- Fields from the students table -->
+<p>
+<strong>Admission Number:</strong>
+<%= @student.admission_number %>
+</p>
+
+<p>
+<strong>Registration Date:</strong>
+<%= @student.registration_date %>
+</p>
+
+<p>
+<strong>Disabilities:</strong>
+<%= @student.disabilities %>
+</p>
+
+<p>
+<strong>Disability Type:</strong>
+<%= @student.disability_type %>
+</p>
+
+</div>
 
 <div>
-  <%= link_to "Edit this student", edit_student_path(@student) %> |
+  <%= link_to "Edit this @student", edit_student_path(@student) %> |
   <%= link_to "Back to students", students_path %>
-
-  <%= button_to "Destroy this student", @student, method: :delete %>
+  <%= button_to "Destroy this @student", @student, method: :delete %>
 </div>
+
+
+

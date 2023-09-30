@@ -1,51 +1,37 @@
-<div id="<%= dom_id @student.admission %>">
-  <p>
-    <strong>Photo:</strong>
-    <%= image_tag @student.admission.photo %>
-  </p>
-
-
-
-  <p>
-    <strong>Firstname:</strong>
-    <%= @student.admission.firstname %>
-  </p>
-
-  <p>
-    <strong>Lastname:</strong>
-    <%= @student.admission.lastname %>
-  </p>
-
-  <p>
-    <strong>Grade Level:</strong>
-    <%= @student.admission.grade_level %>
-  </p>
-
-  <p>
-  <strong>Classroom:</strong>
-  <%= @student.classroom.name %>
-</p>
-
-
-  <!-- Fields from the students table -->
-  <p>
-    <strong>Admission Number:</strong>
-    <%= @student.admission_number %>
-  </p>
-
-  <p>
-    <strong>Registration Date:</strong>
-    <%= @student.registration_date %>
-  </p>
-
-  <p>
-    <strong>Disabilities:</strong>
-    <%= @student.disabilities %>
-  </p>
-
-  <p>
-    <strong>Disability Type:</strong>
-    <%= @student.disability_type %>
-  </p>
-
+<div class="main">
+  <table class="admission_table">
+    <thead>
+      <tr>
+        <th>Photo</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Grade Level</th>
+        <th>Classroom</th>
+        <th>Admission Number</th>
+        <th>Registration Date</th>
+        <th>Disabilities</th>
+        <th>Disability Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td>
+            <%= image_tag student.admission.photo, class: 'image_thumbnail' %>
+          </td>
+          <td><%= student.admission.firstname %></td>
+          <td><%= student.admission.lastname %></td>
+          <td><%= student.admission.grade_level %></td>
+          <td><%= student.classroom.name %></td>
+          <td><%= student.admission_number %></td>
+          <td><%= student.registration_date %></td>
+          <td><%= student.disabilities %></td>
+          <td><%= student.disability_type %></td>
+          <td>
+            <%= link_to "View Student's Details", student %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

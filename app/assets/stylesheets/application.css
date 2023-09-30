@@ -759,3 +759,7 @@ body::-webkit-scrollbar-thumb:hover {
   width: 180px;
   text-align: left;
 }
+
+.student_cont {
+width: 100%;
+}

@@ -8,19 +8,23 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    # @students = Student.all
-    @admissions = Admission.all
-    @admitted_students = Student.joins(:admission).where(admissions: { admission_status: true })
-    @admitted_students = Admission.where(admission_status: true)
+    @students = Student.all
+    @admitted_students = Student.where(admission_status: true)
+    # @students = Student.joins(:admission).where(admissions: { admission_status: true })
+    # @admitted_students = Student.where(admission_id: @student.admission_id, admission_status: true)
+  #  @admitted_students = @student.admission if @student.admission&.admission_status
   end
 
   # GET /students/1 or /students/1.json
-  def show
-    @student = Student.find(params[:id])
-    @admitted_students = @student.admission if @student.admission&.admission_status
-    @admitted_student = Student.find(params[:id])
-  end
-  
+# students_controller.rb
+
+def show
+  @student = Student.find(params[:id])
+  # @admitted_students = Student.where(admission_status: true)
+  @admitted_students = Student.where(admission_id: @student.admission_id, admission_status: true)
+  # @admitted_student = Student.find(params[:id])
+end
+
 
 # GET /students/new
 def new
@@ -31,7 +35,7 @@ def new
   @admitted_students = Admission.where(admission_status: true).select(Arel.sql("CONCAT(admissions.firstname, ' ', admissions.lastname) AS fullname, admissions.id"))
 
   # Fetch uncreated students (students without a user account)
-  @uncreated_students = Student.left_outer_joins(:admission).where(students: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
+  @uncreated_students = Student.left_outer_joins(:admission).where(admissions: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
 
   # Combine admitted and uncreated students into a single collection
   @students_collection = @admitted_students + @uncreated_students
