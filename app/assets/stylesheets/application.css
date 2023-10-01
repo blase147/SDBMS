@@ -763,3 +763,89 @@ body::-webkit-scrollbar-thumb:hover {
 .student_cont {
 width: 100%;
 }
+
+.show_cont {
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  /* background-color: red; */
+}
+
+.show_image {
+  width: 40%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.edit_delete_ellipsis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(9, 241, 114);
+  position: absolute;
+  top: 111px;
+  right: 29px;
+  width: 48px;
+  border-radius: 5%;
+  padding: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.edit_delete_cont {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  gap: 12px;
+  /* background-color: rgb(9, 241, 114); */
+  /* position: absolute;
+  top: 111px;
+  right: 29px;
+  width: 48px; */
+  border-radius: 5%;
+  padding: 10px;
+}
+
+.back_to_students {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(8, 11, 136);
+  color: rgb(255, 255, 255);
+  width: 48px;
+  border-radius: 5%;
+  /* padding: 10px; */
+}
+
+.show_header_links {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 38px;
+  right: 0px;
+  width: 100%;
+
+  /* background-color: brown; */
+}
+
+.show_cont_body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); */
+  /* background-color: red; */
+}
+
+
+.show_desc {
+  width: 60%;
+  margin-left: 30px;
+  /* background-color: blue; */
+}

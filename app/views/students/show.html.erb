@@ -1,60 +1,76 @@
-<div id="<%= dom_id @student %>">
-<p>
-<strong>Photo:</strong>
-<%= image_tag @student.admission.photo %>
-</p>
+<div class="show_header_links">
+  <div class="back_to_students">
+    <%= link_to students_path do %>
+      <i class="fas fa-arrow-left back_to_students"></i>
+    <% end %>
+  </div>
 
+  <div class="edit_delete_cont">
+    <%= link_to edit_admission_path(@student.admission) do %>
+      <i class="fas fa-edit"></i> <!-- Edit icon -->
+    <% end %>
 
-
-<p>
-<strong>Firstname:</strong>
-<%= @student.admission.firstname %>
-</p>
-
-<p>
-<strong>Lastname:</strong>
-<%= @student.admission.lastname %>
-</p>
-
-<p>
-<strong>Grade Level:</strong>
-<%= @student.admission.grade_level %>
-</p>
-
-<p>
-<strong>Classroom:</strong>
-<%= @student.classroom.name %>
-</p>
-
-
-<!-- Fields from the students table -->
-<p>
-<strong>Admission Number:</strong>
-<%= @student.admission_number %>
-</p>
-
-<p>
-<strong>Registration Date:</strong>
-<%= @student.registration_date %>
-</p>
-
-<p>
-<strong>Disabilities:</strong>
-<%= @student.disabilities %>
-</p>
-
-<p>
-<strong>Disability Type:</strong>
-<%= @student.disability_type %>
-</p>
-
+    <%= link_to @student.admission, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fas fa-trash"></i> <!-- Delete icon -->
+    <% end %>
+  </div>
 </div>
 
-<div>
-  <%= link_to 'Edit Admission', edit_admission_path(@student.admission) %>|
-  <%= link_to "Back to students", students_path %>
-  <%= button_to "Destroy this @student", @student.admission, method: :delete %>
-</div>
+<div class="show_cont" id="<%= dom_id @student %>">
+    <div class="show_cont_body">
 
+      
+      <%= image_tag @student.admission.photo, class:'show_image' %>
+
+    <div class="show_desc">
+      <p>
+        <strong>Firstname:</strong>
+        <%= @student.admission.firstname %>
+      </p>
+
+      <p>
+        <strong>Lastname:</strong>
+        <%= @student.admission.lastname %>
+      </p>   
+      
+      <p>
+        <strong>Gender:</strong>
+        <%= @student.admission.gender %>
+      </p>
+
+      <p>
+        <strong>Grade Level:</strong>
+        <%= @student.admission.grade_level %>
+      </p>
+
+      <p>
+        <strong>Classroom:</strong>
+        <%= @student.classroom.name %>
+      </p>
+
+
+      <!-- Fields from the students table -->
+      <p>
+        <strong>Admission Number:</strong>
+        <%= @student.admission_number %>
+      </p>
+
+      <p>
+        <strong>Registration Date:</strong>
+        <%= @student.registration_date %>
+      </p>
+
+      <p>
+        <strong>Disabilities:</strong>
+        <%= @student.disabilities %>
+      </p>
+
+      <p>
+        <strong>Disability Type:</strong>
+        <%= @student.disability_type %>
+      </p>
+    </div>
+  </div>
+</div>
 
 
