@@ -8,9 +8,9 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.all
-    @admitted_students = Student.where(admission_status: true)
-    # @students = Student.joins(:admission).where(admissions: { admission_status: true })
+    # @students = Student.all
+    # @admitted_students = Student.where(admission_status: true)
+    @students = Student.joins(:admission).where(admissions: { admission_status: true }).distinct
     # @admitted_students = Student.where(admission_id: @student.admission_id, admission_status: true)
   #  @admitted_students = @student.admission if @student.admission&.admission_status
   end
@@ -46,45 +46,101 @@ end
   
 
   # GET /students/1/edit
-  def edit; end
+  def edit
+    # Fetch admitted students
+    @admitted_students = Admission.where(admission_status: true).select(Arel.sql("CONCAT(admissions.firstname, ' ', admissions.lastname) AS fullname, admissions.id"))
+ 
+    # Find the admission you want to link to
+    # admission = Admission.find_by(id: params[:student][:admission_id])
+    
+    # Fetch uncreated students (students without a user account)
+    @uncreated_students = Student.left_outer_joins(:admission).where(students: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
+  
+    # Combine admitted and uncreated students into a single collection
+    @students_collection = @admitted_students + @uncreated_students
+  
+    # Initialize the @classrooms variable
+    @classrooms = Classroom.all
+  end
+  
 
 # POST /students or /students.json
 def create
-  @student = Student.new(student_params)
-
-  # Find the admission you want to link to
-  admission = Admission.find_by(id: params[:student][:admission_id])
-
-  # Link the student to the admission
-  @student.admission = admission
-
   # Fetch admitted students
   @admitted_students = Admission.where(admission_status: true).select(Arel.sql("CONCAT(admissions.firstname, ' ', admissions.lastname) AS fullname, admissions.id"))
 
-  # Fetch uncreated students (students without a user account)
-  @uncreated_students = Student.left_outer_joins(:admission).where(students: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
+  if @admitted_students.empty?
+    # Handle the case where there are no admitted students
+    flash[:alert] = "No admitted students found."
+    redirect_to new_student_path
+  else
+    # Fetch the first admitted student
+    @first_admitted_student = @admitted_students.first
 
-  # Combine admitted and uncreated students into a single collection
-  @students_collection = @admitted_students + @uncreated_students
+    # Extract unique attributes from the first admitted student and the form parameters
+    unique_attributes = {
+      admission_number: params[:student][:admission_number]
+    }
 
-   # Initialize the @classrooms variable
-   @classrooms = Classroom.all
+    # Check if a student with the same unique attributes already exists
+    existing_student = Student.find_by(unique_attributes)
 
-  respond_to do |format|
-    if @student.save
-      format.html { redirect_to student_url(@student), notice: 'Student was successfully created.' }
-      format.json { render :show, status: :created, location: @student }
+    if existing_student
+      # Display an error message indicating that the student already exists
+      flash[:notice] = "Student with the same details already exists."
+      redirect_to new_student_path
     else
-      format.html { render :new, status: :unprocessable_entity }
-      format.json { render json: @student.errors, status: :unprocessable_entity }
+      # Create a new student if no matching student is found
+      @student = Student.new(student_params)
+
+      # Find the admission you want to link to
+      admission = Admission.find_by(id: params[:student][:admission_id])
+
+      # Link the student to the admission
+      @student.admission = admission
+
+      # Fetch uncreated students (students without a user account)
+      @uncreated_students = Student.left_outer_joins(:admission).where(students: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
+
+      # Combine admitted and uncreated students into a single collection
+      @students_collection = @admitted_students + @uncreated_students
+
+      # Initialize the @classrooms variable
+      @classrooms = Classroom.all
+
+      respond_to do |format|
+        if @student.save
+          format.html { redirect_to student_url(@student), notice: 'Student was successfully created.' }
+          format.json { render :show, status: :created, location: @student }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @student.errors, status: :unprocessable_entity }
+        end
+      end
     end
   end
 end
 
 
 
+
   # PATCH/PUT /students/1 or /students/1.json
   def update
+          # Find the admission you want to link to
+          admission = Admission.find_by(id: params[:student][:admission_id])
+
+          # Link the student to the admission
+          @student.admission = admission
+    
+          # Fetch uncreated students (students without a user account)
+          @uncreated_students = Student.left_outer_joins(:admission).where(students: { id: nil }).select(Arel.sql("CONCAT(students.firstname, ' ', students.lastname) AS fullname, students.id AS id"))
+    
+          # Combine admitted and uncreated students into a single collection
+          @students_collection = @admitted_students + @uncreated_students
+    
+          # Initialize the @classrooms variable
+          @classrooms = Classroom.all
+    
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to student_url(@student), notice: 'Student was successfully updated.' }

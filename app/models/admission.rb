@@ -8,12 +8,11 @@ class Admission < ApplicationRecord
   attribute :admission_status, :boolean, default: false
   
   # Student validations
-  validates :reg_number, presence: true
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :other_names, presence: true
   validates :date_of_birth, presence: true
-  validates :level, presence: true
+  validates :grade_level, presence: true
   validates :admission_date, presence: true
   validates :country, presence: true
   validates :state, presence: true

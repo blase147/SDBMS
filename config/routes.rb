@@ -24,7 +24,7 @@ devise_for :staffs, path: 'staffs', controllers: {
 
 
   resources :staffs 
-  resources :admissions do
+  resources :admissions, only: [:index, :new, :create, :show, :edit, :update] do
     member do
       post 'toggle_status'
     end

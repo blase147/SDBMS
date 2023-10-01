@@ -1,5 +1,5 @@
 <div>
-<%= form_with(model: admission, url: admissions_path, html: { multipart: true }) do |form| %>
+<%= form_with(model: @admission, url: new_admission_path, html: { multipart: true }) do |form| %>
     <% if admission.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(admission.errors.count, "error") %> prohibited this admission from being saved:</h2>
@@ -15,18 +15,13 @@
     <h2>New Student</h2>
     <div class="grid_container">  
       <div class="grid_item">
-        <%= form.label :reg_number, "Reg Number" %>
-        <%= form.text_field :reg_number, required: true, style: "display: block" %>
-      </div>
-
-      <div class="grid_item">
-        <%= form.label :admission_date, "Admission Date *", style: "display: block" %>
+        <%= form.label :admission_date, "Application Date *", style: "display: block" %>
         <%= form.date_field :admission_date %>
       </div>
 
 
       <div class="grid_item">
-        <%= form.label :grade_level, "Applying For ?" %>
+        <%= form.label :grade_level, "Applying For ?" , style: "display: block"%>
         <%= form.select :grade_level, ["Creche","Prenursery","Nursery 1","Nursery 2","Nursery 3","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6"], prompt: "Select an option", required: true, style: "display: block" %>
       </div>
 
@@ -141,7 +136,7 @@
   </div><br>
 
   <div>
-    <%= form.submit "Submit" %>
+    <%= form.submit %>
   </div>
 
   <script>

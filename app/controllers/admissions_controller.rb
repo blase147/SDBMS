@@ -21,9 +21,6 @@ class AdmissionsController < ApplicationController
     # @admission.photo.attached(params[:admission][:photo])
   end
 
-  # GET /admissions/1/edit
-  def edit; end
-
   # POST /admissions or /admissions.json
   def create
     @admission = Admission.new(admission_params)
@@ -40,13 +37,18 @@ class AdmissionsController < ApplicationController
     end
   end
 
+  # GET /admissions/1/edit
+  def edit
+    @admission = Admission.find(params[:id])
+  end
+
   # PATCH/PUT /admissions/1 or /admissions/1.json
   def update
-    @admission.photo.attached(params[:admission][:photo])
+    @admission = Admission.find(params[:id])
 
     respond_to do |format|
       if @admission.update(admission_params)
-        format.html { redirect_to admission_url(@admission), notice: 'Admission was successfully updated.' }
+        format.html { redirect_to @admission, notice: 'Admission was successfully updated.' }
         format.json { render :show, status: :ok, location: @admission }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -76,21 +78,24 @@ class AdmissionsController < ApplicationController
     end
   end
   
-  
-  
-
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_admission
     @admission = Admission.find(params[:id])
+
+    if @admission.nil?
+      # Handle the case where the admission record is not found
+      flash[:alert] = "Admission record not found."
+      redirect_to admissions_path # Redirect to the index or another suitable page
+    end
+
   end
 
   # Only allow a list of trusted parameters through.
   def admission_params
-    params.require(:admission).permit(:reg_number, :firstname, :lastname, :other_names, :date_of_birth, :admission_date, :gender, :country, :state, :lga,
-                                      :phone, :email, :grade_level, :transcript, :photo, :primary_language, :other_languages, :religion, 
+    params.require(:admission).permit(:admission_date, :grade_level,  :firstname, :lastname, :other_names, :gender, :date_of_birth, :country, :state, :lga,
+                                      :phone, :email, :transcript, :photo, :primary_language, :other_languages, :religion, 
                                       :current_school_name, :type_of_school, :current_class_year, :current_school_address,
                                       :relationship_with_applicant, :p_full_name, :p_date_of_birth, :p_country_of_birth,:p_photo, 
                                       :p_title, :p_nationality, :p_occupation, :p_home_address, :p_mailing_address,

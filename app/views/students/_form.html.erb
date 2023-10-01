@@ -15,7 +15,7 @@
 
   <!-- Concatenate firstname and lastname as fullname -->
   <div>
-    <%= form.label :admission_id , style: "display: block" %>
+    <%= form.label :fullname , style: "display: block" %>
     <%= form.collection_select :admission_id, @students_collection, :id, :fullname %>
   </div>
 
