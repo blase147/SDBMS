@@ -12,40 +12,42 @@
   <% end %>
 
 
+  <div class="grid_container">  
 
-  <!-- Concatenate firstname and lastname as fullname -->
-  <div>
-    <%= form.label :fullname , style: "display: block" %>
-    <%= form.collection_select :admission_id, @students_collection, :id, :fullname %>
-  </div>
+    <!-- Concatenate firstname and lastname as fullname -->
+    <div class="grid_item">
+      <%= form.label :fullname , style: "display: block" %>
+      <%= form.collection_select :admission_id, @students_collection, :id, :fullname %>
+    </div>
 
-  <div>
-    <%= form.label :classroom, style: "display: block" %>
-    <%= form.collection_select :classroom_id, @classrooms, :id, :name %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :classroom, style: "display: block" %>
+      <%= form.collection_select :classroom_id, @classrooms, :id, :name %>
+    </div>
 
-  <div>
-    <%= form.label :admission_number, style: "display: block" %>
-    <%= form.text_field :admission_number %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :admission_number, style: "display: block" %>
+      <%= form.text_field :admission_number %>
+    </div>
 
-  <div>
-    <%= form.label :registration_date, style: "display: block" %>
-    <%= form.date_field :registration_date %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :registration_date, style: "display: block" %>
+      <%= form.date_field :registration_date %>
+    </div>
 
-  <div>
-    <%= form.label :disabilities, style: "display: block" %>
-    <%= form.check_box :disabilities %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :disabilities, style: "display: block" %>
+      <%= form.check_box :disabilities %>
+    </div>
 
-  <div>
-    <%= form.label :disability_type, style: "display: block" %>
-    <%= form.text_field :disability_type %>
-  </div>
+    <div class="grid_item">
+      <%= form.label :disability_type, style: "display: block" %>
+      <%= form.text_field :disability_type %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div>
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
 
