@@ -28,7 +28,14 @@
           <td><%= student.disabilities %></td>
           <td><%= student.disability_type %></td>
           <td>
-            <%= link_to "View Student's Details", student %>
+          <td>
+            <%= link_to student_path(student), class: 'btn btn-primary' do %>
+              <i class="fas fa-eye"></i>
+            <% end %>
+          </td>
+
+          
+  
           </td>
         </tr>
       <% end %>
