@@ -11,62 +11,101 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :school_name, "School Name:" %>
-    <%= form.text_field :school_name, required: true %>
-  </div><br>
+  <div class="grid_container">
+    <div class="grid_item">
+      <%= form.label :school_name, "School Name:" %>
+      <%= form.text_field :school_name, required: true %>
+    </div>
 
-  <div>
-    <%= form.label :school_logo, "School Logo:" %>
-    <%= form.file_field :school_logo, accept: "image/*", required: true %>
-  </div><br>
+    <div class="grid_item">
+      <%= form.label :school_logo, "School Logo:" %>
+      <%= form.file_field :school_logo, accept: "image/*", required: true %>
+    </div>
 
-  <div>
-  <%= form.label :school_photo, "School Photo:" %>
-  <%= form.file_field :school_photo, accept: "image/*", required: true %>
-</div><br>
-
-
-  <!-- Motto -->
-  <div>
-    <%= form.label :school_motto, "School Motto:" %>
-    <%= form.text_field :school_motto, required: true %>
-  </div><br>
-
-  <!-- Address -->
-  <div>
-    <%= form.label :school_address, "School Address:" %>
-    <%= form.text_field :school_address, required: true %>
-  </div><br>
-
-  <!-- Phone Number -->
-  <div>
-    <%= form.label :school_phone_number, "School Phone Number:" %>
-    <%= form.text_field :school_phone_number, required: true %>
-  </div><br>
-
-  <!-- Vision -->
-  <div>
-    <%= form.label :school_vision, "School Vision:" %>
-    <%= form.text_area :school_vision, rows: 4, required: true %>
-  </div><br>
-
-  <!-- Mission -->
-  <div>
-    <%= form.label :school_mission, "School Mission:" %>
-    <%= form.text_area :school_mission, rows: 4, required: true %>
-  </div><br>
+    <div class="grid_item">
+    <%= form.label :school_photo, "School Photo:" %>
+    <%= form.file_field :school_photo, accept: "image/*", required: true %>
+  </div>
 
 
+    <!-- Motto -->
+    <div class="grid_item">
+      <%= form.label :school_motto, "School Motto:" %>
+      <%= form.text_field :school_motto, required: true %>
+    </div>
 
-  <div>
-  <%= form.label :hos_signature, "HOS Signature:" %>
-  <%= form.file_field :hos_signature, accept: "image/*", required: true %>
-</div><br>
+    <!-- Address -->
+    <div class="grid_item">
+      <%= form.label :school_address, "School Address:" %>
+      <%= form.text_field :school_address, required: true %>
+    </div>
 
+    <!-- Phone Number -->
+    <div class="grid_item">
+      <%= form.label :school_phone_number, "School Phone Number:" %>
+      <%= form.text_field :school_phone_number, required: true %>
+    </div>
 
+    <!-- Vision -->
+    <div class="grid_item">
+      <%= form.label :school_vision, "School Vision:" %><br>
+      <%= form.text_area :school_vision, rows: 4, required: true %>
+    </div>
+
+    <!-- Mission -->
+    <div class="grid_item">
+      <%= form.label :school_mission, "School Mission:" %><br>
+      <%= form.text_area :school_mission, rows: 4, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :school_email, "School Email:" %>
+      <%= form.email_field :school_email, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :school_website, "School Website:" %>
+      <%= form.text_field :school_website, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :academic_session, "Academic Session:" %>
+      <%= form.text_field :academic_session, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :academic_session_start_date, "Academic Session Start Date:" %>
+      <%= form.date_field :academic_session_start_date, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :academic_session_end_date, "Academic Session End Date:" %>
+      <%= form.date_field :academic_session_end_date,  required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :term, "Term:" %>
+      <%= form.text_field :term, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :term_start_date, "Term Start Date:" %>
+      <%= form.date_field :term_start_date, required: true %>
+    </div>
+
+    <div class="grid_item">
+      <%= form.label :term_end_date, "Term End Date:" %>
+      <%= form.date_field :term_end_date, required: true %>
+    </div>
+
+    <div class="grid_item">
+    <%= form.label :hos_signature, "HOS Signature:" %>
+    <%= form.file_field :hos_signature, accept: "image/*", required: true %>
+  </div>
+  </div>
   <!-- Submit Button -->
   <div>
     <%= form.submit "Submit" %>
   </div>
+
 <% end %>

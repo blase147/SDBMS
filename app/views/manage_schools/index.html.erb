@@ -1,18 +1,32 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Manage schools</h1>
-
-<div id="manage_schools">
-<% @manage_schools.each do |manage_school| %>
-  <%= render manage_school %>
-  <div id="manage_schools" style="background-image: url('<%= rails_blob_path(manage_school.school_photo) %>');">
+<div>
   <div class="new_manage_school_cont">
     <%= link_to "New manage school", new_manage_school_path %>
 
-    <p>
-      <%= link_to "View school", manage_school %>
-    </p>
-    </div>
+    <% @manage_schools.each do |manage_school| %>    
+        <p>
+          <%= link_to "Edit this manage school", edit_manage_school_path(manage_school) %>
+        </p>
+    <% end %>
+    
+  </div>
 </div>
-<% end %>
+
+
+
+
+<div id="manage_schools">
+  <% @manage_schools.each do |manage_school| %>
+    <% if manage_school.school_photo.attached? %>
+      <div class="manage-school" style="background-image: url('<%= rails_blob_path(manage_school.school_photo) %>');">
+        <%= render manage_school %>
+      </div>
+    <% else %>
+      <!-- Handle the case where school_photo is not attached for this manage_school -->
+      <!-- You can display a placeholder image or some other content -->
+    <% end %>
+  <% end %>
 </div>
+

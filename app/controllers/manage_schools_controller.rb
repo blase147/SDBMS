@@ -4,6 +4,7 @@ class ManageSchoolsController < ApplicationController
   # GET /manage_schools or /manage_schools.json
   def index
     @manage_schools = ManageSchool.all
+    @manage_school = ManageSchool.find_by(id: params[:id])
   end
 
   # GET /manage_schools/1 or /manage_schools/1.json
@@ -31,7 +32,7 @@ class ManageSchoolsController < ApplicationController
         format.json { render :show, status: :created, location: @manage_school }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @manage_school.errors, status: :unprocessable_entity }
+        format.json { render json: @manage_schools.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,7 +45,7 @@ class ManageSchoolsController < ApplicationController
         format.json { render :show, status: :ok, location: @manage_school }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @manage_school.errors, status: :unprocessable_entity }
+        format.json { render json: @manage_schools.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,7 +69,9 @@ class ManageSchoolsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def manage_school_params
-    params.require(:manage_school).permit(:school_name, :school_logo, :school_photo, :school_motto, :school_address, :school_name, :school_vision, :school_mission, :hos_signature)
+    params.require(:manage_school).permit(:school_name, :school_logo, :school_photo, :school_motto, :school_address, 
+    :school_email, :school_phone_number, :school_website, :academic_session, :academic_session_start_date, :academic_session_end_date,
+    :term, :term_start_date, :term_end_date, :school_name, :school_vision, :school_mission, :academic_session, :hos_signature)
   end
 
   def set_school_logo

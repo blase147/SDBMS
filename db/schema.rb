@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_01_201405) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_141248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -207,6 +207,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_201405) do
     t.text "school_mission"
     t.binary "school_photo"
     t.binary "hos_signature"
+    t.string "academic_session"
+    t.date "academic_session_start_date"
+    t.date "academic_session_end_date"
+    t.string "term"
+    t.date "term_start_date"
+    t.date "term_end_date"
+    t.string "school_email"
+    t.string "school_website"
   end
 
   create_table "parents", force: :cascade do |t|
