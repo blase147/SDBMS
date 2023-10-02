@@ -2,7 +2,6 @@
   <% if attendance.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
-
       <ul>
         <% attendance.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,36 +9,53 @@
       </ul>
     </div>
   <% end %>
+ 
+    <table class="classroom_table">
+      <tr>
+        <th>Photo</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Other names</th>
+        <th>Phone number</th>
+        <th>Admission number</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Presence</th>
+        <th colspan="2">Health Condition</th>
+        <th>Arrival Time</th>
+        <th>Departure Time</th>
+      </tr>
 
-  <div>
-    <%= form.label :firstname, style: "display: block" %>
-    <%= form.text_field :firstname %>
-  </div>
+      <tbody class="responsive_text">
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= image_tag student.admission.photo, class:'image_thumbnail' %></td> 
+          
+          <td><%= student.admission.firstname %></td>
 
-  <div>
-    <%= form.label :lastname, style: "display: block" %>
-    <%= form.text_field :lastname %>
-  </div>
+          <td><%= student.admission.lastname %></td>
 
-  <div>
-    <%= form.label :other_names, style: "display: block" %>
-    <%= form.text_field :other_names %>
-  </div>
+          <td><%= student.admission.other_names %></td>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
-  </div>
+          <td><%= student.admission.phone %></td>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+          <td><%= student.admission_number %></td>
 
-  <div>
-    <%= form.label :photo, style: "display: block" %>
-    <%= form.text_field :photo %>
-  </div>
+          <td><%= student.admission.date_of_birth %></td>
+
+          <td><%= student.admission.gender %></td>
+          
+          <td><%= form.check_box :presence %></td>
+          
+          <td colspan="2" class="special_width"><%= form.text_area :health_condition, class:'special_width' %></td>
+
+          <td><%= form.time_field :arrival_time, class:'special_width' %></td>
+
+          <td><%= form.time_field :departure_time, class:'special_width' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
   <div>
     <%= form.submit %>

@@ -1,14 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Subjects</h1>
-
-<div id="subjectsts">
-  <% @subjects.each do |subject| %>
-    <%= render subject %>
-    <p>
-      <%= link_to "Show this subject", subject %>
-    </p>
-  <% end %>
+<div class="new_btn_cont">
+  <%= link_to "New subject", new_subject_path, class:'new_btn' %>
 </div>
 
-<%= link_to "New subject", new_subject_path %>
+<div id="subjectsts">
+    <%= render partial: "subject", locals: { subject: @subject } %>
+</div>
+

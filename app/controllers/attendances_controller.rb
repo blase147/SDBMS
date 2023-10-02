@@ -4,22 +4,43 @@ class AttendancesController < ApplicationController
   # GET /attendances or /attendances.json
   def index
     @attendances = Attendance.all
+    @students = Student.joins(:admission).where(admissions: { admission_status: true })
+    # @attendance = Attendance.new
+    @attendance = Attendance.find_or_create_by(completed_at: Date.today)
+
+    # Assuming you have a way to determine whether a student is absent or present
+    absent_students_count = @students.select { |student| student.presence }.count
+    present_students_count = @students.count - absent_students_count
+
+    # Pass these counts to your view
+    @absent_students_count = absent_students_count
+    @present_students_count = present_students_count
   end
 
   # GET /attendances/1 or /attendances/1.json
-  def show; end
+  def show
+    @attendance = Attendance.find(params[:id])
+    @students = Student.joins(:admission).where(admissions: { admission_status: true })
+  end
 
   # GET /attendances/new
   def new
     @attendance = Attendance.new
+    @students = Student.joins(:admission).where(admissions: { admission_status: true })
   end
 
   # GET /attendances/1/edit
-  def edit; end
+  def edit
+    # @attendance = Attendance.new
+    @attendance = Attendance.find(params[:id])
+    @students = Student.joins(:admission).where(admissions: { admission_status: true })
+  end
 
   # POST /attendances or /attendances.json
   def create
     @attendance = Attendance.new(attendance_params)
+    @students = Student.all
+    @attendance.completed_at = Time.now
 
     respond_to do |format|
       if @attendance.save
@@ -64,6 +85,6 @@ class AttendancesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def attendance_params
-    params.require(:attendance).permit(:firstname, :lastname, :other_names, :phone, :email, :photo)
+    params.require(:attendance).permit(:created_at, :presence, :health_condition, :arrival_time, :departure_time )
   end
 end

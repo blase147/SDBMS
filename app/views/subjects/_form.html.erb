@@ -11,10 +11,23 @@
     </div>
   <% end %>
 
+  <div class="grid_item">
+  <%= form.label :grade_level, "Grade Level" , style: "display: block"%>
+  <%= form.select :grade_level, ["Creche","Prenursery","Nursery 1","Nursery 2","Nursery 3","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6"], prompt: "Select an option", required: true, style: "display: block" %>
+</div>
+
+
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
+
+  <div>
+    <%= form.label :subject_code, "Subject Code", style: "display: block" %>
+    <%= form.text_field :subject_code %>
+  </div>
+
+
 
   <div>
     <%= form.submit %>

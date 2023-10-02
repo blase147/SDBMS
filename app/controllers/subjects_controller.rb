@@ -7,7 +7,11 @@ class SubjectsController < ApplicationController
   end
 
   # GET /subjects/1 or /subjects/1.json
-  def show; end
+  def show
+    @subject = Subject.find(params[:id]) # Load a specific subject by its ID
+    @subjects = Subject.all # Load all subjects (if needed)
+  end
+  
 
   # GET /subjects/new
   def new
@@ -16,7 +20,9 @@ class SubjectsController < ApplicationController
   end
 
   # GET /subjects/1/edit
-  def edit; end
+  def edit
+    @subject = Subject.find(params[:id])
+  end
 
   # POST /subjects or /subjects.json
   def create
@@ -65,6 +71,6 @@ class SubjectsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def subject_params
-    params.require(:subject).permit(:name)
+    params.require(:subject).permit(:name, :grade_level, :subject_code)
   end
 end

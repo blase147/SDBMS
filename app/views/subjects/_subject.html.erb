@@ -1,7 +1,30 @@
-<div id="<%= dom_id subject %>">
-  <p>
-    <strong>Name:</strong>
-    <%= subject.name %>
-  </p>
-
+<div class="main">
+  <table class="classroom_table">
+    <tr>
+      <th>Grade Level</th>
+      <th>Name</th>
+      <th>Subject Code</th>
+      <th>Details</th>
+    </tr>
+    <tbody>
+      <% @subjects.each do |subject| %>
+        <tr>
+          <td><%= subject.grade_level %></td>
+          <td><%= subject.name %></td>
+          <td><%= subject.subject_code %></td>
+          <td>
+            <div class="edit_delete_cont">
+            <%= link_to edit_subject_path(subject) do %>
+              <i class="fas fa-edit"></i> <!-- Edit icon -->
+            <% end %>
+        
+            <%= link_to @subject, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="fas fa-trash"></i> <!-- Delete icon -->
+            <% end %>
+          </div>
+         </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

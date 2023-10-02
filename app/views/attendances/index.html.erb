@@ -1,14 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Attendances</h1>
-
-<div id="attendances">
-  <% @attendances.each do |attendance| %>
-    <%= render attendance %>
-    <p>
-      <%= link_to "Show this attendance", attendance %>
-    </p>
-  <% end %>
+<div class="new_btn_cont">
+  <%= link_to "New attendance", new_attendance_path, class:'new_btn' %>
 </div>
 
-<%= link_to "New attendance", new_attendance_path %>
+<div id="attendances">
+  <%= render partial: "attendance", locals: { attendance: @attendance } %>
+</div>
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_02_141248) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_200735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,14 +95,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_141248) do
   end
 
   create_table "attendances", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "other_names"
-    t.string "phone"
-    t.string "email"
-    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "presence"
+    t.text "health_condition"
+    t.time "arrival_time"
+    t.time "departure_time"
+    t.datetime "completed_at"
   end
 
   create_table "classrooms", force: :cascade do |t|
@@ -389,6 +388,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_141248) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "grade_level"
+    t.string "subject_code"
   end
 
   create_table "tests", force: :cascade do |t|

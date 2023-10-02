@@ -852,13 +852,23 @@ width: 100%;
 
 .classroom_table {
   width: 100%;
-  table-layout: fixed; /* Add this line to set the table layout to fixed */
+  table-layout: fixed;
+  border-collapse: collapse; /* Add this line for better cell spacing */
 }
 
-/* You can also style individual table cells if needed */
+/* Set a fixed width for all table cells */
 .classroom_table th, .classroom_table td {
   text-align: left;
-  padding: 8px; /* Adjust padding as needed */
-  border: 1px solid #ccc; /* Add borders for better visual separation */
+  padding: 8px;
+  border: 1px solid #ccc;
   text-align: center;
+  text-wrap: wrap;
+  word-wrap: break-word;
+  font-size: 0.72em;
+  width: calc(100% / 12); /* Divide by the number of columns in your table */
+}
+
+.special_width {
+  width: 100%; 
+  /* background-color: red; */
 }
