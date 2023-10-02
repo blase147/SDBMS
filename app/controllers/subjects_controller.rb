@@ -12,6 +12,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @subject = Subject.new
+    @grade_level = Grade.all
   end
 
   # GET /subjects/1/edit

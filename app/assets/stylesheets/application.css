@@ -849,3 +849,16 @@ width: 100%;
   margin-left: 30px;
   /* background-color: blue; */
 }
+
+.classroom_table {
+  width: 100%;
+  table-layout: fixed; /* Add this line to set the table layout to fixed */
+}
+
+/* You can also style individual table cells if needed */
+.classroom_table th, .classroom_table td {
+  text-align: left;
+  padding: 8px; /* Adjust padding as needed */
+  border: 1px solid #ccc; /* Add borders for better visual separation */
+  text-align: center;
+}

@@ -11,6 +11,7 @@
         <th>Registration Date</th>
         <th>Disabilities</th>
         <th>Disability Type</th>
+        <th>Details</th>
       </tr>
     </thead>
     <tbody>
@@ -28,14 +29,9 @@
           <td><%= student.disabilities %></td>
           <td><%= student.disability_type %></td>
           <td>
-          <td>
             <%= link_to student_path(student), class: 'btn btn-primary' do %>
               <i class="fas fa-eye"></i>
             <% end %>
-          </td>
-
-          
-  
           </td>
         </tr>
       <% end %>

@@ -6,7 +6,6 @@ class Staff < ApplicationRecord
  
   has_many :students
   belongs_to :department
-  belongs_to :classroom
   has_one_attached :photo
 
   rolify
@@ -27,4 +26,9 @@ class Staff < ApplicationRecord
   validates :lga, presence: true
   validates :hire_date, presence: true
   validates :photo, presence: true
+  validates :teacher, inclusion: { in: [true, false] } 
+
+  def full_name
+    "#{firstname} #{lastname}"
+  end
 end

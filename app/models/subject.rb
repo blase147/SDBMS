@@ -1,3 +1,3 @@
-class Subjects < ApplicationRecord
-  belongs_to :student
+class Subject < ApplicationRecord
+  # belongs_to :student
 end

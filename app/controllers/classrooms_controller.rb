@@ -12,14 +12,20 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new
   def new
     @classroom = Classroom.new
+    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS fullname, Staffs.id"))
   end
-
+    
+    
   # GET /classrooms/1/edit
-  def edit; end
+  def edit
+    @classroom = Classroom.find(params[:id])
+    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS fullname, Staffs.id"))
+  end
 
   # POST /classrooms or /classrooms.json
   def create
     @classroom = Classroom.new(classroom_params)
+    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS fullname, Staffs.id"))
 
     respond_to do |format|
       if @classroom.save
@@ -64,6 +70,6 @@ class ClassroomsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def classroom_params
-    params.require(:classroom).permit(:name)
+    params.require(:classroom).permit(:name, :grade_level, :size, :assign_teacher, :staff_id)
   end
 end

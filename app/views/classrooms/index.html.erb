@@ -1,14 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Classrooms</h1>
-
-<div id="classrooms">
-  <% @classrooms.each do |classroom| %>
-    <%= render classroom %>
-    <p>
-      <%= link_to "Show this classroom", classroom %>
-    </p>
-  <% end %>
+<div class="new_btn_cont">
+  <%= link_to "New classroom", new_classroom_path, class:'new_btn'  %>
 </div>
 
-<%= link_to "New classroom", new_classroom_path %>
+<div id="classrooms">
+<%= render partial: "classroom", locals: { classroom: @classrooms } %>
+</div>
+
+

@@ -101,7 +101,12 @@
     <%= form.file_field :photo %>
   </div>
 
-  </fieldset>
+  <div class="field">
+    <%= form.label :teacher, style: "display: block" %>
+    <%= form.check_box :teacher %>
+  </div>
+
+</fieldset>
 
   <fieldset class="staff_login_form">
   <div class="field">
@@ -121,6 +126,12 @@
     <%= form.label :password_confirmation %><br />
     <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
+  <div class="field">
+    <%= form.label :teacher, style: "display: block" %>
+    <%= form.check_box :teacher %>
+  </div>
+
   </fieldset>
 
 

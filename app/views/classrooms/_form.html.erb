@@ -10,11 +10,28 @@
       </ul>
     </div>
   <% end %>
+<div class="grid_container">
+  <div class="grid_item">
+    <%= form.label :grade_level , style: "display: block" %>
+    <%= form.select :grade_level,["Creche","Prenursery","Nursery 1","Nursery 2","Nursery 3","Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6"], prompt: "Select an option", required: true, style: "display: block" %>
+  </div>
 
-  <div>
+  <div class="grid_item">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
+
+  <div class="grid_item">
+    <%= form.label :size, style: "display: block" %>
+    <%= form.text_field :size %>
+  </div>
+</div>
+
+<div class="grid_item">
+  <%= form.label :assign_teacher, style: "display: block" %>
+  <%= form.collection_select :assign_teacher, @teachers, :id, :fullname, prompt: "Select a teacher", style: "display: block" %>
+</div><br>
+
 
   <div>
     <%= form.submit %>

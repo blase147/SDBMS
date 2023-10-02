@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
   has_many  :parents
   belongs_to :classroom
+  # has_one :classroom
   belongs_to :admission
   has_many :subjects, dependent: :destroy
   has_many :tests, dependent: :destroy

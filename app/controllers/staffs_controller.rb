@@ -22,6 +22,7 @@ class StaffsController < ApplicationController
   # GET /staffs/1/edit
   def edit
     @staff = Staff.find(params[:id])
+    @departments = Department.all
   end
   
 
@@ -48,6 +49,8 @@ end
 
 # PATCH/PUT /staffs/1 or /staffs/1.json
 def update
+  @departments = Department.all
+
   respond_to do |format|
     if @staff.update(staff_params)
       # Ensure that roles are selected
@@ -88,7 +91,9 @@ end
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to staffs_path, notice: "You are not authorized to perform this action."
   end
+  
   private
+
 
   # Use callbacks to share common setup or constraints between actions.
   def set_staff
