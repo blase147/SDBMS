@@ -1,12 +1,67 @@
-<p style="color: green"><%= notice %></p>
+<div class="attendance_index_cont">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Attendances</h1>
-<div class="new_btn_cont">
-  <%= link_to "New attendance", new_attendance_path, class:'new_btn' %>
+  <h1>Attendances</h1>
+  <div class="new_btn_cont">
+    <%= link_to "New attendance", new_attendance_path, class: 'new_btn' %>
+  </div>
+
+  <% @attendances.each do |attendance| %>
+
+    <% if @attendance && @attendance.completed_at %>
+
+      <div>
+      <p>Attendance for: <%= attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
+
+        <p>Number of students absent today: <%= @absent_students_count %> | Number of students present today: <%= @present_students_count %></p>
+        <table class="classroom_table">
+          <tr>
+            <th>Photo</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Other names</th>
+            <th>Phone number</th>
+            <th>Admission number</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Presence</th>
+            <th>Health Condition</th>
+            <th>Arrival Time</th>
+            <th>Departure Time</th>
+          </tr>
+
+          <tbody class="responsive_text">
+            <% @students.each do |student| %>
+              <tr>
+                <td><%= image_tag student.admission.photo, class: 'image_thumbnail' %></td>
+                <td><%= student.admission.firstname %></td>
+                <td><%= student.admission.lastname %></td>
+                <td><%= student.admission.other_names %></td>
+                <td><%= student.admission.phone %></td>
+                <td><%= student.admission_number %></td>
+                <td><%= student.admission.date_of_birth %></td>
+                <td><%= student.admission.gender %></td>
+                
+                  <td>
+                    <%= attendance.presence %>
+                  </td>
+
+                  <td>
+                    <%= attendance.health_condition %>
+                  </td>
+
+                  <td>
+                    <%= attendance.arrival_time.strftime("%I:%M %p") %>
+                  </td>
+
+                  <td>
+                    <%= attendance.departure_time.strftime("%I:%M %p")  %>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div> <br><br>
+    <% end %>
+  <% end %>
 </div>
-
-<div id="attendances">
-  <%= render partial: "attendance", locals: { attendance: @attendance } %>
-</div>
-
-

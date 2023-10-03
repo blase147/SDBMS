@@ -10,6 +10,8 @@
     </div>
   <% end %>
  
+    <%= form.label :Add_date_and_timestamp, style: "display: block" %>
+    <%= form.datetime_field :completed_at, class:'special_width' %>
     <table class="classroom_table">
       <tr>
         <th>Photo</th>
@@ -52,6 +54,9 @@
           <td><%= form.time_field :arrival_time, class:'special_width' %></td>
 
           <td><%= form.time_field :departure_time, class:'special_width' %></td>
+          
+          <!-- Add a hidden input field to store the student_id -->
+          <%= form.hidden_field :student_id, value: student.id %>
         </tr>
         <% end %>
       </tbody>

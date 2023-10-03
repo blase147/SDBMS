@@ -3,3 +3,8 @@
 <%= render partial: "attendance", locals: { attendance: @attendance } %>
 
 <%= link_to "Back to attendances", attendances_path %>
+
+<div>
+  <%= link_to "Edit", edit_attendance_path(@attendance) %> |
+  <%= button_to "Destroy this attendance", @attendance, method: :delete %>
+</div>

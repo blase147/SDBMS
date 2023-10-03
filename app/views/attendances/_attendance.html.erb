@@ -1,8 +1,6 @@
 <div>
-<p>Attendance for: 
-    <%= attendance.completed_at.strftime("%Y-%m-%d %H:%M:%S") if @attendance.completed_at %>
-    </p>
-
+<% if @attendance && @attendance.completed_at %>
+  <p>Attendance for: <%= @attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
   <p>Number of students Absent: <%= @absent_students_count %> | Number of students present: <%= @present_students_count %></p><br>
     <table class="classroom_table">
       <tr>
@@ -21,60 +19,49 @@
       </tr>
 
       <tbody class="responsive_text">
-      <% @students.each do |student| %>
-        <tr>
-          <td><%= image_tag student.admission.photo, class:'image_thumbnail' %></td> 
-          
-          <td><%= student.admission.firstname %></td>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%= image_tag student.admission.photo, class: 'image_thumbnail' %></td>
 
-          <td><%= student.admission.lastname %></td>
+            <td><%= student.admission.firstname %></td>
+            <td><%= student.admission.lastname %></td>
+            <td><%= student.admission.other_names %></td>
+            <td><%= student.admission.phone %></td>
+            <td><%= student.admission_number %></td>
+            <td><%= student.admission.date_of_birth %></td>
+            <td><%= student.admission.gender %></td>
 
-          <td><%= student.admission.other_names %></td>
+            <td><%= @attendance.presence if @attendance %></td>
 
-          <td><%= student.admission.phone %></td>
+            <td>
+              <% if @attendance.present? %>
+                <%= @attendance.health_condition %>
+              <% else %>
+                No health record
+              <% end %>
+            </td>
 
-          <td><%= student.admission_number %></td>
+            <td>
+              <% if @attendance %>
+                <%= @attendance.arrival_time %>
+              <% else %>
+                No record
+              <% end %>
+            </td>
 
-          <td><%= student.admission.date_of_birth %></td>
-
-          <td><%= student.admission.gender %></td>
-          
-          <td><%= @attendance.presence %></td>
-          
-          <td>
-            <% if @attendance.present? %>
-              <%= @attendance.health_condition %>
-            <% else %>
-              No health record 
-            <% end %>
-          </td>
-
-          <td>
-            <% if @attendance.present? %>
-              <%= @attendance.arrival_time %>
-            <% else %>
-              No record 
-            <% end %>
-          </td>
-
-          <td>
-            <% if @attendance.present? %>
-              <%= @attendance.departure_time %>
-            <% else %>
-              No record 
-            <% end %>
-          </td>
-        </tr>
+            <td>
+              <% if @attendance %>
+                <%= @attendance.departure_time %>
+              <% else %>
+                No record
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
 
-    <div>
-    <%= link_to "Edit Attendance", edit_attendance_path(@attendance) %> |
-    <%= button_to "Destroy this Attendance", attendance_path(@attendance), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div><br>
+  <% else %>
+    <p>Attendance has not been created yet.</p>
+  <% end %>
 </div>
-
-
-
-

@@ -3,19 +3,29 @@ class AttendancesController < ApplicationController
 
   # GET /attendances or /attendances.json
   def index
-    @attendances = Attendance.all
+    @attendances = Attendance.all.order(completed_at: :desc)
     @students = Student.joins(:admission).where(admissions: { admission_status: true })
-    # @attendance = Attendance.new
+    
+    # Find or create an attendance record for today
     @attendance = Attendance.find_or_create_by(completed_at: Date.today)
-
-    # Assuming you have a way to determine whether a student is absent or present
-    absent_students_count = @students.select { |student| student.presence }.count
-    present_students_count = @students.count - absent_students_count
-
+  
+    # Calculate the number of students present and absent
+    present_students_count = @attendances.where(presence: true).count
+    absent_students_count =  @attendances.where(presence: false).count
+  
     # Pass these counts to your view
     @absent_students_count = absent_students_count
     @present_students_count = present_students_count
+
+      # Calculate the number of male and female students
+    male_students_count = @students.where(admissions: { gender: 'Male' }).count
+    female_students_count = @students.where(admissions: { gender: 'Female' }).count
+
+    # Pass these counts to your view
+    @male_students_count = male_students_count
+    @female_students_count = female_students_count
   end
+  
 
   # GET /attendances/1 or /attendances/1.json
   def show
@@ -36,24 +46,37 @@ class AttendancesController < ApplicationController
     @students = Student.joins(:admission).where(admissions: { admission_status: true })
   end
 
-  # POST /attendances or /attendances.json
-  def create
-    @attendance = Attendance.new(attendance_params)
-    @students = Student.all
-    @attendance.completed_at = Time.now
+# POST /attendances or /attendances.json
+def create
+  @attendance = Attendance.new(attendance_params)
+  @students = Student.all
+  student_id = params[:attendance][:student_id]
+  
+  # Find the student by ID
+  @student = Student.find_by(id: student_id)
+  
+  if @student.nil?
+    # Handle the case where the student is not found
+    flash[:notice] = 'Student not found'
+    redirect_to new_attendance_path
+    return
+  end
+  
+  # Associate the found student with the attendance record
+  @attendance.student = @student
 
-    respond_to do |format|
-      if @attendance.save
-        format.html { redirect_to attendance_url(@attendance), notice: 'Attendance was successfully created.' }
-        format.json { render :show, status: :created, location: @attendance }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-      end
+  respond_to do |format|
+    if @attendance.save
+      format.html { redirect_to attendance_url(@attendance), notice: 'Attendance was successfully created.' }
+      format.json { render :show, status: :created, location: @attendance }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @attendance.errors, status: :unprocessable_entity }
     end
   end
+end
 
-  # PATCH/PUT /attendances/1 or /attendances/1.json
+# PATCH/PUT /attendances/1 or /attendances/1.json
   def update
     respond_to do |format|
       if @attendance.update(attendance_params)
@@ -85,6 +108,6 @@ class AttendancesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def attendance_params
-    params.require(:attendance).permit(:created_at, :presence, :health_condition, :arrival_time, :departure_time )
+    params.require(:attendance).permit(:student_id, :completed_at, :presence, :health_condition, :arrival_time, :departure_time )
   end
 end

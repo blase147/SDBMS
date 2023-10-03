@@ -6,4 +6,5 @@
 //= require user-toggle.js
 //= admission_toggle_ellpsis.js
 //= require edit_delete-toggle.js
+//= require class_attendance.js
 

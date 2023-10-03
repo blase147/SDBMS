@@ -872,3 +872,7 @@ width: 100%;
   width: 100%; 
   /* background-color: red; */
 }
+
+.attendance_index_cont {
+  margin-bottom: 80px;
+}

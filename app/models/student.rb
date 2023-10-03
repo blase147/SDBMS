@@ -3,6 +3,7 @@ class Student < ApplicationRecord
   belongs_to :classroom
   # has_one :classroom
   belongs_to :admission
+  has_many :attendances, dependent: :destroy
   has_many :subjects, dependent: :destroy
   has_many :tests, dependent: :destroy
   has_many :exams, dependent: :destroy
