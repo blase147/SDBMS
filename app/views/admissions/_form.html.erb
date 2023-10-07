@@ -1,5 +1,5 @@
 <div>
-<%= form_with(model: @admission, url: new_admission_path, html: { multipart: true }) do |form| %>
+<%= form_with(model: @admission, url: admissions_path, method: :post, html: { multipart: true }) do |form| %>
     <% if admission.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(admission.errors.count, "error") %> prohibited this admission from being saved:</h2>

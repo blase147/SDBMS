@@ -44,7 +44,7 @@ devise_for :staffs, path: 'staffs', controllers: {
   resources :homeworks
   resources :correspondences
   resources :textbooks
-  resources :attendances 
+  resources :attendances
   resources :recruitments
   resources :schools
   resources :tests

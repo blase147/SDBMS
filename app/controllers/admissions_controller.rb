@@ -24,7 +24,7 @@ class AdmissionsController < ApplicationController
   # POST /admissions or /admissions.json
   def create
     @admission = Admission.new(admission_params)
-    @admission.photo.attached(params[:admission][:photo])
+    @admission.photo.attach(params[:admission][:photo])
 
     respond_to do |format|
       if @admission.save

@@ -7,7 +7,6 @@ class Staff < ApplicationRecord
   has_many :students
   belongs_to :department
   has_one_attached :photo
-
   rolify
 
   validates :designation, presence: true

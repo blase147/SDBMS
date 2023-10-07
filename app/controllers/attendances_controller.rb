@@ -1,30 +1,26 @@
 class AttendancesController < ApplicationController
+  # before_action :authenticate_staff!
   before_action :set_attendance, only: %i[show edit update destroy]
 
-  # GET /attendances or /attendances.json
-  def index
-    @attendances = Attendance.all.order(completed_at: :desc)
-    @students = Student.joins(:admission).where(admissions: { admission_status: true })
-    
-    # Find or create an attendance record for today
-    @attendance = Attendance.find_or_create_by(completed_at: Date.today)
-  
-    # Calculate the number of students present and absent
-    present_students_count = @attendances.where(presence: true).count
-    absent_students_count =  @attendances.where(presence: false).count
-  
-    # Pass these counts to your view
-    @absent_students_count = absent_students_count
-    @present_students_count = present_students_count
+ # GET /attendances or /attendances.json
+ def index
+  @students = Student.joins(:admission).where(admissions: { admission_status: true })
+  @classrooms = Classroom.all
 
-      # Calculate the number of male and female students
-    male_students_count = @students.where(admissions: { gender: 'Male' }).count
-    female_students_count = @students.where(admissions: { gender: 'Female' }).count
-
-    # Pass these counts to your view
-    @male_students_count = male_students_count
-    @female_students_count = female_students_count
+  if teacher? 
+    @attendances = Attendance.joins(student: :admission)
+                              .where(admissions: { admission_status: true })
+                              .order(completed_at: :desc)
+else
+    flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
+    @attendances = []
   end
+  @attendance = Attendance.find_by(params[:id])
+end
+
+
+
+
   
 
   # GET /attendances/1 or /attendances/1.json
@@ -63,7 +59,7 @@ def create
   end
   
   # Associate the found student with the attendance record
-  @attendance.student = @student
+  # @attendance.student = @student
 
   respond_to do |format|
     if @attendance.save
@@ -101,6 +97,10 @@ end
 
   private
 
+  def teacher?
+    current_staff.teacher == true
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_attendance
     @attendance = Attendance.find(params[:id])
@@ -108,6 +108,6 @@ end
 
   # Only allow a list of trusted parameters through.
   def attendance_params
-    params.require(:attendance).permit(:student_id, :completed_at, :presence, :health_condition, :arrival_time, :departure_time )
+    params.require(:attendance).permit(:student_id, :classroom_id, :completed_at, :presence, :health_condition, :arrival_time, :departure_time )
   end
 end

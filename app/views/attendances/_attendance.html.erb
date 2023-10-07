@@ -2,64 +2,40 @@
 <% if @attendance && @attendance.completed_at %>
   <p>Attendance for: <%= @attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
   <p>Number of students Absent: <%= @absent_students_count %> | Number of students present: <%= @present_students_count %></p><br>
-    <table class="classroom_table">
+  <table class="classroom_table">
+  <tr>
+    <th>Photo</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Classroom</th>
+    <th>Admission number</th>
+    <th>Date of Birth</th>
+    <th>Gender</th>
+    <th>Presence</th>
+    <th>Health Condition</th>
+    <th>Arrival Time</th>
+    <th>Departure Time</th>
+  </tr>
+
+  <tbody class="responsive_text">
+    <% @students.each do |student| %>
       <tr>
-        <th>Photo</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Other names</th>
-        <th>Phone number</th>
-        <th>Admission number</th>
-        <th>Date of Birth</th>
-        <th>Gender</th>
-        <th>Presence</th>
-        <th>Health Condition</th>
-        <th>Arrival Time</th>
-        <th>Departure Time</th>
+        <td><%= image_tag student.admission.photo, class: 'image_thumbnail' %></td>
+        <td><%= student.admission.firstname %></td>
+        <td><%= student.admission.lastname %></td>
+        <td><%= student.classroom.name %></td>
+        <td><%= student.admission_number %></td>
+        <td><%= student.admission.date_of_birth %></td>
+        <td><%= student.admission.gender %></td>
+        
+        <td><%= attendance.presence %></td>
+        <td><%= attendance.health_condition %></td>
+        <td><%= attendance.arrival_time.strftime("%I:%M %p") %></td>
+        <td><%= attendance.departure_time.strftime("%I:%M %p")  %></td>
       </tr>
-
-      <tbody class="responsive_text">
-        <% @students.each do |student| %>
-          <tr>
-            <td><%= image_tag student.admission.photo, class: 'image_thumbnail' %></td>
-
-            <td><%= student.admission.firstname %></td>
-            <td><%= student.admission.lastname %></td>
-            <td><%= student.admission.other_names %></td>
-            <td><%= student.admission.phone %></td>
-            <td><%= student.admission_number %></td>
-            <td><%= student.admission.date_of_birth %></td>
-            <td><%= student.admission.gender %></td>
-
-            <td><%= @attendance.presence if @attendance %></td>
-
-            <td>
-              <% if @attendance.present? %>
-                <%= @attendance.health_condition %>
-              <% else %>
-                No health record
-              <% end %>
-            </td>
-
-            <td>
-              <% if @attendance %>
-                <%= @attendance.arrival_time %>
-              <% else %>
-                No record
-              <% end %>
-            </td>
-
-            <td>
-              <% if @attendance %>
-                <%= @attendance.departure_time %>
-              <% else %>
-                No record
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <% end %>
+  </tbody>
+</table>
 
   <% else %>
     <p>Attendance has not been created yet.</p>

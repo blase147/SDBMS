@@ -17,13 +17,12 @@
         <th>Photo</th>
         <th>First name</th>
         <th>Last name</th>
-        <th>Other names</th>
-        <th>Phone number</th>
+        <th>Classroom</th>
         <th>Admission number</th>
         <th>Date of Birth</th>
         <th>Gender</th>
         <th>Presence</th>
-        <th colspan="2">Health Condition</th>
+        <th>Health Condition</th>
         <th>Arrival Time</th>
         <th>Departure Time</th>
       </tr>
@@ -37,9 +36,8 @@
 
           <td><%= student.admission.lastname %></td>
 
-          <td><%= student.admission.other_names %></td>
+          <td><%= student.classroom.name %></td>
 
-          <td><%= student.admission.phone %></td>
 
           <td><%= student.admission_number %></td>
 
@@ -49,7 +47,7 @@
           
           <td><%= form.check_box :presence %></td>
           
-          <td colspan="2" class="special_width"><%= form.text_area :health_condition, class:'special_width' %></td>
+          <td class="special_width"><%= form.text_area :health_condition, class:'special_width' %></td>
 
           <td><%= form.time_field :arrival_time, class:'special_width' %></td>
 

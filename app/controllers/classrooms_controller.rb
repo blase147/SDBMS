@@ -7,7 +7,9 @@ class ClassroomsController < ApplicationController
   end
 
   # GET /classrooms/1 or /classrooms/1.json
-  def show; end
+  def show
+
+  end
 
   # GET /classrooms/new
   def new
@@ -70,6 +72,6 @@ class ClassroomsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def classroom_params
-    params.require(:classroom).permit(:name, :grade_level, :size, :assign_teacher, :staff_id)
+    params.require(:classroom).permit(:name, :grade_level, :size, :assign_teacher, :student_id)
   end
 end

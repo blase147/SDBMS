@@ -1,67 +1,79 @@
-<div class="attendance_index_cont">
-  <p style="color: green"><%= notice %></p>
+<% if current_staff.present? %>
+  <!-- Display content for logged-in staff -->
+  <p>Welcome, <%= current_staff.firstname %></p>
+<% else %>
+  <!-- Display content for non-logged-in users -->
+  <p>Please log in to access this content.</p>
+<% end %>
 
-  <h1>Attendances</h1>
+<div class="attendance_index_cont">
+  <h1>Class Attendance</h1>
   <div class="new_btn_cont">
     <%= link_to "New attendance", new_attendance_path, class: 'new_btn' %>
   </div>
 
-  <% @attendances.each do |attendance| %>
+  <div>
+    <% if @attendance.completed_at %>
+      <p>Attendance for: <%= @attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
+    <% end %>
+      
 
-    <% if @attendance && @attendance.completed_at %>
+    <% if @attendances.present? %>
 
-      <div>
-      <p>Attendance for: <%= attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
-
-        <p>Number of students absent today: <%= @absent_students_count %> | Number of students present today: <%= @present_students_count %></p>
-        <table class="classroom_table">
+      <table class="classroom_table">
+        <thead>
           <tr>
-            <th>Photo</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Other names</th>
-            <th>Phone number</th>
-            <th>Admission number</th>
-            <th>Date of Birth</th>
-            <th>Gender</th>
+            <th colspan="2">Student Name</th>
             <th>Presence</th>
             <th>Health Condition</th>
             <th>Arrival Time</th>
             <th>Departure Time</th>
+            <th>Completed At</th>
+            <th>Actions</th>
           </tr>
+        </thead>
+        <tbody>
+          <% @attendances.each do |attendance| %>
+            <tr>
+              <td colspan="2"><%= "#{attendance.student.admission.firstname} #{attendance.student.admission.lastname}" %></td>
+              <td><%= attendance.presence ? 'Present' : 'Absent' %></td>
+              <td><%= attendance.health_condition %></td>
+              <td><%= attendance.arrival_time.strftime("%I:%M %p") if attendance.arrival_time %></td>
+              <td><%= attendance.departure_time.strftime("%I:%M %p") if attendance.departure_time %></td>
+              <td><%= attendance.completed_at.strftime("%I:%M %p") if attendance.completed_at %></td>
+              <td>
+                <div class="edit_delete_cont">
+                  <%= link_to edit_attendance_path(attendance) do %>
+                    <i class="fas fa-edit"></i> <!-- Edit icon -->
+                  <% end %>
 
-          <tbody class="responsive_text">
-            <% @students.each do |student| %>
-              <tr>
-                <td><%= image_tag student.admission.photo, class: 'image_thumbnail' %></td>
-                <td><%= student.admission.firstname %></td>
-                <td><%= student.admission.lastname %></td>
-                <td><%= student.admission.other_names %></td>
-                <td><%= student.admission.phone %></td>
-                <td><%= student.admission_number %></td>
-                <td><%= student.admission.date_of_birth %></td>
-                <td><%= student.admission.gender %></td>
-                
-                  <td>
-                    <%= attendance.presence %>
-                  </td>
-
-                  <td>
-                    <%= attendance.health_condition %>
-                  </td>
-
-                  <td>
-                    <%= attendance.arrival_time.strftime("%I:%M %p") %>
-                  </td>
-
-                  <td>
-                    <%= attendance.departure_time.strftime("%I:%M %p")  %>
-                  </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div> <br><br>
+                  <%= link_to attendance, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="fas fa-trash"></i> <!-- Delete icon -->
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    <% else %>
+      <p>No attendances to display.</p>
     <% end %>
-  <% end %>
+  </div>
+
+
+
+
+  
+
+
+
+
+   
+    
+    
+    
+    
+    
 </div>

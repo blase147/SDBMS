@@ -1,7 +1,39 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @classroom %>
-
+<div>
+  <table class="classroom_table">
+    <tr>
+      <th>Name</th>
+      <th>Grade Level</th>
+      <th>Class Manager</th>
+      <th>Actions</th>
+    </tr>
+    <tbody>
+        <tr>
+      <td><%= @classroom.name %></td>
+      <td><%= @classroom.grade_level %></td>
+      <td>
+        <% if @classroom.assign_teacher.present? %>
+          <%= Staff.find(@classroom.assign_teacher).full_name %>
+        <% else %>
+          Not Assigned
+        <% end %>
+      </td>
+      <td>
+        <div class="edit_delete_cont">
+          <%= link_to edit_classroom_path(@classroom) do %>
+            <i class="fas fa-edit"></i> <!-- Edit icon -->
+          <% end %>
+      
+          <%= link_to @classroom, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fas fa-trash"></i> <!-- Delete icon -->
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 <div>
   <%= link_to "Back to classrooms", classrooms_path %>
 
