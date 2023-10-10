@@ -4,19 +4,24 @@ class AttendancesController < ApplicationController
 
  # GET /attendances or /attendances.json
  def index
-  @students = Student.joins(:admission).where(admissions: { admission_status: true })
-  @classrooms = Classroom.all
+    # @students = Student.joins(admission: :classroom)
+    #                 .where(admissions: { admission_status: true }, classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+    @attendance = Attendance.new
+    @students = Student.joins(:admission, :classroom)
+    .where(admissions: { admission_status: true },
+           classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+    @classrooms = Classroom.all
 
-  if teacher? 
-    @attendances = Attendance.joins(student: :admission)
-                              .where(admissions: { admission_status: true })
-                              .order(completed_at: :desc)
-else
-    flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
-    @attendances = []
+    if teacher? 
+      @attendances = Attendance.joins(student: :admission)
+                                .where(admissions: { admission_status: true })
+                                .order(completed_at: :desc)
+    else
+      flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
+      @attendances = []
+    end
+      @attendance = Attendance.find_by(params[:id])
   end
-  @attendance = Attendance.find_by(params[:id])
-end
 
 
 
@@ -32,7 +37,9 @@ end
   # GET /attendances/new
   def new
     @attendance = Attendance.new
-    @students = Student.joins(:admission).where(admissions: { admission_status: true })
+    @students = Student.joins(:admission, :classroom)
+    .where(admissions: { admission_status: true },
+           classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
   end
 
   # GET /attendances/1/edit

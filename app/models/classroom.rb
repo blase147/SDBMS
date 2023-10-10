@@ -2,7 +2,7 @@ class Classroom < ApplicationRecord
   has_many :students, dependent: :destroy
   has_many :attendances, dependent: :destroy
   has_many :admissions, dependent: :destroy
-  # belongs_to :assign_teacher, class_name: 'Staff', foreign_key: 'staff_id'
+  belongs_to :staff, optional: true
   has_many :subjects, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true

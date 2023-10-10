@@ -36,7 +36,7 @@
           <td><%= student.admission.firstname %></td>
           <td><%= student.admission.lastname %></td>
           <td><%= student.classroom.name %></td>
-          <td><%= student.classroom.assign_teacher&.fullname %></td>
+          <td><%= student.classroom.assign_teacher %></td>
           <td><%= student.admission_number %></td>
           <td><%= student.admission.date_of_birth %></td>
           <td><%= student.admission.gender %></td>
@@ -44,9 +44,9 @@
             <%= form.check_box "students[#{student.id}][present]" %>
             <%= form.hidden_field "students[#{student.id}][id]", value: student.id %>
           </td>
-          <td><%= form.text_area "students[#{student.id}][health_condition]", class: 'special_width' %></td>
-          <td><%= form.time_field "students[#{student.id}][arrival_time]", class: 'special_width' %></td>
-          <td><%= form.time_field "students[#{student.id}][departure_time]", class: 'special_width' %></td>
+          <td colspan="2" class="special_width"><%= form.text_area :health_condition, class:'special_width' %></td>
+          <td><%= form.time_field :arrival_time, class:'special_width' %></td>
+          <td><%= form.time_field :departure_time, class:'special_width' %></td>
           <!-- Add a hidden input field to store the student_id -->
           <%= form.hidden_field "students[#{student.id}][student_id]", value: student.id %>
         </tr>

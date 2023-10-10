@@ -13,7 +13,7 @@
   </div>
 
   <div>
-    <% if @attendance.completed_at %>
+    <% if @attendance %>
       <p>Attendance for: <%= @attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
     <% end %>
       

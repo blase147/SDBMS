@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_07_140534) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_131920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,6 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_140534) do
     t.string "grade_level"
     t.string "gender"
     t.date "admission_date"
+    t.bigint "classroom_id"
+    t.index ["classroom_id"], name: "index_admissions_on_classroom_id"
   end
 
   create_table "assessments", force: :cascade do |t|
@@ -158,6 +160,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_140534) do
     t.string "option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "student_id", null: false
+    t.index ["student_id"], name: "index_exams_on_student_id"
   end
 
   create_table "expenditures", force: :cascade do |t|
@@ -396,6 +400,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_140534) do
     t.datetime "updated_at", null: false
     t.string "grade_level"
     t.string "subject_code"
+    t.bigint "student_id"
+    t.bigint "classroom_id"
+    t.index ["classroom_id"], name: "index_subjects_on_classroom_id"
+    t.index ["student_id"], name: "index_subjects_on_student_id"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -406,6 +414,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_140534) do
     t.string "option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "student_id", null: false
+    t.index ["student_id"], name: "index_tests_on_student_id"
   end
 
   create_table "textbooks", force: :cascade do |t|
@@ -432,11 +442,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_140534) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "admissions", "classrooms"
   add_foreign_key "attendances", "classrooms"
   add_foreign_key "attendances", "students"
   add_foreign_key "classrooms", "attendances"
   add_foreign_key "classrooms", "staffs"
+  add_foreign_key "exams", "students"
   add_foreign_key "staffs", "departments"
   add_foreign_key "students", "admissions"
   add_foreign_key "students", "classrooms"
+  add_foreign_key "subjects", "classrooms"
+  add_foreign_key "subjects", "students"
+  add_foreign_key "tests", "students"
 end
