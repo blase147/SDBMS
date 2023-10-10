@@ -13,11 +13,14 @@
   </div>
 
   <div>
-    <% if @attendance && @attendance.completed_at %>
-      <p>Attendance for: <%= @attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
-    <% end %>
+  <% if @attendance && @attendance.completed_at %>
+    <p>Attendance for: <%= @attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") %></p>
+  <% end %>
+
+      
 
     <% if @attendances.present? %>
+
       <table class="classroom_table">
         <thead>
           <tr>
@@ -32,15 +35,16 @@
         </thead>
         <tbody>
           <% @attendances.each do |attendance| %>
+            <% @students.each do |student| %>
+
             <tr>
-              <td colspan="2">
-                <% student = attendance.student %>
-                <% if student.present? %>
-                  <%= "#{student.admission.firstname} #{student.admission.lastname}" %>
-                <% else %>
-                  Student Not Found
-                <% end %>
-              </td>
+            <td colspan="2">
+              <% if @students.present? %>
+                <%= "#{student.admission.firstname} #{student.admission.lastname}" %>
+              <% else %>
+                Student Not Found
+              <% end %>
+          </td>
               <td><%= attendance.presence ? 'Present' : 'Absent' %></td>
               <td><%= attendance.health_condition %></td>
               <td><%= attendance.arrival_time.strftime("%I:%M %p") if attendance.arrival_time %></td>
@@ -58,11 +62,28 @@
                 </div>
               </td>
             </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
+      
     <% else %>
       <p>No attendances to display.</p>
     <% end %>
   </div>
+
+
+
+
+  
+
+
+
+
+   
+    
+    
+    
+    
+    
 </div>

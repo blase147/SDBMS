@@ -5,29 +5,23 @@ class AttendancesController < ApplicationController
  # GET /attendances or /attendances.json
  def index
   @students = Student.joins(:admission, :classroom)
-  .where(admissions: { admission_status: true },
-         classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
-
+  .where(admissions: { admission_status: true })
+  .where(classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+  
   if teacher?
-    @attendances = Attendance.joins(:classroom)
-                      .where(classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
-                          
+    @attendances = Attendance.joins(student: [:admission, :classroom])
+    .where(admissions: { admission_status: true })
+    .where(classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })                          
 
   else
     flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
     @attendances = []
   end
     @attendances = Attendance.all
-  
+
 end
 
 
-
-
-
-
-
-  
 
   # GET /attendances/1 or /attendances/1.json
   def show
