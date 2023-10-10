@@ -5,6 +5,7 @@ class Admission < ApplicationRecord
   has_one_attached :p_photo
   has_one_attached :transcript
   belongs_to :classroom, optional: true
+  has_many :attendances, dependent: :destroy
 
   attribute :admission_status, :boolean, default: false
   

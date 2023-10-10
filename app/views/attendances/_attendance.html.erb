@@ -28,7 +28,7 @@
         <td><%= student.admission.date_of_birth %></td>
         <td><%= student.admission.gender %></td>
         
-        <td><%= attendance.presence %></td>
+        <td><%= attendance.presence ? 'Present' : 'Absent' %></td>
         <td><%= attendance.health_condition %></td>
         <td><%= attendance.arrival_time.strftime("%I:%M %p") %></td>
         <td><%= attendance.departure_time.strftime("%I:%M %p")  %></td>

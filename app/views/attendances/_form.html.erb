@@ -40,15 +40,11 @@
           <td><%= student.admission_number %></td>
           <td><%= student.admission.date_of_birth %></td>
           <td><%= student.admission.gender %></td>
-          <td>
-            <%= form.check_box "students[#{student.id}][present]" %>
-            <%= form.hidden_field "students[#{student.id}][id]", value: student.id %>
-          </td>
-          <td colspan="2" class="special_width"><%= form.text_area :health_condition, class:'special_width' %></td>
+          <td><%= form.check_box :presence %></td>
+          <td><%= form.text_area :health_condition, class:'special_width' %></td>
           <td><%= form.time_field :arrival_time, class:'special_width' %></td>
           <td><%= form.time_field :departure_time, class:'special_width' %></td>
           <!-- Add a hidden input field to store the student_id -->
-          <%= form.hidden_field "students[#{student.id}][student_id]", value: student.id %>
         </tr>
       <% end %>
     </tbody>

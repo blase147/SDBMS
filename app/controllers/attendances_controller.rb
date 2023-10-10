@@ -4,24 +4,25 @@ class AttendancesController < ApplicationController
 
  # GET /attendances or /attendances.json
  def index
-    # @students = Student.joins(admission: :classroom)
-    #                 .where(admissions: { admission_status: true }, classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
-    @attendance = Attendance.new
-    @students = Student.joins(:admission, :classroom)
-    .where(admissions: { admission_status: true },
-           classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
-    @classrooms = Classroom.all
+  @students = Student.joins(:admission, :classroom)
+  .where(admissions: { admission_status: true },
+         classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
 
-    if teacher? 
-      @attendances = Attendance.joins(student: :admission)
-                                .where(admissions: { admission_status: true })
-                                .order(completed_at: :desc)
-    else
-      flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
-      @attendances = []
-    end
-      @attendance = Attendance.find_by(params[:id])
+  if teacher?
+    @attendances = Attendance.joins(:classroom)
+                      .where(classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+                          
+
+  else
+    flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
+    @attendances = []
   end
+    @attendances = Attendance.all
+  
+end
+
+
+
 
 
 
@@ -31,7 +32,10 @@ class AttendancesController < ApplicationController
   # GET /attendances/1 or /attendances/1.json
   def show
     @attendance = Attendance.find(params[:id])
-    @students = Student.joins(:admission).where(admissions: { admission_status: true })
+    @students = Student.joins(:admission, :classroom)
+    .where(admissions: { admission_status: true },
+           classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+
   end
 
   # GET /attendances/new
@@ -52,21 +56,13 @@ class AttendancesController < ApplicationController
 # POST /attendances or /attendances.json
 def create
   @attendance = Attendance.new(attendance_params)
-  @students = Student.all
-  student_id = params[:attendance][:student_id]
   
-  # Find the student by ID
-  @student = Student.find_by(id: student_id)
+  # Load @students for rendering the form after create (for potential re-submission)
+  @students = Student.joins(:admission, :classroom)
+                      .where(admissions: { admission_status: true },
+                             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
   
-  if @student.nil?
-    # Handle the case where the student is not found
-    flash[:notice] = 'Student not found'
-    redirect_to new_attendance_path
-    return
-  end
-  
-  # Associate the found student with the attendance record
-  # @attendance.student = @student
+  # ... rest of your create action code
 
   respond_to do |format|
     if @attendance.save
@@ -78,6 +74,7 @@ def create
     end
   end
 end
+
 
 # PATCH/PUT /attendances/1 or /attendances/1.json
   def update
