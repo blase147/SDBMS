@@ -8,26 +8,26 @@ class ClassroomsController < ApplicationController
 
   # GET /classrooms/1 or /classrooms/1.json
   def show
-
+    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS full_name, Staffs.id"))
   end
 
   # GET /classrooms/new
   def new
     @classroom = Classroom.new
-    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS fullname, Staffs.id"))
+    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS full_name, Staffs.id"))
   end
     
     
   # GET /classrooms/1/edit
   def edit
     @classroom = Classroom.find(params[:id])
-    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS fullname, Staffs.id"))
+    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS full_name, Staffs.id"))
   end
 
   # POST /classrooms or /classrooms.json
   def create
     @classroom = Classroom.new(classroom_params)
-    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS fullname, Staffs.id"))
+    @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS full_name, Staffs.id"))
 
     respond_to do |format|
       if @classroom.save

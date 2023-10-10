@@ -29,7 +29,7 @@
 
 <div class="grid_item">
   <%= form.label :assign_teacher, style: "display: block" %>
-  <%= form.collection_select :assign_teacher, @teachers, :id, :fullname, prompt: "Select a teacher", style: "display: block" %>
+  <%= form.collection_select :assign_teacher, @teachers, :full_name, :full_name, prompt: "Select a teacher", style: "display: block" %>
 </div><br>
 
 

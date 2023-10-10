@@ -13,7 +13,7 @@
       <td><%= classroom.grade_level %></td>
       <td>
         <% if classroom.assign_teacher.present? %>
-          <%= Staff.find(classroom.assign_teacher).full_name %>
+          <%= classroom.assign_teacher %>
         <% else %>
           Not Assigned
         <% end %>

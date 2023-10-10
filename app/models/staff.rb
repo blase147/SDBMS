@@ -27,7 +27,7 @@ class Staff < ApplicationRecord
   validates :photo, presence: true
   validates :teacher, inclusion: { in: [true, false] } 
 
-  def full_name
+  def fullname
     "#{firstname} #{lastname}"
   end
 end

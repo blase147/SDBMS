@@ -9,56 +9,50 @@
       </ul>
     </div>
   <% end %>
- 
-    <%= form.label :Add_date_and_timestamp, style: "display: block" %>
-    <%= form.datetime_field :completed_at, class:'special_width' %>
-    <table class="classroom_table">
-      <tr>
-        <th>Photo</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Classroom</th>
-        <th>Admission number</th>
-        <th>Date of Birth</th>
-        <th>Gender</th>
-        <th>Presence</th>
-        <th>Health Condition</th>
-        <th>Arrival Time</th>
-        <th>Departure Time</th>
-      </tr>
 
-      <tbody class="responsive_text">
+  <%= form.label :completed_at, 'Add Date and Timestamp:', style: 'display: block' %>
+  <%= form.datetime_field :completed_at, class: 'special_width' %>
+
+  <table class="classroom_table">
+    <tr>
+      <th>Photo</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Classroom</th>
+      <th>Assigned Teacher</th>
+      <th>Admission number</th>
+      <th>Date of Birth</th>
+      <th>Gender</th>
+      <th>Presence</th>
+      <th>Health Condition</th>
+      <th>Arrival Time</th>
+      <th>Departure Time</th>
+    </tr>
+
+    <tbody class="responsive_text">
       <% @students.each do |student| %>
         <tr>
-          <td><%= image_tag student.admission.photo, class:'image_thumbnail' %></td> 
-          
+          <td><%= image_tag rails_blob_path(student.admission.photo), class: 'image_thumbnail' if student.admission.photo.present? %></td>
           <td><%= student.admission.firstname %></td>
-
           <td><%= student.admission.lastname %></td>
-
           <td><%= student.classroom.name %></td>
-
-
+          <td><%= student.classroom.assign_teacher&.fullname %></td>
           <td><%= student.admission_number %></td>
-
           <td><%= student.admission.date_of_birth %></td>
-
           <td><%= student.admission.gender %></td>
-          
-          <td><%= form.check_box :presence %></td>
-          
-          <td class="special_width"><%= form.text_area :health_condition, class:'special_width' %></td>
-
-          <td><%= form.time_field :arrival_time, class:'special_width' %></td>
-
-          <td><%= form.time_field :departure_time, class:'special_width' %></td>
-          
+          <td>
+            <%= form.check_box "students[#{student.id}][present]" %>
+            <%= form.hidden_field "students[#{student.id}][id]", value: student.id %>
+          </td>
+          <td><%= form.text_area "students[#{student.id}][health_condition]", class: 'special_width' %></td>
+          <td><%= form.time_field "students[#{student.id}][arrival_time]", class: 'special_width' %></td>
+          <td><%= form.time_field "students[#{student.id}][departure_time]", class: 'special_width' %></td>
           <!-- Add a hidden input field to store the student_id -->
-          <%= form.hidden_field :student_id, value: student.id %>
+          <%= form.hidden_field "students[#{student.id}][student_id]", value: student.id %>
         </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>
 
   <div>
     <%= form.submit %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_07_122241) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_07_140534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,6 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_122241) do
     t.time "departure_time"
     t.datetime "completed_at"
     t.bigint "student_id"
+    t.bigint "classroom_id"
+    t.index ["classroom_id"], name: "index_attendances_on_classroom_id"
     t.index ["student_id"], name: "index_attendances_on_student_id"
   end
 
@@ -114,7 +116,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_122241) do
     t.string "grade_level"
     t.string "assign_teacher"
     t.bigint "attendance_id"
+    t.bigint "staff_id"
     t.index ["attendance_id"], name: "index_classrooms_on_attendance_id"
+    t.index ["staff_id"], name: "index_classrooms_on_staff_id"
   end
 
   create_table "correspondences", force: :cascade do |t|
@@ -428,8 +432,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_122241) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attendances", "classrooms"
   add_foreign_key "attendances", "students"
   add_foreign_key "classrooms", "attendances"
+  add_foreign_key "classrooms", "staffs"
   add_foreign_key "staffs", "departments"
   add_foreign_key "students", "admissions"
   add_foreign_key "students", "classrooms"
