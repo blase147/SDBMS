@@ -22,7 +22,6 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1 or /attendances/1.json
   def show
-    @attendance = Attendance.find(params[:id])
     @students = Student.joins(:admission, :classroom)
       .where(admissions: { admission_status: true },
              classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
@@ -43,60 +42,29 @@ class AttendancesController < ApplicationController
   def edit
     # @attendance = Attendance.new
     @attendance = Attendance.find(params[:id])
-    @students = Student.joins(:admission).where(admissions: { admission_status: true })
+    @students = Student.joins(:admission, :classroom)
+      .where(admissions: { admission_status: true },
+             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
   end
 
   # POST /attendances or /attendances.json
   def create
-    # Get common attendance parameters (completed_at) from the form
-    attendance_params = params.require(:attendance).permit(:completed_at)
-
+    @attendance = Attendance.new(attendance_params)
     # Find students based on the teacher and admission status
-    students = Student.joins(:admission, :classroom)
+    Student.joins(:admission, :classroom)
       .where(admissions: { admission_status: true },
              classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
 
-    # Initialize an empty array to store the created attendance records
-    created_attendances = []
-
-    # Loop through the students and create attendance records for each
-    students.each do |student|
-      attendance = student.attendances.new(attendance_params)
-
-      # Customize the attendance record here if needed
-      attendance.presence = params[:attendance][:presence][student.id.to_s] == '1'
-      attendance.health_condition = params[:attendance][:health_condition][student.id.to_s]
-      attendance.arrival_time = params[:attendance][:arrival_time][student.id.to_s]
-      attendance.departure_time = params[:attendance][:departure_time][student.id.to_s]
-
-      if attendance.save
-        created_attendances << attendance
+    respond_to do |format|
+      if @attendance.save
+        format.html { redirect_to attendances_url(@attendances), notice: 'Attendance was successfully created.' }
+        format.json { render :show, status: :created, location: @attendance }
       else
-        # Handle validation errors if any
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @attendance.errors, status: :unprocessable_entity }
       end
     end
-
-    if created_attendances.empty?
-      flash[:alert] = 'No valid attendance records were created.'
-      render :new
-    else
-      flash[:notice] = 'Attendance was successfully created.'
-      redirect_to attendances_path
-    end
   end
-
-
-  respond_to do |format|
-    if save_successful
-      format.html { redirect_to attendances_path, notice: 'Attendances were successfully created.' }
-      format.json { render :index, status: :created, location: attendances_path }
-    else
-      format.html { render :new, status: :unprocessable_entity }
-      format.json { render json: @attendance.errors, status: :unprocessable_entity }
-    end
-  end
-
-
 
   # PATCH/PUT /attendances/1 or /attendances/1.json
   def update

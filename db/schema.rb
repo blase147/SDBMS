@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_220110) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_02_212518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,10 +105,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_220110) do
     t.time "departure_time"
     t.datetime "completed_at"
     t.bigint "student_id"
-    t.bigint "classroom_id"
-    t.bigint "admission_id"
-    t.index ["admission_id"], name: "index_attendances_on_admission_id"
-    t.index ["classroom_id"], name: "index_attendances_on_classroom_id"
     t.index ["student_id"], name: "index_attendances_on_student_id"
   end
 
@@ -445,8 +441,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_220110) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admissions", "classrooms"
-  add_foreign_key "attendances", "admissions"
-  add_foreign_key "attendances", "classrooms"
   add_foreign_key "attendances", "students"
   add_foreign_key "classrooms", "attendances"
   add_foreign_key "classrooms", "staffs"

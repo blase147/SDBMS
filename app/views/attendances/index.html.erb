@@ -25,7 +25,6 @@
               <th>Health Condition</th>
               <th>Arrival Time</th>
               <th>Departure Time</th>
-              <th>Completed At</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -40,9 +39,8 @@
               </td>
               <td><%= attendance.presence ? 'Present' : 'Absent' %></td>
               <td><%= attendance.health_condition %></td>
-              <td><%= attendance.arrival_time.strftime("%I:%M %p") if attendance.arrival_time %></td>
-              <td><%= attendance.departure_time.strftime("%I:%M %p") if attendance.departure_time %></td>
-              <td><%= attendance.completed_at.strftime("%I:%M %p") if attendance.completed_at %></td>
+              <td><%= attendance.arrival_time ? attendance.arrival_time.strftime("%I:%M %p") : 'Not Available' %></td>
+              <td><%= attendance.departure_time ? attendance.departure_time.strftime("%I:%M %p") : 'Not Available' %></td>
               <td>
                 <div class="edit_delete_cont">
                   <%= link_to edit_attendance_path(attendance) do %>
