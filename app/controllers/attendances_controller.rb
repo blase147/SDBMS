@@ -53,7 +53,7 @@ class AttendancesController < ApplicationController
     # Find students based on the teacher and admission status
     Student.joins(:admission, :classroom)
       .where(admissions: { admission_status: true },
-             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" }).distinct
 
     respond_to do |format|
       if @attendance.save
