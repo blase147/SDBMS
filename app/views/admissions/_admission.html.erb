@@ -57,7 +57,7 @@
           <td>
             <div class="record-container">
               <i class="fas fa-ellipsis-h ellips"></i>
-              <div class="ellips_popup" style="display: none;">
+              <div class="ellips_popup" >
                 <%= button_to "Toggle Status", toggle_status_admission_path(admission), method: :post %>
                 <%= link_to "See Details", admission %> <br> <br>
                 <%= button_to "Remove", admission, method: :delete %>

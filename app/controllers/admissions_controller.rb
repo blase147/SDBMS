@@ -12,7 +12,6 @@ class AdmissionsController < ApplicationController
   def show
     @admission = Admission.find(params[:id])
   end
-  
 
   # GET /admissions/new
   def new
@@ -77,31 +76,28 @@ class AdmissionsController < ApplicationController
       redirect_to admissions_path, alert: 'Failed to update admission status.'
     end
   end
-  
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_admission
     @admission = Admission.find(params[:id])
 
-    if @admission.nil?
-      # Handle the case where the admission record is not found
-      flash[:alert] = "Admission record not found."
-      redirect_to admissions_path # Redirect to the index or another suitable page
-    end
+    return unless @admission.nil?
 
+    # Handle the case where the admission record is not found
+    flash[:alert] = 'Admission record not found.'
+    redirect_to admissions_path # Redirect to the index or another suitable page
   end
 
   # Only allow a list of trusted parameters through.
   def admission_params
-    params.require(:admission).permit(:admission_date, :grade_level,  :firstname, :lastname, :other_names, :gender, :date_of_birth, :country, :state, :lga,
-                                      :phone, :email, :transcript, :photo, :primary_language, :other_languages, :religion, 
+    params.require(:admission).permit(:admission_date, :grade_level, :firstname, :lastname, :other_names, :gender, :date_of_birth, :country, :state, :lga,
+                                      :phone, :email, :transcript, :photo, :primary_language, :other_languages, :religion,
                                       :current_school_name, :type_of_school, :current_class_year, :current_school_address,
-                                      :relationship_with_applicant, :p_full_name, :p_date_of_birth, :p_country_of_birth,:p_photo, 
+                                      :relationship_with_applicant, :p_full_name, :p_date_of_birth, :p_country_of_birth, :p_photo,
                                       :p_title, :p_nationality, :p_occupation, :p_home_address, :p_mailing_address,
                                       :p_mobile_phone_number, :p_email, :p_employer_name, :p_employer_address, :p_work_telephone_number,
-                                      :p_email
-                                       )
+                                      :p_email)
   end
 end
-

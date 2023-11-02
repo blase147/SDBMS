@@ -1,16 +1,16 @@
 class Staffs::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  prepend_before_action :require_no_authentication, only: [:new, :edit, :update]
+  prepend_before_action :require_no_authentication, only: %i[new edit update]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   # GET /resource/sign_up
- def new
-  @staff = Staff.new
-  @departments = Department.all
-  super
-  # render 'staffs/registrations/new'
-end
+  def new
+    @staff = Staff.new
+    @departments = Department.all
+    super
+    # render 'staffs/registrations/new'
+  end
 
   # POST /staffs
   def create
@@ -29,7 +29,6 @@ end
     end
   end
 
-
   # GET /resource/edit
   def edit
     @departments = Department.all
@@ -37,9 +36,7 @@ end
   end
 
   # PUT /resource
-  def update
-    super
-  end
+
 
   # DELETE /resource
   # def destroy
@@ -87,15 +84,13 @@ end
 
   def staff_params
     params.require(:staff).permit(:designation, :photo, :title, :firstname, :lastname, :email, :password, :phone, :dateofbirth, :country,
-                                  :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource, 
+                                  :state, :lga, :street, :department_id, :salary, :hire_date, :teacher, :administrator, :human_resource,
                                   :frontdesk, :chef, :accountant, :librarian, :principal, :vice_principal, :bursar, :guidance_counselor,
-                                   :nurse, :security, :cleaner, :driver, :other, roles: []
-                                   ).tap do |whitelisted|
-                                      # Convert role names to Role instances and assign them to the staff
-                                      whitelisted[:roles] = params[:staff][:roles].map do |role_name|
-                                        Role.find_or_create_by(name: role_name)
-                                      end
-                                   end
+                                  :nurse, :security, :cleaner, :driver, :other, roles: []).tap do |whitelisted|
+      # Convert role names to Role instances and assign them to the staff
+      whitelisted[:roles] = params[:staff][:roles].map do |role_name|
+        Role.find_or_create_by(name: role_name)
+      end
+    end
   end
-
 end

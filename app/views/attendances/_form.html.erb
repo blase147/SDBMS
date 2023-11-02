@@ -1,9 +1,9 @@
-<%= form_with(model: attendance) do |form| %>
-  <% if attendance.errors.any? %>
+<%= form_with(model: @attendance, url: attendances_path, method: :post, local: true) do |form| %>
+  <% if @attendance.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+      <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
       <ul>
-        <% attendance.errors.each do |error| %>
+        <% @attendance.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -40,11 +40,11 @@
           <td><%= student.admission_number %></td>
           <td><%= student.admission.date_of_birth %></td>
           <td><%= student.admission.gender %></td>
+          <%= form.hidden_field 'attendances[][student_id]', value: student.id %>
           <td><%= form.check_box :presence %></td>
-          <td><%= form.text_area :health_condition, class:'special_width' %></td>
-          <td><%= form.time_field :arrival_time, class:'special_width' %></td>
-          <td><%= form.time_field :departure_time, class:'special_width' %></td>
-          <!-- Add a hidden input field to store the student_id -->
+          <td><%= form.text_area :health_condition, class: 'special_width' %></td>
+          <td><%= form.time_field :arrival_time, class: 'special_width' %></td>
+          <td><%= form.time_field :departure_time, class: 'special_width' %></td>
         </tr>
       <% end %>
     </tbody>

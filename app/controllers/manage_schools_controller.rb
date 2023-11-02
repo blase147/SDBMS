@@ -12,7 +12,6 @@ class ManageSchoolsController < ApplicationController
     @manage_school = ManageSchool.find(params[:id])
     @school_logo = @manage_school.school_logo
   end
-  
 
   # GET /manage_schools/new
   def new
@@ -69,9 +68,9 @@ class ManageSchoolsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def manage_school_params
-    params.require(:manage_school).permit(:school_name, :school_logo, :school_photo, :school_motto, :school_address, 
-    :school_email, :school_phone_number, :school_website, :academic_session, :academic_session_start_date, :academic_session_end_date,
-    :term, :term_start_date, :term_end_date, :school_name, :school_vision, :school_mission, :academic_session, :hos_signature)
+    params.require(:manage_school).permit(:school_name, :school_logo, :school_photo, :school_motto, :school_address,
+                                          :school_email, :school_phone_number, :school_website, :academic_session, :academic_session_start_date, :academic_session_end_date,
+                                          :term, :term_start_date, :term_end_date, :school_name, :school_vision, :school_mission, :academic_session, :hos_signature)
   end
 
   def set_school_logo

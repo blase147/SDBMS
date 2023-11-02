@@ -11,7 +11,6 @@ class SubjectsController < ApplicationController
     @subject = Subject.find(params[:id]) # Load a specific subject by its ID
     @subjects = Subject.all # Load all subjects (if needed)
   end
-  
 
   # GET /subjects/new
   def new

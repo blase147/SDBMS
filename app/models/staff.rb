@@ -3,10 +3,9 @@ class Staff < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
- 
+
   has_many :students
   belongs_to :department
-  belongs_to :classroom
   has_one_attached :photo
   rolify
 
@@ -26,7 +25,7 @@ class Staff < ApplicationRecord
   validates :lga, presence: true
   validates :hire_date, presence: true
   validates :photo, presence: true
-  validates :teacher, inclusion: { in: [true, false] } 
+  validates :teacher, inclusion: { in: [true, false] }
 
   def fullname
     "#{firstname} #{lastname}"

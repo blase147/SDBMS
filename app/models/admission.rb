@@ -8,7 +8,7 @@ class Admission < ApplicationRecord
   has_many :attendances, dependent: :destroy
 
   attribute :admission_status, :boolean, default: false
-  
+
   # Student validations
   validates :firstname, presence: true
   validates :lastname, presence: true
@@ -20,7 +20,7 @@ class Admission < ApplicationRecord
   validates :state, presence: true
   validates :lga, presence: true
   validates :phone, presence: true
-  validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "Invalid email format" }
+  validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email format' }
   validates :transcript, presence: true
   validates :photo, presence: true
   validates :primary_language, presence: true
@@ -30,7 +30,7 @@ class Admission < ApplicationRecord
   validates :current_class_year, presence: true
   validates :type_of_school, presence: true
   validates :current_school_address, presence: true
-    
+
   # Parent/Guardian validations
   validates :p_photo, presence: true
   validates :relationship_with_applicant, presence: true
@@ -46,5 +46,5 @@ class Admission < ApplicationRecord
   validates :p_employer_name, presence: true
   validates :p_employer_address, presence: true
   validates :p_work_telephone_number, presence: true
-  validates :p_email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "Invalid email format" }
+  validates :p_email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email format' }
 end

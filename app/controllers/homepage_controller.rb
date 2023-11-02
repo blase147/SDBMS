@@ -1,7 +1,3 @@
 class HomepageController < ApplicationController
-  
-    def homepage
-
-    end
-  end
-  
+  def homepage; end
+end

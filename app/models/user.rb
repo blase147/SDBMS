@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :students, dependent: :destroy
   has_one_attached :photo
 
-
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :photo, presence: true

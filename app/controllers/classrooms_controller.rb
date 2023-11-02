@@ -16,8 +16,7 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.new
     @teachers = Staff.where(teacher: true).select(Arel.sql("CONCAT(Staffs.firstname, ' ', Staffs.lastname) AS full_name, Staffs.id"))
   end
-    
-    
+
   # GET /classrooms/1/edit
   def edit
     @classroom = Classroom.find(params[:id])

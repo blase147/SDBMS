@@ -5,14 +5,13 @@ module ApplicationHelper
     Staff.count
   end
 
-def student_count
-  if Admission.where(admission_status: true).exists?
-    Student.count+1
-  else
-    0
+  def student_count
+    if Admission.where(admission_status: true).exists?
+      Student.count + 1
+    else
+      0
+    end
   end
-end
-
 
   def revenue_count
     Revenue.count
