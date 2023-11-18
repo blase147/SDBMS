@@ -3,8 +3,19 @@ class ClassroomsController < ApplicationController
 
   # GET /classrooms or /classrooms.json
   def index
-    @classrooms = Classroom.all
+    if teacher?
+      @classrooms = Classroom.where(assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}")
+      # Add an order clause if needed, for example:
+      .order(name: :asc)
+    else
+      flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
+      @classrooms = []
+    end
   end
+  
+  
+  
+  
 
   # GET /classrooms/1 or /classrooms/1.json
   def show
@@ -63,6 +74,11 @@ class ClassroomsController < ApplicationController
   end
 
   private
+
+  def teacher?
+    current_staff.teacher == true
+  end
+
 
   # Use callbacks to share common setup or constraints between actions.
   def set_classroom
