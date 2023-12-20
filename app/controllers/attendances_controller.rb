@@ -4,56 +4,48 @@ class AttendancesController < ApplicationController
 
   # GET /attendances or /attendances.json
   def index
-    @students = Student.joins(:admission, :classroom)
-      .where(admissions: { admission_status: true })
-      .where(classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
-
     if teacher?
-      @attendances = Attendance.joins(student: %i[admission classroom])
-        .where(admissions: { admission_status: true })
-        .where(classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" }).order('completed_at ASC')
-
+      @attendances = Attendance.joins(:admission, :classroom, :student)
+                                .where(admissions: { admission_status: true })
+                                .where(classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+                                .distinct
     else
       flash[:notice] = "#{current_staff.firstname} #{current_staff.lastname} is not a teacher."
       @attendances = []
     end
-    @attendances = Attendance.all.order('completed_at DESC')
   end
+  
+  
+  
 
+  
   # GET /attendances/1 or /attendances/1.json
-  def show
-    @students = Student.joins(:admission, :classroom)
-      .where(admissions: { admission_status: true },
-             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+  def show 
   end
 
   # GET /attendances/new
   def new
     @attendance = Attendance.new
     @students = Student.joins(:admission, :classroom)
-      .where(admissions: { admission_status: true },
-             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
-
-    # Create an empty attendance object for each student
-    @attendances = @students.map { |student| Attendance.new(student:) }
+                        .where(admissions: { admission_status: true },
+                              classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
   end
 
   # GET /attendances/1/edit
-  def edit
-    # @attendance = Attendance.new
+  def edit 
     @attendance = Attendance.find(params[:id])
     @students = Student.joins(:admission, :classroom)
-      .where(admissions: { admission_status: true },
-             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+                        .where(admissions: { admission_status: true },
+                              classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
   end
 
   # POST /attendances or /attendances.json
   def create
     @attendance = Attendance.new(attendance_params)
-    # Find students based on the teacher and admission status
-    Student.joins(:admission, :classroom)
-      .where(admissions: { admission_status: true },
-             classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" }).distinct
+    @students = Student.joins(:admission, :classroom)
+    .where(admissions: { admission_status: true },
+          classrooms: { assign_teacher: "#{current_staff.firstname} #{current_staff.lastname}" })
+
 
     respond_to do |format|
       if @attendance.save
@@ -102,7 +94,6 @@ class AttendancesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def attendance_params
-    params.require(:attendance).permit(:student_id, :classroom_id, :completed_at, :presence, :health_condition,
-                                       :arrival_time, :departure_time)
+    params.require(:attendance).permit(:student_id, :classroom_id, :completed_at, updated_at, :presence)
   end
 end

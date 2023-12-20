@@ -3,8 +3,7 @@
     <thead>
       <tr>
         <th>Photo</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
+        <th>Students Name</th>
         <th>Grade Level</th>
         <th>Classroom</th>
         <th>Teacher</th>
@@ -21,8 +20,7 @@
           <td>
             <%= image_tag student.admission.photo, class: 'image_thumbnail' %>
           </td>
-          <td><%= student.admission.firstname %></td>
-          <td><%= student.admission.lastname %></td>
+          <td><%= student.fullname %></td>
           <td><%= student.admission.grade_level %></td>
           <td><%= student.classroom.name %></td>
           <td><%= student.classroom.assign_teacher %></td>

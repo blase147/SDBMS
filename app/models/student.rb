@@ -2,7 +2,7 @@ class Student < ApplicationRecord
   has_many :parents
   belongs_to :classroom
   belongs_to :admission
-  has_many :attendances, dependent: :destroy
+  has_many :attendances
 
   has_many :subjects, dependent: :destroy
   has_many :tests, dependent: :destroy
@@ -14,6 +14,7 @@ class Student < ApplicationRecord
   validates :admission_id, presence: true
 
   def fullname
-    "#{firstname} #{lastname}"
+    "#{admission&.firstname} #{admission&.lastname}".strip
   end
+  
 end

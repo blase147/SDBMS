@@ -5,7 +5,7 @@ class Admission < ApplicationRecord
   has_one_attached :p_photo
   has_one_attached :transcript
   belongs_to :classroom, optional: true
-  # has_many :attendances, dependent: :destroy
+  has_many :attendances
 
   attribute :admission_status, :boolean, default: false
 
@@ -47,4 +47,7 @@ class Admission < ApplicationRecord
   validates :p_employer_address, presence: true
   validates :p_work_telephone_number, presence: true
   validates :p_email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email format' }
+
+
+
 end

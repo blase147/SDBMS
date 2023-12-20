@@ -13,51 +13,39 @@
   </div>
 
   <div>
-  <% if @attendances.present? %>
-    <% @students.each do |student| %>
-      <% @attendances.each do |attendance| %>
-        <p>Attendance for: <%= attendance.completed_at.strftime("%A, %B %d, %Y %I:%M %p") if attendance.completed_at %></p>
-        <table class="classroom_table">
-          <thead>
-            <tr>
-              <th colspan="2">Student Name</th>
-              <th>Presence</th>
-              <th>Health Condition</th>
-              <th>Arrival Time</th>
-              <th>Departure Time</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
+    <% if @attendances.present? %>
+      <table class="classroom_table">
+        <thead>
+          <tr>
+            <th colspan="2">Students Name</th>
+            <th>Presence</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop through attendances for the current student -->
+          <% @attendances.each do |attendance| %>
             <tr>
               <td colspan="2">
-                <% if @students.present? %>
-                  <%= "#{student.admission.firstname} #{student.admission.lastname}" %>
-                <% else %>
-                  Student Not Found
-                <% end %>
+                <%= attendance.fullname %>
               </td>
               <td><%= attendance.presence ? 'Present' : 'Absent' %></td>
-              <td><%= attendance.health_condition %></td>
-              <td><%= attendance.arrival_time ? attendance.arrival_time.strftime("%I:%M %p") : 'Not Available' %></td>
-              <td><%= attendance.departure_time ? attendance.departure_time.strftime("%I:%M %p") : 'Not Available' %></td>
               <td>
                 <div class="edit_delete_cont">
                   <%= link_to edit_attendance_path(attendance) do %>
                     <i class="fas fa-edit"></i> <!-- Edit icon -->
                   <% end %>
-
                   <%= link_to attendance, method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <i class="fas fa-trash"></i> <!-- Delete icon -->
                   <% end %>
                 </div>
               </td>
             </tr>
-          </tbody>
-        </table>
-      <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No attendances to display.</p>
     <% end %>
-  <% else %>
-    <p>No attendances to display.</p>
-  <% end %>
+  </div>
 </div>

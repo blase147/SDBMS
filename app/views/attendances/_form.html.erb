@@ -16,35 +16,26 @@
   <table class="classroom_table">
     <tr>
       <th>Photo</th>
-      <th>First name</th>
-      <th>Last name</th>
+      <th>Students Name</th>
       <th>Classroom</th>
       <th>Assigned Teacher</th>
       <th>Admission number</th>
       <th>Date of Birth</th>
       <th>Gender</th>
       <th>Presence</th>
-      <th>Health Condition</th>
-      <th>Arrival Time</th>
-      <th>Departure Time</th>
     </tr>
 
     <tbody class="responsive_text">
       <% @students.each do |student| %>
         <tr>
           <td><%= image_tag rails_blob_path(student.admission.photo), class: 'image_thumbnail' if student.admission.photo.present? %></td>
-          <td><%= student.admission.firstname %></td>
-          <td><%= student.admission.lastname %></td>
+          <td><%= student.fullname %></td>
           <td><%= student.classroom.name %></td>
           <td><%= student.classroom.assign_teacher %></td>
           <td><%= student.admission_number %></td>
           <td><%= student.admission.date_of_birth %></td>
           <td><%= student.admission.gender %></td>
-          <%= form.hidden_field 'attendances[][student_id]', value: student.id %>
-          <td><%= form.check_box :presence %></td>
-          <td><%= form.text_area :health_condition, class: 'special_width' %></td>
-          <td><%= form.time_field :arrival_time, class: 'special_width' %></td>
-          <td><%= form.time_field :departure_time, class: 'special_width' %></td>
+          <td><%= check_box_tag :presence %></td>
         </tr>
       <% end %>
     </tbody>
